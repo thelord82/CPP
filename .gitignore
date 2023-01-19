@@ -1,0 +1,6 @@
+main.cpp
+Sample.class.cpp
+Sample.class.hpp
+.DS_Store
+*.o
+ex00/megaphone
