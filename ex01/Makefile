@@ -27,8 +27,9 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	phonebook
-SRCS	=	main.cpp
-			PhoneBook.cpp
+SRCS	=	main.cpp		\
+			PhoneBook.cpp	\
+			Contact.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 

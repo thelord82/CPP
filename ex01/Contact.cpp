@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 15:03:14 by malord            #+#    #+#             */
-/*   Updated: 2023/01/22 15:02:34 by mal              ###   ########.fr       */
+/*   Created: 2023/01/22 15:02:15 by mal               #+#    #+#             */
+/*   Updated: 2023/01/22 15:02:46 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void) {
-    return;
+std::string Contact::getFirstName(void) const {
+    return this->_firstName;
 }
 
-PhoneBook::~PhoneBook(void) {
-    return;
+std::string Contact::getLastName(void) const {
+    return this->_lastName;
+}
+
+std::string Contact::getNickname(void) const {
+    return this->_nickname;
+}
+
+std::string Contact::getPhoneNumber(void) const {
+    return this->_phoneNumber;
+}
+
+std::string Contact::getSecret(void) const {
+    return this->_darkestSecret;
 }
