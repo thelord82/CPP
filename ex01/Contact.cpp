@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:02:15 by mal               #+#    #+#             */
-/*   Updated: 2023/01/22 15:02:46 by mal              ###   ########.fr       */
+/*   Updated: 2023/01/22 15:35:35 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ std::string Contact::getPhoneNumber(void) const {
 
 std::string Contact::getSecret(void) const {
     return this->_darkestSecret;
+}
+
+void Contact::setFirstName(void) const {
+    std::string input;
+    std::cout << "Enter first name: ";
+    std::cin >> input;
+    //this->_firstName = input;
+    std::cout << "First name is : " << input << std::endl;
 }

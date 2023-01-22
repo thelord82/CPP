@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:22:55 by malord            #+#    #+#             */
-/*   Updated: 2023/01/22 16:11:20 by mal              ###   ########.fr       */
+/*   Created: 2023/01/22 15:39:24 by mal               #+#    #+#             */
+/*   Updated: 2023/01/22 15:47:28 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP_
+# define CONTACT_HPP_
 
-# include <iostream>
-# include <iomanip>
-# include <string>
+#include <iostream>
+#include <string>
 
- class PhoneBook {
- public:
-	 PhoneBook(void);
-	 ~PhoneBook(void);
- //private:
- //    Contact _contacts[8];
- };
- class Contact {
+class Contact {
  public:
 	 Contact(void);
 	 ~Contact(void);
@@ -33,13 +25,13 @@
 	 std::string	getNickname(void) const;
 	 std::string	getPhoneNumber(void) const;
 	 std::string	getSecret(void) const;
-	 void			setFirstName(Contact instance) const;
+	 void			setFirstName() const;
  private:
 	 std::string    _firstName;
 	 std::string    _lastName;
 	 std::string    _nickname;
 	 std::string    _phoneNumber;
 	 std::string    _darkestSecret;
-	 //int            _count;
+	 int            _count;
  };
 #endif
