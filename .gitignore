@@ -4,3 +4,5 @@ Sample.class.hpp
 .DS_Store
 *.o
 ex00/megaphone
+ex01/a.out
+ex01/phonebook
