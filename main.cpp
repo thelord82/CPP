@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:22:55 by malord            #+#    #+#             */
-/*   Updated: 2023/01/24 10:16:22 by malord           ###   ########.fr       */
+/*   Created: 2023/01/19 11:23:35 by malord            #+#    #+#             */
+/*   Updated: 2023/01/19 11:35:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Sample.class.hpp"
 
-# include <iostream>
-# include <iomanip>
-# include <string>
-# include "Contact.hpp"
+int main()
+{
+    Sample instance;
 
- class PhoneBook {
- public:
-	 PhoneBook(void);
-	 ~PhoneBook(void);
-	 Contact	*getContact(int index);
- private:
-     Contact _contacts[8];
- };
-#endif
+    std::cout << "foo = " << instance.foo << std::endl;
+    return (0);
+}
