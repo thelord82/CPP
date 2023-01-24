@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:39:24 by mal               #+#    #+#             */
-/*   Updated: 2023/01/24 12:03:48 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:54:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@
 	 void			setSecret(void);
 	 void			setNewContact(void);
 	 void			dispContact(int index);
+	 void			run_phonebook(void);
  private:
 	 std::string    _firstName;
 	 std::string    _lastName;
 	 std::string    _nickname;
 	 std::string    _phoneNumber;
 	 std::string    _darkestSecret;
-	 //int            _count;
  };
 #endif
