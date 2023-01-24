@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:39:24 by mal               #+#    #+#             */
-/*   Updated: 2023/01/24 10:39:21 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:03:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 	 void			setPhone(void);
 	 void			setSecret(void);
 	 void			setNewContact(void);
+	 void			dispContact(int index);
  private:
 	 std::string    _firstName;
 	 std::string    _lastName;

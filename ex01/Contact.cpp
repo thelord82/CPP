@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:02:15 by mal               #+#    #+#             */
-/*   Updated: 2023/01/24 11:10:32 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:10:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,13 @@ void Contact::setNewContact(void) {
     this->setNickname();
     this->setPhone();
     this->setSecret();
+}
+
+void Contact::dispContact(int index) {
+    if (index < 0 || index > 7)
+    {
+        std::cout << "Error: index of contact must be between 0 and 7." << std::endl;
+        exit(1);
+    }
+    std::cout << index << " |" << getFirstName() << " |" << getLastName() << " |" << getNickname() << std::endl;
 }

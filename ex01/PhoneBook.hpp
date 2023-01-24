@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:22:55 by malord            #+#    #+#             */
-/*   Updated: 2023/01/24 10:16:22 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:14:40 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  public:
 	 PhoneBook(void);
 	 ~PhoneBook(void);
-	 Contact	*getContact(int index);
+	Contact	*getContact(int index);
  private:
      Contact _contacts[8];
  };

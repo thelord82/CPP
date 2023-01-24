@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 10:54:41 by mal               #+#    #+#             */
-/*   Updated: 2023/01/24 11:04:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/24 12:13:54 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(void)
 {
 	std::string option;
-	Contact	instance;
+	std::string index;
 	PhoneBook directory;
 	int i = 0;
 
@@ -26,17 +26,17 @@ int main(void)
 		if (!option.compare("ADD"))
 		{
 			directory.getContact(i)->setNewContact();
-			std::cout << directory.getContact(0)->getFirstName() << std::endl;
-			//std::cout << directory.getContact(0)->getFirstName() << std::endl;
-			//std::cout << instance[0].getFirstName() << std::endl;
-			//std::cout << instance[0].getLastName() << std::endl;
-			//std::cout << instance[0].getNickname() << std::endl;
-			//std::cout << instance[0].getPhoneNumber() << std::endl;
-			//std::cout << instance[0].getSecret() << std::endl;
+			std::cout << directory.getContact(i)->getFirstName() << std::endl;
 			i++;
 		}
 		else if (!option.compare("SEARCH"))
-			std::cout << "Call to SEARCH function" << std::endl;
+		{
+			std::cout << "Enter the index of contact (0-7) : ";
+			getline(std::cin, index);
+			int num_index = stoi(index);
+			directory.getContact(num_index)->dispContact(num_index);
+		}
+			//std::cout << "Call to SEARCH function" << std::endl;
 		else if (!option.compare("EXIT") || std::cin.eof())
 			exit(0);
 		if (i == 8)
