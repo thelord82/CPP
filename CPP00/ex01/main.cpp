@@ -6,13 +6,12 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 10:54:41 by mal               #+#    #+#             */
-/*   Updated: 2023/01/24 15:58:29 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/25 09:18:53 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-//TODO Leak check
 int main(void)
 {
 	Contact instance;
