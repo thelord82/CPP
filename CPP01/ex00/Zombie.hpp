@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:59:23 by malord            #+#    #+#             */
-/*   Updated: 2023/01/25 14:06:52 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/26 11:32:33 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@
 class Zombie
 {
 private:
-    std::string _name;/* data */
+    std::string _name;
 public:
-    Zombie(/* args */);
+    Zombie(std::string name);
     ~Zombie();
-    void    announce(void);
+    void    announce(void) const;
 };
+void    randomChump(std::string name);
+Zombie  *newZombie(std::string name);
 
 #endif
