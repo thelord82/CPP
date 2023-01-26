@@ -11,3 +11,7 @@ CPP00/ex01/phonebook
 CPP00/ex01/phonebook.dSYM/Contents/Info.plist
 CPP00/ex01/phonebook.dSYM/Contents/Resources/DWARF/phonebook
 Samples/a.out
+CPP01/ex00/zombie
+CPP01/ex00/zombie.dSYM/Contents/Info.plist
+.gitignore
+CPP01/ex00/zombie.dSYM/Contents/Resources/DWARF/zombie
