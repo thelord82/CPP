@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:59:23 by malord            #+#    #+#             */
-/*   Updated: 2023/01/26 13:40:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/26 14:17:51 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <iostream>
 #include <string>
 
-class Zombie
-{
+class Zombie {
 private:
 	std::string _name;
 public:
