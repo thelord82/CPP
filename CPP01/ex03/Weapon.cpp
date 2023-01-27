@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:06:03 by malord            #+#    #+#             */
-/*   Updated: 2023/01/27 08:53:07 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/27 09:40:33 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,5 @@ std::string const & Weapon::getType(void) const
 
 void    Weapon::setType(std::string type)
 {
-    if (type.empty())
-    {
-        this->_type = "ding-a-ling";
-        return;
-    }
     this->_type = type;
 }

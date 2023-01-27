@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:04:01 by mal               #+#    #+#             */
-/*   Updated: 2023/01/27 08:56:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/27 09:42:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int main()
         bob.attack();
     }
     {
-        Weapon club = Weapon("crude spiked club");
+        Weapon club = Weapon("some other type of club");
         
         HumanB jim("Jim");
         jim.setWeapon(club);
         jim.attack();
-        club.setType("tarte au sucre");
+        club.setType("");
         jim.attack();
     }
     return (0);
