@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:04:01 by mal               #+#    #+#             */
-/*   Updated: 2023/01/26 22:32:59 by mal              ###   ########.fr       */
+/*   Updated: 2023/01/27 08:56:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main()
         HumanB jim("Jim");
         jim.setWeapon(club);
         jim.attack();
-        club.setType("some other type of club");
+        club.setType("tarte au sucre");
         jim.attack();
     }
     return (0);
