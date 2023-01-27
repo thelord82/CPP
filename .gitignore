@@ -23,3 +23,6 @@ CPP01/ex01/horde.dSYM/Contents/Info.plist
 CPP01/ex02/brain
 CPP01/ex03/violence
 CPP01/ex03/weapon
+CPP01/ex03/violence.dSYM/Contents/Resources/DWARF/violence
+.gitignore
+CPP01/ex03/violence.dSYM/Contents/Info.plist
