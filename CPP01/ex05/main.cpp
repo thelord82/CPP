@@ -6,13 +6,18 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:35:34 by malord            #+#    #+#             */
-/*   Updated: 2023/01/27 11:35:49 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:49:52 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
+int foo(void)
+{
+    return 5;
+}
 int main()
 {
+    std::cout << &foo << std::endl;
     return (0);
 }
