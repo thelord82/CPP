@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 10:02:30 by malord            #+#    #+#             */
-/*   Updated: 2023/01/27 11:24:10 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/27 11:54:53 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main(int argc, char **argv)
 			position++;
 		}
 		ofs << line << std::endl;
+		line.clear();
 	}
 	ifs.close();
 	ofs.close();
