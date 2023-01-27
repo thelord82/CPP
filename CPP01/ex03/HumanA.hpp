@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:26:03 by malord            #+#    #+#             */
-/*   Updated: 2023/01/26 15:59:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/26 22:20:07 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 #include "Weapon.hpp"
 
 class HumanA {
-private:
-	std::string _weapon;
-	std::string _name;
 public:
-	HumanA(void);
+	HumanA(std::string name, Weapon& weapon);
 	~HumanA(void);
+	
 	void    attack(void) const;
-	//std::string getName(void) const;
-	//std::string getWeapon(void) const;
+private:
+	std::string _name;
+	Weapon &_weapon;
 };
 
 #endif

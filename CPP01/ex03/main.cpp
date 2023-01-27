@@ -6,12 +6,15 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:04:01 by mal               #+#    #+#             */
-/*   Updated: 2023/01/26 19:08:23 by mal              ###   ########.fr       */
+/*   Updated: 2023/01/26 22:32:59 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
 
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+
+//TODO Pas supposé en avoir, mais check leaks ! 
 int main()
 {
     {

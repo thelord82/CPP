@@ -26,7 +26,7 @@ CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I.
 RM		=	rm -rf
 
 # Dir and file names
-NAME	=	weapon
+NAME	=	violence
 SRCS	=	main.cpp	\
 			Weapon.cpp	\
 			HumanA.cpp	\
@@ -44,6 +44,7 @@ all: $(NAME)
 # Generates output file
 $(NAME): $(OBJS)
 	$(HIDE)$(CC) $(CFLAGS) $(OBJS) -o $@
+	@echo "Compiled! Execute with \033[38;2;39;154;186m./$(NAME)\033[0m"
 
 # Compiles sources into objects
 .cpp.o: $(SRCS) $(INC)

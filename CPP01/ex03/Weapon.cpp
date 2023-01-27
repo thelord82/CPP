@@ -6,21 +6,19 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:06:03 by malord            #+#    #+#             */
-/*   Updated: 2023/01/26 19:14:44 by mal              ###   ########.fr       */
+/*   Updated: 2023/01/26 22:25:05 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(void)
+Weapon::Weapon(std::string weapon) : _type(weapon)
 {
-    std::cout << "Constructor Weapon called" << std::endl;
     return;
 }
 
-Weapon::Weapon(void)
+Weapon::~Weapon(void)
 {
-    std::cout << "Destructor Weapon called" << std::endl;
     return;
 }
 
