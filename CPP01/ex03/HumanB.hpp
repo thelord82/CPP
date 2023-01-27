@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:00:53 by malord            #+#    #+#             */
-/*   Updated: 2023/01/26 16:02:50 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/26 19:16:02 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ private:
 public:
     HumanB(void);
     ~HumanB(void);
+    void    attack(void) const;
 };
 
 #endif
