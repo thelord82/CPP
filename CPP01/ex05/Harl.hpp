@@ -6,25 +6,25 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:35:50 by malord            #+#    #+#             */
-/*   Updated: 2023/01/27 11:38:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/27 12:00:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HARL_HPP_
+# define HARL_HPP_
 #include <iostream>
 #include <string>
 
 class Harl {
 private:
-    /* data */
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
 public:
-    Harl(/* args */);
-    ~Harl();
+	Harl();
+	~Harl();
+	void	complain(std::string level);
 };
 
-Harl::Harl(/* args */)
-{
-}
-
-Harl::~Harl()
-{
-}
+#endif
