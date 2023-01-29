@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:04:01 by mal               #+#    #+#             */
-/*   Updated: 2023/01/27 09:42:24 by malord           ###   ########.fr       */
+/*   Updated: 2023/01/29 11:27:13 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
-//TODO Pas supposé en avoir, mais check leaks ! 
 int main()
 {
     {
@@ -31,7 +30,7 @@ int main()
         HumanB jim("Jim");
         jim.setWeapon(club);
         jim.attack();
-        club.setType("");
+        club.setType("Tarte aux bleuets");
         jim.attack();
     }
     return (0);
