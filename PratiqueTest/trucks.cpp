@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trucks.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:59 by malord            #+#    #+#             */
-/*   Updated: 2023/02/01 15:37:06 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/01 19:05:48 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,28 @@
 
 using namespace std;
 
-int truckTour(vector<vector<int> > petrolTanks)
-{
-    int startPoint = 0;
-    int gasLeft = 0;
-    int checkedPumps = 0;
-    int i = 0;
-    for (int i = 0; i < petrolTanks.size(); i++)
+int truckTour(vector<vector<int>> petrolpumps) {
+    int fuel = 0;
+    int start = 2;
+    int stops = 0;
+    int position = start;
+    while (stops < petrolpumps.size())
     {
-        if (petrolTanks[i][0] > petrolTanks[i][1]) // if qty is greater than distance so that the trip can start
+        fuel += petrolpumps[position][0] - petrolpumps[position][1];
+        if (fuel < 0)
         {
-            startPoint = i;
-            gasLeft += petrolTanks[i][0];
-            checkedPumps++;
-            while (checkedPumps != petrolTanks.size())
-            {
-                gasLeft -= petrolTanks[i][1];
-                if (gasLeft < 0 && checkedPumps < petrolTanks.size())
-                    return (-1);
-                else
-                {
-                    i++;
-                    if (i == petrolTanks.size())
-                        i = 0;
-                    gasLeft += petrolTanks[i][0];
-                }
-                checkedPumps++;
-            }
-            break;
+            fuel = 0;
+            stops = 0;
+            start = (start + 1) % petrolpumps.size();
+            position = start;
+        }
+        else
+        {
+            stops++;
+            position = (position + 1) % petrolpumps.size();
         }
     }
-    return (startPoint);
+    return (start);
 }
 
 int main()

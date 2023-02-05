@@ -31,3 +31,5 @@ CPP01/ex05/harl
 CPP01/ex05/a.out
 PratiqueTest/a.out
 .clang-format
+PratiqueTest/a.out.dSYM/Contents/Info.plist
+.gitignore
