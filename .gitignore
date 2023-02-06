@@ -33,3 +33,4 @@ PratiqueTest/a.out
 .clang-format
 PratiqueTest/a.out.dSYM/Contents/Info.plist
 .gitignore
+PratiqueTest/a.out.dSYM/Contents/Resources/DWARF/a.out
