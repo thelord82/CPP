@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:02:15 by mal               #+#    #+#             */
-/*   Updated: 2023/01/24 15:57:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:21:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ std::string Contact::getNickname(void) const {
 	return this->_nickname;
 }
 
-std::string Contact::getPhoneNumber(void) const {
+std::string Contact::getPhone(void) const {
 	return this->_phoneNumber;
 }
 
@@ -86,6 +86,14 @@ void Contact::setPhone(void) {
 		std::cout << "Error: phone number field cannot be empty" << std::endl;
 		setPhone();
 	}
+	for (int i = 0; i < (int)this->_phoneNumber.length(); i++)
+	{
+		if (this->_phoneNumber[i] < 48 || this->_phoneNumber[i] > 57)
+		{
+			std::cout << "Error: you must only use digits for the phone number." << std::endl;
+			setPhone();
+		}
+	}
 }
 
 void Contact::setSecret(void) {
@@ -108,7 +116,7 @@ void Contact::setNewContact(void) {
 	this->setSecret();
 }
 
-void Contact::dispContact(int index) {
+void Contact::dispContact(int index) const {
 	if (index < 0 || index > 7)
 	{
 		std::cout << "Error: index of contact must be between 0 and 7." << std::endl;
@@ -134,10 +142,23 @@ void Contact::dispContact(int index) {
 		std::cout << std::setw(10) << getNickname() << std::endl;
 }
 
-void Contact::run_phonebook() {
+void Contact::dispFullContact(Contact* contact) const {
+	if (contact->getFirstName().empty())
+		std::cout << "Error: this contact doesn't exist." << std::endl;
+	else
+	{
+		std::cout << "First name : " << contact->getFirstName() << std::endl;
+		std::cout << "Last name : " << contact->getLastName() << std::endl;
+		std::cout << "Nickname : " << contact->getNickname() << std::endl;
+		std::cout << "Phone number : " << contact->getPhone() << std::endl;
+		std::cout << "Darkest secret : " << contact->getSecret() << std::endl;
+	}
+}
+
+void Contact::run_phonebook() const {
 	std::string option;
 	std::string index;
-	PhoneBook directory;
+	PhoneBook 	directory;
 	int i = 0;
 
 	while (1)
@@ -151,12 +172,28 @@ void Contact::run_phonebook() {
 		}
 		else if (!option.compare("SEARCH"))
 		{
+			int j = 0;
+			if (directory.getContact(j)->getFirstName().empty())
+			{
+				std::cout << "Phonebook is empty." << std::endl;
+				run_phonebook();
+			}
+			while (!(directory.getContact(j)->getFirstName().empty()))
+			{
+				directory.getContact(j)->dispContact(j);
+				j++;
+			}
 			std::cout << "Enter the index of contact (1-8) : ";
 			getline(std::cin, index);
 			if (std::cin.eof())
 				exit(0);
-			int num_index = stoi(index) - 1;
-			directory.getContact(num_index)->dispContact(num_index);
+			if (index.length() > 1 || index[0] < 49 || index[0] > 56)
+				std::cout << "Error: index must be between 1 and 8" << std::endl;
+			else
+			{
+				int num_index = stoi(index) - 1;
+				dispFullContact(directory.getContact(num_index));
+			}
 		}
 		else if (!option.compare("EXIT") || std::cin.eof())
 			exit(0);
