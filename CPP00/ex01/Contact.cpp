@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 15:02:15 by mal               #+#    #+#             */
-/*   Updated: 2023/02/06 15:21:35 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/07 15:49:18 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,6 @@ void Contact::setNewContact(void) {
 }
 
 void Contact::dispContact(int index) const {
-	if (index < 0 || index > 7)
-	{
-		std::cout << "Error: index of contact must be between 0 and 7." << std::endl;
-		run_phonebook();
-	}
 	if (getFirstName().length() == 0)
 	{
 		std::cout << "Error: Contact is empty" << std::endl;
@@ -169,6 +164,8 @@ void Contact::run_phonebook() const {
 		{
 			directory.getContact(i)->setNewContact();
 			i++;
+			if (i == 8)
+				i = 0;
 		}
 		else if (!option.compare("SEARCH"))
 		{
@@ -178,7 +175,7 @@ void Contact::run_phonebook() const {
 				std::cout << "Phonebook is empty." << std::endl;
 				run_phonebook();
 			}
-			while (!(directory.getContact(j)->getFirstName().empty()))
+			while (!(directory.getContact(j)->getFirstName().empty()) && j < 8)
 			{
 				directory.getContact(j)->dispContact(j);
 				j++;
@@ -197,8 +194,6 @@ void Contact::run_phonebook() const {
 		}
 		else if (!option.compare("EXIT") || std::cin.eof())
 			exit(0);
-		if (i == 8)
-			i = 0;
 		option.clear();
 	}
 }
