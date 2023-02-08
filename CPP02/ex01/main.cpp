@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:24:19 by malord            #+#    #+#             */
-/*   Updated: 2023/02/07 15:41:35 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/08 09:27:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main( void )
     std::cout << "b is " << b.toInt() << " as integer" << std::endl;
     std::cout << "c is " << c.toInt() << " as integer" << std::endl;
     std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-    std::cout << "c is " << c.toFloat() << " as float" << std::endl;
-    std::cout << "b is " << b.toFloat() + 0.005f << " as float" << std::endl;
+   //std::cout << "c is " << c.toFloat() << " as float" << std::endl;
+   //std::cout << "b is " << b.toFloat() + 0.005f << " as float" << std::endl;
     return 0;
 }
