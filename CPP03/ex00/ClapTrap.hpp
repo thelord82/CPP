@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:08:36 by malord            #+#    #+#             */
-/*   Updated: 2023/02/09 16:12:57 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/10 10:02:05 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class ClapTrap
     int         getHitPts(void) const;
     int         getEnergyPts(void) const;
     int         getAttackDmg(void) const;
+    void        setDamage(unsigned int amount);
     // Setters #TODO Are those necessary?
     // void setHitPts(ClapTrap player, unsigned int amount);
     // void setEnergyPts(ClapTrap player, unsigned int amount);
