@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:49 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 09:19:19 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:23:31 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@ ClapTrap::ClapTrap(void) : _name("default"), _hitPts(10), _energyPts(10), _attac
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPts(10), _energyPts(10), _attackDmg(0)
 {
     std::cout << "ClapTrap Name constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &other)
+{
+    _attackDmg = other._attackDmg;
+    _hitPts = other._hitPts;
+    _energyPts = other._energyPts;
+    _name = other._name;
+    std::cout << "ClapTrap copy constructor called." << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
+{
+    this->_attackDmg = rhs.getAttackDmg();
+    this->_energyPts = rhs.getEnergyPts();
+    this->_hitPts    = rhs.getHitPts();
+    this->_name      = rhs.getName();
+    return (*this);
 }
 
 ClapTrap::~ClapTrap()
@@ -84,11 +102,3 @@ void ClapTrap::setDamage(unsigned int amount)
 {
     this->_attackDmg = amount;
 }
-
-// void ClapTrap::setHitPts(ClapTrap player, unsigned int amount) {
-//     player._hitPts += amount;
-// }
-//
-// void ClapTrap::setEnergyPts(ClapTrap player, unsigned int amount) {
-//     player._energyPts += amount;
-// }

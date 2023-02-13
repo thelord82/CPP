@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:49 by malord            #+#    #+#             */
-/*   Updated: 2023/02/10 11:44:52 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/13 14:21:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,27 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPts(10), _energyPts(10),
     std::cout << "Name constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap(ClapTrap const &other)
+{
+    _name = other._name;
+    _hitPts = other._hitPts;
+    _energyPts = other._energyPts;
+    _attackDmg = other._attackDmg;
+    std::cout << "Copy constructor called" << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
     std::cout << "Default destructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
+{
+    this->_name      = rhs._name;
+    this->_hitPts    = rhs._hitPts;
+    this->_energyPts = rhs._energyPts;
+    this->_attackDmg = rhs._attackDmg;
+    return (*this);
 }
 
 void ClapTrap::attack(const std::string &target)
@@ -81,13 +99,4 @@ int ClapTrap::getAttackDmg(void) const
 void ClapTrap::setDamage(unsigned int amount)
 {
     this->_attackDmg = amount;
-}
-
-ClapTrap& ClapTrap::operator=(ClapTrap const &rhs)
-{
-    this->_name = rhs._name;
-    this->_hitPts = rhs._hitPts;
-    this->_energyPts = rhs._energyPts;
-    this->_attackDmg = rhs._attackDmg;
-    return (*this);
 }
