@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:55:50 by malord            #+#    #+#             */
-/*   Updated: 2023/01/26 14:04:06 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/13 10:39:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string>
 int main()
 {
-    std::string brain = "HI THIS IS BRAIN";
+    std::string  brain     = "HI THIS IS BRAIN";
     std::string *stringPTR = &brain;
     std::string &stringREF = brain;
 

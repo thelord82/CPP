@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:35:34 by malord            #+#    #+#             */
-/*   Updated: 2023/01/29 12:24:04 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/13 10:55:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-    Harl    complaining;
+    Harl complaining;
 
     complaining.complain("DEBUG");
     complaining.complain("AUTRE");
