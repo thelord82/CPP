@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 11:05:40 by malord            #+#    #+#             */
-/*   Updated: 2023/02/10 12:57:03 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/13 09:21:04 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,23 @@ ScavTrap::~ScavTrap(void)
 
 void ScavTrap::attack(const std::string &target)
 {
-    if (this->getEnergyPts() >= 1)
+    if (this->getEnergyPts() >= 1 && this->getHitPts() > 0)
     {
         std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackDmg()
                   << " points of damage!" << std::endl;
         this->_energyPts--;
     }
-    else
+    else if (this->getEnergyPts() < 1)
         std::cout << "ScavTrap " << this->getName() << " is out of energy. Please charge." << std::endl;
+    else
+        std::cout << "ScavTrap " << this->getName() << " can't attack because it's dead and not a zombie." << std::endl;
 }
 
 void ScavTrap::guardGate(void) const
 {
-    std::cout << "ScavTrap " << this->getName() << " has entered Gate keeper mode." << std::endl;
+    if (this->getHitPts() > 0)
+        std::cout << "ScavTrap " << this->getName() << " has entered Gate keeper mode." << std::endl;
+    else
+        std::cout << "ScavTrap " << this->getName() << " can't enter Gate keeper mode, it has no more Hit points."
+                  << std::endl;
 }
