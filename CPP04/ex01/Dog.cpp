@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:18:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 12:13:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 15:39:05 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,29 @@
 
 Dog::Dog(void) : Animal()
 {
-    type = "DOG";
+    type           = "DOG";
     this->dogBrain = new Brain();
     std::cout << "Dog constructor called" << std::endl;
 }
 
-Dog::Dog(Dog const &copy)
+Dog::Dog(Dog const &copy) : Animal()
 {
-    *this = copy;
+    this->type     = copy.type;
+    this->dogBrain = new Brain();
+    this->dogBrain = copy.dogBrain;
+    *this          = copy;
     std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog &Dog::operator=(Dog const &rhs)
 {
-    this->type = rhs.getType();
+    std::cout << "= operator overload call" << std::endl;
+    if (this != &rhs)
+    {
+        this->dogBrain = new Brain();
+        *this->dogBrain = *(rhs.dogBrain);
+        this->type = rhs.getType();
+    }
     return (*this);
 }
 

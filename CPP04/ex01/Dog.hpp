@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:06:26 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 11:20:01 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 14:38:30 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : virtual public Animal
 {
   private:
     Brain *dogBrain;

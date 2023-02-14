@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:44:44 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 12:17:27 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 13:51:38 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Animal::Animal(void) : type("Undiscovered species")
     std::cout << "Animal constructor called." << std::endl;
 }
 
-Animal::Animal(Animal const &copy)
+Animal::Animal(Animal const &copy) : type(copy.type)
 {
     *this = copy;
     std::cout << "Animal copy constructor called" << std::endl;
