@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:52 by malord            #+#    #+#             */
-/*   Updated: 2023/02/10 11:36:08 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/13 19:45:50 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int main()
     player1.attack(player2.getName());
     player2.takeDamage(player1.getAttackDmg());
     player1.attack(player2.getName());
+    player2.takeDamage(player1.getAttackDmg());
     player1.attack(player2.getName());
+    player2.takeDamage(player1.getAttackDmg());
     player1.attack(player2.getName());
+    player2.takeDamage(player1.getAttackDmg());
     player1.attack(player2.getName());
     player1.attack(player2.getName());
     player1.attack(player2.getName());

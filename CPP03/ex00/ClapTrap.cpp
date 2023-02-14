@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:49 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 14:21:15 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/13 19:50:13 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,15 @@ void ClapTrap::attack(const std::string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "ClapTrap " << this->getName() << " has taken " << amount << " points of damage" << std::endl;
-    this->_hitPts -= amount;
-    if (this->_hitPts <= 0)
+    if (this->getHitPts() > 0)
     {
-        std::cout << "ClapTrap " << this->getName() << " has no more Hit Points. RIP." << std::endl;
-        exit(0);
+        std::cout << "ClapTrap " << this->getName() << " has taken " << amount << " points of damage" << std::endl;
+        this->_hitPts -= amount;
+        if (this->_hitPts <= 0)
+            std::cout << "ClapTrap " << this->getName() << " has no more Hit Points. RIP." << std::endl;
     }
+    else
+        std::cout << "WHOA! Stop hammering a dead body!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
