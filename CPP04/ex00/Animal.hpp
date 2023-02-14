@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:18:44 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 13:21:56 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 09:34:44 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ class Animal
     Animal(void);
     Animal(Animal const &copy);
     Animal &operator=(Animal const &rhs);
-    ~Animal();
+    virtual ~Animal(void);
+
+    std::string getType(void) const;
+    virtual void makeSound(void) const;
 };
 
 #endif

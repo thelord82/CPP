@@ -6,22 +6,45 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:17:54 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 13:24:07 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 09:48:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-// TODO bonifier les tests !
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main()
 {
+    // Tests from the subject
     const Animal *meta = new Animal();
     const Animal *j    = new Dog();
     const Animal *i    = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
+    
+    std::cout << "j is a " << j->getType() << " " << std::endl;
+    std::cout << "i is a " << i->getType() << " " << std::endl;
     i->makeSound(); // will output the cat sound!
     j->makeSound();
     meta->makeSound();
+    delete meta;
+    delete j;
+    delete i;
+    std::cout << std::endl << "-------------------" << std::endl << std::endl;
+    
+    // Other tests with no heap allocation 
+    Animal unknown;
+    Dog fido;
+    Cat bouleDePouel;
+    
+    std::cout << "unknown is a " << unknown.getType() << std::endl;
+    std::cout << "fido is a " << fido.getType() << std::endl;
+    std::cout << "bouleDePouel is a " << bouleDePouel.getType() << std::endl;
+
+    std::cout << "unknown makes ";
+    unknown.makeSound();
+    std::cout << "fido makes ";
+    fido.makeSound(); 
+    std::cout << "bouleDePouel makes ";
+    bouleDePouel.makeSound(); 
     return (0);
 }
