@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:27:27 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 09:32:46 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 12:17:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 Cat::Cat(void) : Animal()
 {
     type = "CAT";
+    this->catBrain = new Brain();
     std::cout << "Cat constructor called" << std::endl;
 }
 
 Cat::Cat(Cat const &copy)
 {
     *this = copy;
+    std::cout << "Cat copy constructor called" << std::endl;
 }
 
 Cat &Cat::operator=(Cat const &rhs)
@@ -31,6 +33,7 @@ Cat &Cat::operator=(Cat const &rhs)
 
 Cat::~Cat(void)
 {
+    delete this->catBrain;
     std::cout << "Cat destructor called" << std::endl;
 }
 

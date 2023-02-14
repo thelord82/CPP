@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:54:33 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 10:20:16 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:34:47 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@
 class Brain
 {
   private:
-    /* data */
+    std::string ideas[100];
   public:
     Brain();
     Brain(Brain const &copy);
     Brain &operator=(Brain const &rhs);
     ~Brain();
-
-    std::string ideas[100];
 };
 
 #endif

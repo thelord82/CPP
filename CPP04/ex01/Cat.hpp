@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:26:44 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 09:34:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:19:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 #define CAT_HPP_
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
+  private:
+    Brain *catBrain;
+
   public:
     Cat(void);
     Cat(Cat const &copy);

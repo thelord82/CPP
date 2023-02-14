@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:06:26 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 09:32:25 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:20:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 #define DOG_HPP_
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
+  private:
+    Brain *dogBrain;
+
   public:
     Dog(void);
     Dog(Dog const &copy);

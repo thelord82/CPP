@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:54:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 10:19:46 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:43:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ Brain::Brain(Brain const &copy)
 
 Brain &Brain::operator=(Brain const &rhs)
 {
-    //TODO fill this
+    for (int i = 0; i < 100; ++i)
+        this->ideas[i] = rhs.ideas[i];
     return (*this);
 }
 
