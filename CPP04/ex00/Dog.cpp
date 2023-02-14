@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:18:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 09:16:21 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:03:06 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Dog::Dog(void) : Animal()
 
 Dog::Dog(Dog const &copy)
 {
-    *this = copy;
+    this->type = copy.type;
 }
 
 Dog &Dog::operator=(Dog const &rhs)

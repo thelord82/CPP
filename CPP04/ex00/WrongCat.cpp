@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 09:27:27 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 11:03:02 by malord           ###   ########.fr       */
+/*   Created: 2023/02/14 10:33:53 by malord            #+#    #+#             */
+/*   Updated: 2023/02/14 11:03:22 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat(void) : Animal()
+WrongCat::WrongCat() : WrongAnimal()
 {
-    type = "CAT";
-    std::cout << "Cat constructor called" << std::endl;
+    type = "WRONG CAT";
+    std::cout << "WrongCat constructor called" << std::endl;
 }
 
-Cat::Cat(Cat const &copy)
+WrongCat::WrongCat(WrongCat const &copy)
 {
     this->type = copy.type;
 }
 
-Cat &Cat::operator=(Cat const &rhs)
+WrongCat &WrongCat::operator=(WrongCat const &rhs)
 {
     this->type = rhs.getType();
     return (*this);
 }
 
-Cat::~Cat(void)
+WrongCat::~WrongCat()
 {
-    std::cout << "Cat destructor called" << std::endl;
+    std::cout << "WrongCat destructor called" << std::endl;
 }
 
-std::string Cat::getType(void) const
+std::string WrongCat::getType(void) const
 {
     return (this->type);
 }
 
-void Cat::makeSound(void) const
+void WrongCat::makeSound(void) const
 {
-    std::cout << "Miaou miaou minou" << std::endl;
+    std::cout << "I'm wrong, woof woof" << std::endl;
 }

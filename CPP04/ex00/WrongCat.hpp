@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 08:06:26 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 11:03:10 by malord           ###   ########.fr       */
+/*   Created: 2023/02/14 10:33:55 by malord            #+#    #+#             */
+/*   Updated: 2023/02/14 11:03:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP_
-#define DOG_HPP_
+#ifndef WRONGCAT_HPP_
+#define WRONGCAT_HPP_
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog : public Animal
+class WrongCat : public WrongAnimal
 {
   public:
-    Dog(void);
-    Dog(Dog const &copy);
-    Dog &operator=(Dog const &rhs);
-    ~Dog(void);
+    WrongCat();
+    WrongCat(WrongCat const &copy);
+    WrongCat &operator=(WrongCat const &rhs);
+    ~WrongCat();
 
     std::string  getType(void) const;
     virtual void makeSound(void) const;

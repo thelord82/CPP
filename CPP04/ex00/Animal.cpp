@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:44:44 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 09:15:28 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:02:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-    std::cout << "Squick squick I'm not discovered I do the noise I want" << std::endl;
+    std::cout << "Squick squick I'm not discovered I make the noise I want" << std::endl;
 }

@@ -6,13 +6,15 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:17:54 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 09:48:35 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:03:11 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include "Dog.hpp"
 #include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -20,7 +22,7 @@ int main()
     const Animal *meta = new Animal();
     const Animal *j    = new Dog();
     const Animal *i    = new Cat();
-    
+
     std::cout << "j is a " << j->getType() << " " << std::endl;
     std::cout << "i is a " << i->getType() << " " << std::endl;
     i->makeSound(); // will output the cat sound!
@@ -30,12 +32,26 @@ int main()
     delete j;
     delete i;
     std::cout << std::endl << "-------------------" << std::endl << std::endl;
-    
-    // Other tests with no heap allocation 
+
+    // Wrong classes tests
+
+    const WrongAnimal *lucien  = new WrongAnimal();
+    const WrongAnimal *gontran = new WrongCat();
+
+    std::cout << "lucien is a " << lucien->getType() << std::endl;
+    std::cout << "gontran is a " << gontran->getType() << std::endl;
+    lucien->makeSound();
+    gontran->makeSound();
+    delete lucien;
+    delete gontran;
+
+    std::cout << std::endl << "-------------------" << std::endl << std::endl;
+
+    // Other tests with no heap allocation
     Animal unknown;
-    Dog fido;
-    Cat bouleDePouel;
-    
+    Dog    fido;
+    Cat    bouleDePouel;
+
     std::cout << "unknown is a " << unknown.getType() << std::endl;
     std::cout << "fido is a " << fido.getType() << std::endl;
     std::cout << "bouleDePouel is a " << bouleDePouel.getType() << std::endl;
@@ -43,8 +59,9 @@ int main()
     std::cout << "unknown makes ";
     unknown.makeSound();
     std::cout << "fido makes ";
-    fido.makeSound(); 
+    fido.makeSound();
     std::cout << "bouleDePouel makes ";
-    bouleDePouel.makeSound(); 
+    bouleDePouel.makeSound();
+
     return (0);
 }

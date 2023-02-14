@@ -27,10 +27,12 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	poly
-SRCS	=	main.cpp	\
-			Animal.cpp	\
-			Cat.cpp		\
-			Dog.cpp
+SRCS	=	main.cpp		\
+			Animal.cpp		\
+			Cat.cpp			\
+			Dog.cpp			\
+			WrongAnimal.cpp	\
+			WrongCat.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
