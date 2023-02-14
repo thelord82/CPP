@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:27:27 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 12:17:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 16:45:54 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat(void) : Animal()
 {
-    type = "CAT";
+    type           = "CAT";
     this->catBrain = new Brain();
     std::cout << "Cat constructor called" << std::endl;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:18:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 15:39:05 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/14 16:45:59 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ Dog &Dog::operator=(Dog const &rhs)
     std::cout << "= operator overload call" << std::endl;
     if (this != &rhs)
     {
-        this->dogBrain = new Brain();
+        this->dogBrain  = new Brain();
         *this->dogBrain = *(rhs.dogBrain);
-        this->type = rhs.getType();
+        this->type      = rhs.getType();
     }
     return (*this);
 }
