@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:49 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 19:50:13 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/14 07:59:27 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
     return (*this);
 }
 
-void ClapTrap::attack(const std::string &target)
+void ClapTrap::attack(const std::string &target)   // You'll still be able to attack someone with 0 HP because the subject imposes to take a string as a parameter instead of an instance
 {
     if (this->getEnergyPts() >= 1)
     {
