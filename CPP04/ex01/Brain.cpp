@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:54:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 16:45:48 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/15 10:13:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,14 @@ Brain &Brain::operator=(Brain const &rhs)
 Brain::~Brain()
 {
     std::cout << "Brain destructor called" << std::endl;
+}
+
+std::string Brain::getIdea(int index) const
+{
+    return (this->ideas[index]);
+}
+
+void Brain::setIdea(std::string idea, int index)
+{
+    this->ideas[index] = idea;
 }

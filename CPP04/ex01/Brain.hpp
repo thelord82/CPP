@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:54:33 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 16:45:51 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/15 10:13:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ class Brain
     Brain(Brain const &copy);
     Brain &operator=(Brain const &rhs);
     ~Brain();
+
+    std::string getIdea(int index) const;
+    void setIdea(std::string idea, int index);
 };
 
 #endif

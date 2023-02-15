@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:06:26 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 16:46:02 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/15 10:40:10 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Dog : virtual public Animal
 
     std::string  getType(void) const;
     virtual void makeSound(void) const;
+    Brain *getBrain(void) const;
 };
 
 #endif

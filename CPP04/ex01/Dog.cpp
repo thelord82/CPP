@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:18:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 16:45:59 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/15 11:20:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ Dog::Dog(void) : Animal()
 
 Dog::Dog(Dog const &copy) : Animal()
 {
-    this->type     = copy.type;
+    // this->type     = copy.type;
     this->dogBrain = new Brain();
-    this->dogBrain = copy.dogBrain;
     *this          = copy;
     std::cout << "Dog copy constructor called" << std::endl;
 }
@@ -33,9 +32,9 @@ Dog &Dog::operator=(Dog const &rhs)
     std::cout << "= operator overload call" << std::endl;
     if (this != &rhs)
     {
-        this->dogBrain  = new Brain();
-        *this->dogBrain = *(rhs.dogBrain);
-        this->type      = rhs.getType();
+        for (int i = 0; i < 100; ++i)
+            this->dogBrain->setIdea(rhs.dogBrain->getIdea(i), i);
+        this->type = rhs.getType();
     }
     return (*this);
 }
@@ -54,4 +53,9 @@ std::string Dog::getType(void) const
 void Dog::makeSound(void) const
 {
     std::cout << "Wouffe Wouffe pitou" << std::endl;
+}
+
+Brain *Dog::getBrain(void) const
+{
+    return (this->dogBrain);
 }

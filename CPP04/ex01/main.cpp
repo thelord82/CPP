@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:56:57 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 16:46:42 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/15 11:28:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,59 @@
 // TODO adapter la classe Cat pour qu'elle soit comme la classe Dog
 int main()
 {
-    // const Animal *j = new Dog();
-    // const Animal *i = new Cat();
-    // delete j; // should not create a leak
-    // delete i;
-
     // const Animal *dog = new Dog();
     // const Animal *newDog(dog);
     // const Animal *cat(dog);
-    const Dog *dog = new Dog();
+
+    Dog *dog1 = new Dog();
+    std::string idea = "idea";
+
+    for (int i = 0; i < 100; ++i)
+        dog1->getBrain()->setIdea(idea + std::to_string(i), i);
+    for (int i = 0; i < 100; ++i)
+        std::cout << "idea = " << dog1->getBrain()->getIdea(i) << std::endl;
+    Dog dog2(*dog1);
+    delete dog1;
+    for (int i = 0; i < 100; ++i)
+        std::cout << "dog 2 idea = " << dog2.getBrain()->getIdea(i) << std::endl;
+    
+    //dog1->getBrain()->setIdea("salut", 0);
+    //Dog dog2(*dog1);
+    //delete dog1;
+    //std::cout << "dog2 idea = " << dog2.getBrain()->getIdea(0) << std::endl;
+
+    
+    //const Dog *dog = new Dog();
+    //dog->getBrain()->setIdea("bonjour", 0);
+    //std::cout << "idea = " << dog->getBrain()->getIdea(0) << std::endl;
+    //Dog secondDog(*dog);
+    //delete dog;
+    //std::cout << "copy idea = " << secondDog.getBrain()->getIdea(0) << std::endl;
+    //Dog newDog = *(Dog *)dog;
+    //secondDog.setIdea("bonjour", 0);
+    //std::cout <<  "idea = " << secondDog.getIdea(0) << std::endl;
+
+    
+    //const Animal *cat = new Cat();
+    //Animal dog;
+    //Animal newDog(dog);
     // const Animal *newDog(dog);
-    Dog           chien;
-    const Animal *newDog = new Dog(chien);
     // const Animal *cat = new Cat();
     // Animal dog;
     // Animal newDog(dog);
 
-    dog->makeSound();
-    newDog->makeSound();
-    std::cout << "-----------------" << std::endl;
-    delete dog;
-    std::cout << "dog has been destroyed" << std::endl;
-    delete newDog;
-    std::cout << "newDog has been destroyed" << std::endl;
-    // newDog->makeSound();
-    // cat->makeSound();
-
-    // cat = dog;
-    // cat->makeSound();
+    //dog->makeSound();
+    //std::cout << "-----------------" << std::endl;
+    //delete dog;
+    //std::cout << "dog has been destroyed" << std::endl;
+    //newDog.makeSound();
+    //delete newDog;
+    //std::cout << "newDog has been destroyed" << std::endl;
+    //newDog->makeSound();
+    //cat->makeSound();
+    
+    //cat = dog;
+    //cat->makeSound();
 
     // const Animal *animals[20];
     // for (int i = 0; i < 20; ++i)
