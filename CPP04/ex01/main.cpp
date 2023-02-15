@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:56:57 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 11:28:48 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:14:20 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,39 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-// TODO regler le main avec les tests corrects
-// TODO adapter la classe Cat pour qu'elle soit comme la classe Dog
 int main()
 {
-    // const Animal *dog = new Dog();
-    // const Animal *newDog(dog);
-    // const Animal *cat(dog);
+    const Dog *dog1 = new Dog();
+    const Cat *cat1 = new Cat();
 
-    Dog *dog1 = new Dog();
-    std::string idea = "idea";
-
-    for (int i = 0; i < 100; ++i)
-        dog1->getBrain()->setIdea(idea + std::to_string(i), i);
-    for (int i = 0; i < 100; ++i)
+    for (int i = 0; i < 100; ++i) // fills dog and cat brain with ideas
+    {
+        dog1->getBrain()->setIdea("idea" + std::to_string(i), i);
+        cat1->getBrain()->setIdea("idea" + std::to_string(i), i);
         std::cout << "idea = " << dog1->getBrain()->getIdea(i) << std::endl;
-    Dog dog2(*dog1);
+    }
+
+    Animal *animals[20];
+    for (int i = 0; i < 20; ++i) // Calls copy constructor to fill array of animals with deep copies of each
+    {
+        if (i < 10)
+            animals[i] = new Dog(*dog1);
+        else
+            animals[i] = new Cat(*cat1);
+    }
     delete dog1;
+    delete cat1;
+    Dog copyDog = *(Dog *)animals[3]; // Calls copy constructor again from the array
+    Cat copyCat = *(Cat *)animals[14];
+
+    for (int i = 0; i < 20; ++i) // Frees all animals
+        delete animals[i];
+
+    // Prints the ideas of the deep copy to proof it works even if the original was deleted
     for (int i = 0; i < 100; ++i)
-        std::cout << "dog 2 idea = " << dog2.getBrain()->getIdea(i) << std::endl;
-    
-    //dog1->getBrain()->setIdea("salut", 0);
-    //Dog dog2(*dog1);
-    //delete dog1;
-    //std::cout << "dog2 idea = " << dog2.getBrain()->getIdea(0) << std::endl;
-
-    
-    //const Dog *dog = new Dog();
-    //dog->getBrain()->setIdea("bonjour", 0);
-    //std::cout << "idea = " << dog->getBrain()->getIdea(0) << std::endl;
-    //Dog secondDog(*dog);
-    //delete dog;
-    //std::cout << "copy idea = " << secondDog.getBrain()->getIdea(0) << std::endl;
-    //Dog newDog = *(Dog *)dog;
-    //secondDog.setIdea("bonjour", 0);
-    //std::cout <<  "idea = " << secondDog.getIdea(0) << std::endl;
-
-    
-    //const Animal *cat = new Cat();
-    //Animal dog;
-    //Animal newDog(dog);
-    // const Animal *newDog(dog);
-    // const Animal *cat = new Cat();
-    // Animal dog;
-    // Animal newDog(dog);
-
-    //dog->makeSound();
-    //std::cout << "-----------------" << std::endl;
-    //delete dog;
-    //std::cout << "dog has been destroyed" << std::endl;
-    //newDog.makeSound();
-    //delete newDog;
-    //std::cout << "newDog has been destroyed" << std::endl;
-    //newDog->makeSound();
-    //cat->makeSound();
-    
-    //cat = dog;
-    //cat->makeSound();
-
-    // const Animal *animals[20];
-    // for (int i = 0; i < 20; ++i)
-    //{
-    //     if (i < 10)
-    //         animals[i] = dog;
-    //     else
-    //         animals[i] = cat;
-    // }
-    // for (int i = 0; i < 20; ++i)
-    //     delete animals[i];
+    {
+        std::cout << "copyDogIdea = " << copyDog.getBrain()->getIdea(i) << std::endl;
+        std::cout << "copyCatIdea = " << copyCat.getBrain()->getIdea(i) << std::endl;
+    }
     return 0;
 }

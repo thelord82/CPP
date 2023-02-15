@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:27:27 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 16:45:54 by mal              ###   ########.fr       */
+/*   Updated: 2023/02/15 15:14:11 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,20 @@ Cat::Cat(void) : Animal()
 
 Cat::Cat(Cat const &copy)
 {
-    *this = copy;
+    this->catBrain = new Brain();
+    *this          = copy;
     std::cout << "Cat copy constructor called" << std::endl;
 }
 
 Cat &Cat::operator=(Cat const &rhs)
 {
-    this->type = rhs.getType();
+    std::cout << "CAT = operator overload called" << std::endl;
+    if (this != &rhs)
+    {
+        for (int i = 0; i < 100; ++i)
+            this->catBrain->setIdea(rhs.catBrain->getIdea(i), i);
+        this->type = rhs.getType();
+    }
     return (*this);
 }
 
@@ -45,4 +52,9 @@ std::string Cat::getType(void) const
 void Cat::makeSound(void) const
 {
     std::cout << "Miaou miaou minou" << std::endl;
+}
+
+Brain *Cat::getBrain(void) const
+{
+    return (this->catBrain);
 }

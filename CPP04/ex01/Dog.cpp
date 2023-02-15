@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:18:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 11:30:00 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:14:16 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Dog::Dog(Dog const &copy) : Animal()
 
 Dog &Dog::operator=(Dog const &rhs)
 {
-    std::cout << "= operator overload call" << std::endl;
+    std::cout << "DOG = operator overload called" << std::endl;
     if (this != &rhs)
     {
         for (int i = 0; i < 100; ++i)

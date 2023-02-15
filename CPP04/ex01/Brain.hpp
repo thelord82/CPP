@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:54:33 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 10:13:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:14:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Brain
     ~Brain();
 
     std::string getIdea(int index) const;
-    void setIdea(std::string idea, int index);
+    void        setIdea(std::string idea, int index);
 };
 
 #endif
