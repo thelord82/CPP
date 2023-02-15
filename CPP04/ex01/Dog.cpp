@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:18:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 11:20:39 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/15 11:30:00 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ Dog::Dog(void) : Animal()
 
 Dog::Dog(Dog const &copy) : Animal()
 {
-    // this->type     = copy.type;
     this->dogBrain = new Brain();
     *this          = copy;
     std::cout << "Dog copy constructor called" << std::endl;
