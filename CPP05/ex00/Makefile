@@ -22,13 +22,14 @@ endif
 
 # Compiler and flags
 CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I.
+CFLAGS	=	-g -Wall -Werror -Wextra -std=c++98 -I.
 RM		=	rm -rf
 
 # Dir and file names
 NAME	=	bureaucrat
 SRCS	=	main.cpp		\
-			Bureaucrat.cpp
+			Bureaucrat.cpp	\
+			Exception.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
@@ -42,6 +43,7 @@ all: $(NAME)
 # Generates output file
 $(NAME): $(OBJS)
 	$(HIDE)$(CC) $(CFLAGS) $(OBJS) -o $@
+	@echo "Compiled! Execute with \033[38;2;39;154;186m./$(NAME)\033[0m"
 
 # Compiles sources into objects
 .cpp.o: $(SRCS) $(INC)
