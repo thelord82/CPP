@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:18:44 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 15:17:50 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/16 09:47:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 #include <iostream>
 #include <string>
 
-//TODO faire cette classe en abstract
-class Animal
+class AAnimal
 {
   protected:
     std::string type;
 
   public:
-    Animal(void);
-    Animal(Animal const &copy);
-    Animal &operator=(Animal const &rhs);
-    virtual ~Animal(void);
+    AAnimal(void);
+    AAnimal(AAnimal const &copy);
+    AAnimal &operator=(AAnimal const &rhs);
+    virtual ~AAnimal(void);
 
     std::string  getType(void) const;
-    virtual void makeSound(void) const;
+    virtual void makeSound(void) const = 0;
 };
 
 #endif

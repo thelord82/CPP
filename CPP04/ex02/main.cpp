@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:56:57 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 15:14:20 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/16 09:52:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int main()
         std::cout << "idea = " << dog1->getBrain()->getIdea(i) << std::endl;
     }
 
-    Animal *animals[20];
+    AAnimal *animals[20];
+    //AAnimal *test = new AAnimal();  This won't compile because AAnimal is abstract, cannot be instanciated.
     for (int i = 0; i < 20; ++i) // Calls copy constructor to fill array of animals with deep copies of each
     {
         if (i < 10)

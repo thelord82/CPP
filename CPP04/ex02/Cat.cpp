@@ -6,13 +6,13 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:27:27 by malord            #+#    #+#             */
-/*   Updated: 2023/02/15 15:14:11 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/16 09:42:53 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal()
+Cat::Cat(void) : AAnimal()
 {
     type           = "CAT";
     this->catBrain = new Brain();

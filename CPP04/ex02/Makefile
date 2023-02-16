@@ -27,7 +27,13 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	abstract
-SRCS	=	main.cpp
+SRCS	=	main.cpp		\
+			Animal.cpp		\
+			Brain.cpp		\
+			Cat.cpp			\
+			Dog.cpp			\
+			WrongCat.cpp	\
+			WrongAnimal.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
