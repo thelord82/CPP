@@ -27,11 +27,13 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	burn
-SRCS	=	main.cpp	\
-			Animal.cpp	\
-			Dog.cpp		\
-			Cat.cpp		\
-			Brain.cpp
+SRCS	=	main.cpp		\
+			Animal.cpp		\
+			Dog.cpp			\
+			Cat.cpp			\
+			Brain.cpp		\
+			WrongAnimal.cpp	\
+			WrongCat.cpp	
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
