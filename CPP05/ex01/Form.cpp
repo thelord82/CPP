@@ -6,16 +6,16 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 11:49:00 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 13:33:11 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-//Form::Form(void)
-//{
-//    std::cout << "Form default constructor called." << std::endl;
-//}
+Form::Form(void) : _gradeToSign(150), _gradeToExecute(150)
+{
+    std::cout << "Form default constructor called." << std::endl;
+}
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute)
     : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)

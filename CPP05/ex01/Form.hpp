@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:43 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 10:55:43 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 13:32:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Form
     const int         _gradeToExecute;
 
   public:
-    //Form(void);
+    Form(void);
     Form(std::string name, int gradeToSign, int gradeToExecute);
     Form(Form const &copy);
     Form &operator=(Form const &rhs);
