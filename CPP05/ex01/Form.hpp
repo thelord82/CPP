@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:43 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 09:33:16 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 09:43:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <string>
 
-class Form
+class Form : public MyException
 {
   private:
     const std::string _name;
@@ -35,6 +35,7 @@ class Form
     bool getSignedStatus(void) const;
     const int getGradeToSign(void) const;
     const int getGradeToExecute(void) const;
+    void beSigned(Bureaucrat &powerfulDude);
 };
 std::ostream &operator<<(std::ostream &o, const Form &rhs);
 

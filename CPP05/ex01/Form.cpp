@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 09:38:32 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 09:47:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,25 @@ const int Form::getGradeToExecute(void) const
     return (this->_gradeToExecute);
 }
 
-std::ostream &Form::operator<<(std::ostream &o, const Form &rhs)
+void Form::beSigned(Bureaucrat &powerfulDude)
+{
+    try
+    {
+        if (powerfulDude.getGrade() > this->getGradeToSign())
+            throw MyException::GradeTooLowException;
+        else
+            this->_isSigned = true;
+    }
+    catch (MyException::GradeTooLowException &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
+std::ostream &operator<<(std::ostream &o, const Form &rhs)
 {
     o << "Form : " << rhs.getName() << std::endl
       << "Minimum grade to sign: " << rhs.getGradeToSign() << std::endl
       << "Minimum grade to execute: " << rhs.getGradeToExecute() << std::endl
-      << "Signed status: " << rhs.getSignedStatus() << std::endl:
+      << "Signed status: " << rhs.getSignedStatus() << std::endl;
 }
