@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:33 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 12:01:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 13:40:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void Bureaucrat::signForm(Form &form)
 {
     try
     {
-        //form.beSigned(*this);
         if (this->_grade > form.getGradeToSign())
             throw MyException::GradeTooLowException();
     }
