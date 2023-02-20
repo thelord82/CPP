@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:28 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 14:31:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 15:19:13 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 RobotomyRequestForm::RobotomyRequestForm(void)
 {
     std::cout << "Robotomy constructor called." << std::endl;
+}
+
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+{
+    std::cout << "Robotomy parameter constructor called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy)

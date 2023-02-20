@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:23 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 14:36:34 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/20 15:17:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 PresidentialPardonForm::PresidentialPardonForm(void)
 {
     std::cout << "Presidential constructor called." << std::endl;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+{
+    std::cout << "President Parameter constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & copy)
