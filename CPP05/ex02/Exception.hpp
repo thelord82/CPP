@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:33:01 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 09:32:26 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 10:52:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ class MyException : public std::exception
         virtual const char *what() const throw();
     };
     class GradeTooHighException : public std::exception
+    {
+      public:
+        virtual const char *what() const throw();
+    };
+    class FormNotSignedException : public std::exception
     {
       public:
         virtual const char *what() const throw();

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:43 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 13:41:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 11:09:21 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ class AForm
     AForm &operator=(AForm const &rhs);
     virtual ~AForm();
 
-    std::string getName(void) const;
-    bool getSignedStatus(void) const;
-    int getGradeToSign(void) const;
-    int getGradeToExecute(void) const;
-    void beSigned(Bureaucrat &powerfulDude);
+    virtual std::string getName(void) const;
+    bool                getSignedStatus(void) const;
+    virtual int         getGradeToSign(void) const;
+    virtual int         getGradeToExecute(void) const;
+    void                beSigned(Bureaucrat &powerfulDude);
+    virtual bool        execute(Bureaucrat const &executor) const = 0;
 };
 std::ostream &operator<<(std::ostream &o, const AForm &rhs);
 

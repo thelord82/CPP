@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:37 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 15:15:35 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 09:30:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 class ShruberryCreationForm : public AForm
 {
+  private:
+    const int _gradeToSign    = 145;
+    const int _gradeToExecute = 137;
+
   public:
     ShruberryCreationForm(void);
     ShruberryCreationForm(std::string target);

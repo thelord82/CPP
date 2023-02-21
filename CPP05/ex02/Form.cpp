@@ -6,13 +6,13 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 13:42:32 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 11:47:07 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-AForm::AForm(void) : _gradeToSign(150), _gradeToExecute(150)
+AForm::AForm(void) : _name("none"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150)
 {
     std::cout << "Form default constructor called." << std::endl;
 }
@@ -20,11 +20,14 @@ AForm::AForm(void) : _gradeToSign(150), _gradeToExecute(150)
 AForm::AForm(std::string name, int gradeToSign, int gradeToExecute)
     : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-    std::cout << "Form constructor called." << std::endl;
+    std::cout << "Form parameter constructor called." << std::endl;
     try
     {
         if (this->_gradeToSign < 1 || this->_gradeToExecute < 1)
+        {
+            std::cout << "GETS HERE" << std::endl;
             throw MyException::GradeTooHighException();
+        }
         else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
             throw MyException::GradeTooLowException();
     }
