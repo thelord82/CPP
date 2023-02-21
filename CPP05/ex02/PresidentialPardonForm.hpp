@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:25 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 11:12:24 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:23:30 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 class PresidentialPardonForm : public AForm
 {
   private:
-    const int   _gradeToExecute;
-    const int   _gradeToSign;
     std::string _target;
+    virtual bool execute(Bureaucrat const &executor) const;
 
   public:
     PresidentialPardonForm(void);
@@ -28,9 +27,6 @@ class PresidentialPardonForm : public AForm
     PresidentialPardonForm &operator=(PresidentialPardonForm const &rhs);
     virtual ~PresidentialPardonForm(void);
 
-    virtual int  getGradeToExecute(void) const;
-    virtual int  getGradeToSign(void) const;
-    virtual bool execute(Bureaucrat const &executor) const;
 };
 
 #endif

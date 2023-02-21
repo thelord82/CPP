@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:29 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 13:41:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:35:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat
     void        setGradeUp(void);
     void        setGradeDown(void);
     void        signForm(AForm &form);
+    void        executeForm(AForm const &form);
 };
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &rhs);
 

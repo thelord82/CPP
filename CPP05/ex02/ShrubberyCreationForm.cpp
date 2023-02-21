@@ -6,34 +6,80 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:34 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 15:18:06 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 14:22:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShruberryCreationForm::ShruberryCreationForm(void)
+ShrubberyCreationForm::ShrubberyCreationForm(void)
 {
-    std::cout << "Shruberry default constructor called." << std::endl;
+    std::cout << "Shrubbery default constructor called." << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(std::string target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137), _target(target)
 {
-    std::cout << "Shruberry Parameter constructor called" << std::endl;
+    std::cout << "Shrubbery Parameter constructor called" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(ShruberryCreationForm const &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy)
 {
     *this = copy;
 }
 
-ShruberryCreationForm &ShruberryCreationForm::operator=(ShruberryCreationForm const &rhs)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs)
 {
-    *this = rhs;
+    this->_target = rhs._target;
     return (*this);
 }
 
-ShruberryCreationForm::~ShruberryCreationForm(void)
+ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-    std::cout << "Shruberry destructor called." << std::endl;
+    std::cout << "Shrubbery destructor called." << std::endl;
+}
+
+std::string ShrubberyCreationForm::getTarget(void) const
+{
+    return (this->_target);
+}
+
+bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+    try
+    {
+        if (executor.getGrade() > this->getGradeToExecute())
+            throw MyException::GradeTooLowException();
+        else if (this->getSignedStatus() == false)
+            throw MyException::FormNotSignedException();
+        else
+        {
+            std::ofstream ofs(this->getTarget().append("_shrubbery"), std::ios_base::app);
+            ofs << "     *     " << std::endl; 
+            ofs << "    ***    " << std::endl;
+            ofs << "   *****   " << std::endl;
+            ofs << "  *******  " << std::endl;
+            ofs << "   *****   " << std::endl;
+            ofs << "  *******  " << std::endl;
+            ofs << " ********* " << std::endl;
+            ofs << "  *******  " << std::endl;
+            ofs << " ********* " << std::endl;
+            ofs << "***********" << std::endl;
+            ofs << "    |||    " << std::endl;
+            ofs << "    |||    " << std::endl;
+            ofs << "    |||    " << std::endl;
+            ofs.close();
+            return (true);
+        }
+    }
+    catch (MyException::GradeTooLowException &e)
+    {
+        std::cerr << "Error: " << executor.getName() << " couldn't execute " << this->_target << " because " << e.what()
+                  << std::endl;
+        return (false);
+    }
+    catch (MyException::FormNotSignedException &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return (false);
+    }
 }

@@ -6,26 +6,23 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:23 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 11:53:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 13:25:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : _gradeToExecute(5), _gradeToSign(25), _target("null")
+PresidentialPardonForm::PresidentialPardonForm(void) : _target("null")
 {
     std::cout << "Presidential constructor called." << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target)
-    : AForm(target, 5, 25), _gradeToExecute(5), _gradeToSign(25),
-      _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(target, 25, 5), _target(target)
 {
     std::cout << "President Parameter constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy)
-    : _gradeToExecute(5), _gradeToSign(25)
 {
     *this = copy;
 }
@@ -41,21 +38,11 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
     std::cout << "Presidential destructor called." << std::endl;
 }
 
-int PresidentialPardonForm::getGradeToExecute(void) const
-{
-    return (this->_gradeToExecute);
-}
-
-int PresidentialPardonForm::getGradeToSign(void) const
-{
-    return (this->_gradeToSign);
-}
-
 bool PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
     try
     {
-        if (executor.getGrade() > this->_gradeToExecute)
+        if (executor.getGrade() > this->getGradeToExecute())
             throw MyException::GradeTooLowException();
         else if (this->getSignedStatus() == false)
             throw MyException::FormNotSignedException();
@@ -67,7 +54,8 @@ bool PresidentialPardonForm::execute(Bureaucrat const &executor) const
     }
     catch (MyException::GradeTooLowException &e)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << executor.getName() << " couldn't execute " << this->_target << " because " << e.what()
+                  << std::endl;
         return (false);
     }
     catch (MyException::FormNotSignedException &e)

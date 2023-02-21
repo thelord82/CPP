@@ -6,26 +6,29 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:37 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 09:30:15 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:25:53 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBERRYCREATIONFORM_HPP_
-#define SHRUBERRYCREATIONFORM_HPP_
+#ifndef SHRUBBERYCREATIONFORM_HPP_
+#define SHRUBBERYCREATIONFORM_HPP_
 
 #include "Form.hpp"
+#include <fstream>
 
-class ShruberryCreationForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
   private:
-    const int _gradeToSign    = 145;
-    const int _gradeToExecute = 137;
+    std::string _target;
+    virtual bool execute(Bureaucrat const &executor) const;
 
   public:
-    ShruberryCreationForm(void);
-    ShruberryCreationForm(std::string target);
-    ShruberryCreationForm(ShruberryCreationForm const &copy);
-    ShruberryCreationForm &operator=(ShruberryCreationForm const &rhs);
-    virtual ~ShruberryCreationForm(void);
+    ShrubberyCreationForm(void);
+    ShrubberyCreationForm(std::string target);
+    ShrubberyCreationForm(ShrubberyCreationForm const &copy);
+    ShrubberyCreationForm &operator=(ShrubberyCreationForm const &rhs);
+    virtual ~ShrubberyCreationForm(void);
+
+    virtual std::string getTarget(void) const;
 };
 #endif

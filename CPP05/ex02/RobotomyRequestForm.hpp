@@ -6,19 +6,20 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:31 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 09:29:03 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:25:44 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP_
 #define ROBOTOMYREQUESTFORM_HPP_
+
 #include "Form.hpp"
 
 class RobotomyRequestForm : public AForm
 {
   private:
-    const int _gradeToSign    = 72;
-    const int _gradeToExecute = 45;
+    std::string  _target;
+    virtual bool execute(Bureaucrat const &executor) const;
 
   public:
     RobotomyRequestForm(void);

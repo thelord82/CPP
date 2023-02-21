@@ -31,7 +31,9 @@ SRCS	=	main.cpp					\
 			Bureaucrat.cpp				\
 			Exception.cpp				\
 			Form.cpp					\
-			PresidentialPardonForm.cpp
+			ShrubberyCreationForm.cpp	\
+			PresidentialPardonForm.cpp	\
+			RobotomyRequestForm.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:43 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 11:09:21 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:38:21 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ class AForm
     bool                getSignedStatus(void) const;
     virtual int         getGradeToSign(void) const;
     virtual int         getGradeToExecute(void) const;
-    void                beSigned(Bureaucrat &powerfulDude);
     virtual bool        execute(Bureaucrat const &executor) const = 0;
+    void                beSigned(Bureaucrat &powerfulDude);
 };
 std::ostream &operator<<(std::ostream &o, const AForm &rhs);
 

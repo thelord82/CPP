@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:33 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 13:39:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:34:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void Bureaucrat::signForm(AForm &form)
     {
         if (this->_grade > form.getGradeToSign())
             throw MyException::GradeTooLowException();
+        else
+            form.beSigned(*this);
     }
     catch (MyException::GradeTooLowException &e)
     {
@@ -112,6 +114,21 @@ void Bureaucrat::signForm(AForm &form)
         return;
     }
     std::cout << this->getName() << " signed " << form.getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+    try
+    {
+        if (form.execute(*this) == true)
+            std::cout << this->getName() << " executed " << form.getName() << std::endl;
+        else
+            throw MyException::ExecutionFailedException();
+    }
+    catch(MyException::ExecutionFailedException &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 }
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &rhs)

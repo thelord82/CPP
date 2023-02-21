@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 11:47:07 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/21 13:21:12 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExecute)
     try
     {
         if (this->_gradeToSign < 1 || this->_gradeToExecute < 1)
-        {
-            std::cout << "GETS HERE" << std::endl;
             throw MyException::GradeTooHighException();
-        }
         else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
             throw MyException::GradeTooLowException();
     }
