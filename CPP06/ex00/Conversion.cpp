@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:15:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/27 14:57:42 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:05:37 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void Conversion::charConversion(std::string arg)
     {
         if (arg.length() == 1 && !std::isdigit(arg[0]))
             tmp = static_cast<int>(arg[0]);
+        else if (arg.length() > 1 && !std::isdigit(arg.front()))
+        {
+            std::cout << "char: impossible" << std::endl;
+            return ;
+        }    
         else
             tmp = static_cast<int>(std::stoi(arg));
         if (isprint(tmp))
