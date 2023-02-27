@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:15:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/27 14:40:34 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:57:42 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,24 @@
 
 Conversion::Conversion(void)
 {
-    std::cout << "Default conversion constructor called" << std::endl;
+    //std::cout << "Default conversion constructor called" << std::endl;
 }
 
 Conversion::Conversion(const Conversion &copy)
 {
-    this->_value = copy._value;
+    *this = copy;
 }
 
 Conversion &Conversion::operator=(const Conversion &rhs)
 {
-    this->_value = rhs._value;
+    if (this != &rhs)
+        *this = rhs;
     return (*this);
 }
 
-//Conversion::operator char()
-//{
-//    return (dynamic_cast<char>(this->_value));
-//}
-//
-//Conversion::operator float()
-//{
-//    return (dynamic_cast<float>(this->_value));
-//}
-
 Conversion::~Conversion(void)
 {
-    std::cout << "Conversion destructor called" << std::endl;
+    //std::cout << "Conversion destructor called" << std::endl;
 }
 
 void Conversion::charConversion(std::string arg)
@@ -175,8 +166,9 @@ std::string Conversion::getType(std::string arg)
     }
 }
 
-void Conversion::convertLiteral(std::string arg)
+void Conversion::convertLitAndAll(std::string arg)
 {
+    int index;
     std::string types[4] = {"char", "int", "float", "double"};
     void (Conversion::*conversions[4])(std::string arg) = {
         &Conversion::charConversion,
@@ -190,7 +182,14 @@ void Conversion::convertLiteral(std::string arg)
         if (getType(arg) == types[i])
         {
             (this->*conversions[i])(arg);
-            return ;
+            index = i;
+            break;
         }
+    }
+    for (int i = 0; i < 4; ++i)
+    {
+        if (i == index);
+        else
+            (this->*conversions[i])(arg);
     }
 }

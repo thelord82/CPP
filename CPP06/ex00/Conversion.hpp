@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:15:37 by malord            #+#    #+#             */
-/*   Updated: 2023/02/27 14:36:29 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:50:14 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,14 @@
 
 class Conversion
 {
-  private:
-    std::string _value;
-
   public:
     Conversion(void);
     Conversion(const Conversion &copy);
     Conversion &operator=(const Conversion &rhs);
-    // operator char();
-    // operator float();
-    // operator int();
-    // operator double();
     virtual ~Conversion(void);
 
     std::string getType(std::string arg);
-    void        convertLiteral(std::string arg);
+    void        convertLitAndAll(std::string arg);
     void        charConversion(std::string arg);
     void        intConversion(std::string arg);
     void        floatConversion(std::string arg);
