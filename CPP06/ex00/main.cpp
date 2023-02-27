@@ -6,72 +6,69 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:08:41 by malord            #+#    #+#             */
-/*   Updated: 2023/02/24 11:06:11 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:40:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iomanip>
 #include <iostream>
 #include <string>
-#include <iomanip>
+#include <typeinfo>
+#include "Conversion.hpp"
 
-void getType(std::string arg)
+int main(int argc, char **argv)
 {
-    
-}
-
-void charConversion(std::string arg)
-{
-    char converted;
-    try
+    if (argc == 2)
     {
-        converted = static_cast<char>(std::atof(arg.c_str()));
-        if (!isprint(converted))
-            throw std::exception();
-        else
-            std::cout << "char: " << converted << std::endl;
+        Conversion instance;
+        instance.convertLiteral(argv[1]);
+        
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << "char: non displayable" << std::endl;
-    }
-    
-}
-
-void intConversion(std::string arg)
-{
-    int converted;
-    try
-    {
-        converted = static_cast<int>(std::atof(arg.c_str()));
-        if (!converted)
-            throw std::exception();
-        else
-            std::cout << "int: " << converted << std::endl;
-            
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "int: impossible" << std::endl;
-    }
-    
-}
-
-int main()
-{
-    std::string str = "allo";
-    //double d = std::stod(str);
-    //std::cout << "test1: " << d << std::endl;
-    //std::cout << "test2: " << std::fixed << std::setprecision(1) << d << std::endl;
-    charConversion(str);
-    intConversion(str);
-    //double convDouble = static_cast<double>(std::atof(str.c_str()));
-    //float convFloat = static_cast<float>(std::atof(str.c_str()));
-    //char convChar = static_cast<char>(std::atof(str.c_str()));
-    //char convChar = charConversion(str);
-    //std::cout << "The char value of \"" << str << "\" is " << convChar << std::endl;
-    //int convInt = static_cast<int>(std::atof(str.c_str()));
-    //std::cout << "The double value of \"" << str << "\" is " << convDouble << std::endl;
-    //std::cout << "The float value of \"" << str << "\" is " << convFloat << std::endl;
-    //std::cout << "The int value of \"" << str << "\" is " << convInt << std::endl;
+    //if (argc == 2)
+    //{
+    //    charConversion(argv[1]);
+    //    intConversion(argv[1]);
+    //    floatConversion(argv[1]);
+    //    doubleConversion(argv[1]);
+//
+    //    std::cout << "test: " << getType(argv[1]) << std::endl;
+    //}
+    // std::cout << std::boolalpha;
+    // std::cout << "is_literal_type:" << std::endl;
+    // std::cout << "char " << std::is_literal_type<char>::value << std::endl;
+    // std::cout << "int: " << std::is_literal_type<int>::value << std::endl;
+    // std::cout << "float: " << std::is_literal_type<float>::value << std::endl;
+    // std::cout << "double: " << std::is_literal_type<double>::value << std::endl;
     return 0;
 }
+
+// int main(int argc, char *argv[])
+//{
+//     if (argc != 2)
+//     {
+//         std::cerr << "Usage: " << argv[0] << " <literal>" << std::endl;
+//         return 1;
+//     }
+//
+//     bool is_numeric = true;
+//     for (const char *p = argv[1]; *p != '\0'; ++p)
+//     {
+//         if (!std::isdigit(*p) && *p != '.')
+//         {
+//             is_numeric = false;
+//             break;
+//         }
+//     }
+//
+//     if (is_numeric)
+//     {
+//         double value = std::atof(argv[1]);
+//         std::cout << "The argument is a numeric literal: " << value << std::endl;
+//     }
+//     else
+//     {
+//         std::cout << "The argument is not a numeric literal" << std::endl;
+//     }
+//
+//     return 0;
+// }
