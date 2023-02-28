@@ -6,24 +6,16 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:52:42 by malord            #+#    #+#             */
-/*   Updated: 2023/02/28 14:11:11 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/28 15:01:50 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
-Base *generate(void)
-{
-}
-
-void identify(Base *p)
-{
-}
-
-void identify(Base &p)
-{
-}
-
 int main()
 {
+    Base *test = generate();
+    Base &test2 = *test;
+    //identify(test);
+    identifies(test2);
 }

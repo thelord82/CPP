@@ -22,12 +22,13 @@ endif
 
 # Compiler and flags
 CC		=	c++
-CFLAGS	=	-g -Wall -Werror -Wextra -std=c++98 -I.
+CFLAGS	=	-g -Wall -Werror -Wextra -Wno-unused -std=c++98 -I.
 RM		=	rm -rf
 
 # Dir and file names
-NAME	=	
-SRCS	=	main.cpp
+NAME	=	base
+SRCS	=	main.cpp	\
+			Base.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
