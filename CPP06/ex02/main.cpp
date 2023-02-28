@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:52:42 by malord            #+#    #+#             */
-/*   Updated: 2023/02/28 15:01:50 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/28 15:07:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int main()
 {
     Base *test = generate();
     Base &test2 = *test;
-    //identify(test);
-    identifies(test2);
+    identify(test);
+    identify(test2);
 }

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:55:13 by malord            #+#    #+#             */
-/*   Updated: 2023/02/28 15:06:02 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/28 15:07:07 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void identify(Base *p)
     }
 }
 
-void identifies(Base &p)
+void identify(Base &p)
 {   
     try
     {
