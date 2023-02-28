@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 10:22:34 by malord            #+#    #+#             */
+/*   Updated: 2023/02/28 10:38:14 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Data.hpp"
+
+Data::Data(void) : _value(0)
+{
+    std::cout << "Default Data constructor called" << std::endl;
+}
+
+Data::Data(const Data &copy)
+{
+    this->_value = copy._value;
+    *this        = copy;
+}
+
+Data &Data::operator=(const Data &rhs)
+{
+    if (this != &rhs)
+        this->_value = rhs._value;
+    return (*this);
+}
+Data::~Data(void)
+{
+    std::cout << "Default Data destructor called" << std::endl;
+}
+
+uintptr_t Data::serialize(Data *ptr)
+{
+}
+
+Data *Data::deserialize(uintptr_t raw)
+{
+}
