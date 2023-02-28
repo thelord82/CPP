@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:15:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/27 15:05:37 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/28 09:55:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void Conversion::floatConversion(std::string arg)
     }
     catch (const std::invalid_argument &iv)
     {
-        std::cerr << "float: impossible" << std::endl;
+        std::cerr << "float: nanf" << std::endl;
     }
     catch (const std::out_of_range &oor)
     {
@@ -143,7 +143,7 @@ void Conversion::doubleConversion(std::string arg)
     }
     catch (const std::invalid_argument &iv)
     {
-        std::cerr << "double: impossible" << std::endl;
+        std::cerr << "double: nan" << std::endl;
     }
     catch (const std::out_of_range &oor)
     {

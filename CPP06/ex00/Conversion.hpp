@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:15:37 by malord            #+#    #+#             */
-/*   Updated: 2023/02/27 14:50:14 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/28 09:39:36 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string>
 #include <typeinfo>
+#include <cmath>
 
 class Conversion
 {

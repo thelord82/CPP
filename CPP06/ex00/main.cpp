@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:08:41 by malord            #+#    #+#             */
-/*   Updated: 2023/02/27 15:11:08 by malord           ###   ########.fr       */
+/*   Updated: 2023/02/28 08:48:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include <typeinfo>
+#include <limits>
 #include "Conversion.hpp"
 
 //TODO Verifier les pseudo literals au complet
@@ -24,5 +25,5 @@ int main(int argc, char **argv)
         Conversion instance;
         instance.convertLitAndAll(argv[1]);
     }
-    return 0;
+    return 0;    
 }
