@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:55:11 by malord            #+#    #+#             */
-/*   Updated: 2023/02/28 15:07:13 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/01 09:12:51 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,9 @@ class Base
     virtual ~Base();
 };
 
-class A : public Base
-{
-};
-class B : public Base
-{
-};
-class C : public Base
-{
-};
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
 
 Base *generate(void);
 void identify(Base *p);
