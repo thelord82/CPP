@@ -6,11 +6,16 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 09:41:47 by malord            #+#    #+#             */
-/*   Updated: 2023/03/02 10:56:52 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/02 11:09:16 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
+
+void prints(int x)
+{
+    std::cout << x << std::endl;
+}
 
 int main(void)
 {
@@ -42,4 +47,10 @@ int main(void)
     std::cout << "--------------" << std::endl;
     iter(arrayString, size, print<std::string>);
     std::cout << "--------------" << std::endl;
+
+    std::cout << "With a regular function (non template)" << std::endl;
+    std::cout << "______________" << std::endl;
+    size = sizeof(arrayInt) / sizeof(arrayInt[0]);
+    iter(arrayInt, size, prints);
+    std::cout << "______________" << std::endl;
 }
