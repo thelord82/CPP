@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 14:15:53 by malord            #+#    #+#             */
-/*   Updated: 2023/03/02 08:51:47 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/02 09:25:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 #include <iomanip>
 
 template <typename T>
-void swap(T *x, T *y)
+void swap(T &x, T &y)
 {
     T tmp;
-    tmp = *x;
-    *x = *y;
-    *y = tmp;
+    tmp = x;
+    x = y;
+    y = tmp;
 }
 
 template <typename T>
 T max(T x, T y)
 {
-    return (y >= x ? y : x);
+    return (x > y ? x : y);
 }
 
 template <typename T>
