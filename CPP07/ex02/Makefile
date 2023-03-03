@@ -27,7 +27,7 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	array
-SRCS	=	main.cpp	\
+SRCS	=	main.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
