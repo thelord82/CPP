@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:46:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/03 11:14:35 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/03 11:30:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ template <typename T> Array<T>::Array(unsigned int n) : _elements(new T[n]()), _
 
 template <typename T> Array<T>::Array(const Array<T> &copy) : _elements(new T[copy._size]()), _size(copy._size)
 {
+    std::cout << "Copy constructor called" << std::endl;
     for (unsigned int i = 0; i < _size; ++i)
         _elements[i] = copy._elements[i];
 }
@@ -33,6 +34,7 @@ template <typename T> Array<T>::Array(const Array<T> &copy) : _elements(new T[co
 template <typename T> 
 Array<T> &Array<T>::operator=(const Array<T> &rhs)
 {
+    std::cout << "Assignment operator overload called" << std::endl;
     if (this != &rhs)
     {
         delete[] _elements;
@@ -59,9 +61,16 @@ T &Array<T>::operator[](unsigned int index)
     return (_elements[index]);
 }
 
+template <typename T>
+unsigned int Array<T>::size(void) const
+{
+    return (this->_size);
+}
+
 template <typename T> 
 Array<T>::~Array(void)
 {
+    std::cout << "Default destructor called" << std::endl;
     delete[] _elements;
 }
 #endif
