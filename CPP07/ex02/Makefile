@@ -27,9 +27,7 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	array
-SRCS	=	main.cpp	\
-			Array.tpp	\
-			Array.cpp
+SRCS	=	main.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
@@ -43,6 +41,7 @@ all: $(NAME)
 # Generates output file
 $(NAME): $(OBJS)
 	$(HIDE)$(CC) $(CFLAGS) $(OBJS) -o $@
+	@echo "Compiled! Execute with \033[38;2;39;154;186m./$(NAME)\033[0m"
 
 # Compiles sources into objects
 .cpp.o: $(SRCS) $(INC)
