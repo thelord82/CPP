@@ -6,13 +6,15 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:46:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/03 10:55:12 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/03 11:14:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#ifndef ARRAY_TPP_
+#define ARRAY_TPP_
 
-template <typename T> Array<T>::Array(void) : _elements(NULL), _size(0)
+template <typename T> 
+Array<T>::Array(void) : _elements(NULL), _size(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -28,7 +30,8 @@ template <typename T> Array<T>::Array(const Array<T> &copy) : _elements(new T[co
         _elements[i] = copy._elements[i];
 }
 
-template <typename T> Array<T> &Array<T>::operator=(const Array<T> &rhs)
+template <typename T> 
+Array<T> &Array<T>::operator=(const Array<T> &rhs)
 {
     if (this != &rhs)
     {
@@ -41,7 +44,8 @@ template <typename T> Array<T> &Array<T>::operator=(const Array<T> &rhs)
     return (*this);
 }
 
-template <typename T> T &Array<T>::operator[](unsigned int index)
+template <typename T> 
+T &Array<T>::operator[](unsigned int index)
 {
     try
     {
@@ -55,7 +59,9 @@ template <typename T> T &Array<T>::operator[](unsigned int index)
     return (_elements[index]);
 }
 
-template <typename T> Array<T>::~Array(void)
+template <typename T> 
+Array<T>::~Array(void)
 {
     delete[] _elements;
 }
+#endif
