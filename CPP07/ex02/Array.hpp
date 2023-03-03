@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:00:29 by malord            #+#    #+#             */
-/*   Updated: 2023/03/03 11:30:21 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/03 12:44:06 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 template <typename T> class Array
 {

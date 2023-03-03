@@ -6,15 +6,14 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:46:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/03 11:30:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/03 13:30:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_TPP_
 #define ARRAY_TPP_
 
-template <typename T> 
-Array<T>::Array(void) : _elements(NULL), _size(0)
+template <typename T> Array<T>::Array(void) : _elements(NULL), _size(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }
@@ -31,8 +30,7 @@ template <typename T> Array<T>::Array(const Array<T> &copy) : _elements(new T[co
         _elements[i] = copy._elements[i];
 }
 
-template <typename T> 
-Array<T> &Array<T>::operator=(const Array<T> &rhs)
+template <typename T> Array<T> &Array<T>::operator=(const Array<T> &rhs)
 {
     std::cout << "Assignment operator overload called" << std::endl;
     if (this != &rhs)
@@ -46,29 +44,19 @@ Array<T> &Array<T>::operator=(const Array<T> &rhs)
     return (*this);
 }
 
-template <typename T> 
-T &Array<T>::operator[](unsigned int index)
+template <typename T> T &Array<T>::operator[](unsigned int index)
 {
-    try
-    {
-        if (index >= _size)
-            throw std::out_of_range("Index of the array is out of range (bigger than size)");
-    }
-    catch (std::exception &oor)
-    {
-        std::cerr << oor.what() << std::endl;
-    }
+    if (index >= _size)
+        throw std::out_of_range("Index of the array is out of range (bigger than size or negative)");
     return (_elements[index]);
 }
 
-template <typename T>
-unsigned int Array<T>::size(void) const
+template <typename T> unsigned int Array<T>::size(void) const
 {
     return (this->_size);
 }
 
-template <typename T> 
-Array<T>::~Array(void)
+template <typename T> Array<T>::~Array(void)
 {
     std::cout << "Default destructor called" << std::endl;
     delete[] _elements;
