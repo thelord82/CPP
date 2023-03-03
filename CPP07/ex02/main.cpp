@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:00:33 by malord            #+#    #+#             */
-/*   Updated: 2023/03/03 13:33:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/03 13:39:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int main(void)
         Array<std::string> newStringTab(2);
         for (unsigned int i = 0; i < 5; ++i)
         {
-            newStringTab[i] = "This will crash at index 2";
+            newStringTab[i] = "This will throw exception at index 2";
             std::cout << "newStringTab[" << i << "] = " << newStringTab[i] << std::endl;
         }
     }
