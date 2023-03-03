@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:00:29 by malord            #+#    #+#             */
-/*   Updated: 2023/03/03 10:27:15 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/03 10:32:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ template <typename T> Array<T>::Array(unsigned int n) : _elements(new T[n]()), _
 
 template <typename T> Array<T>::Array(const Array<T> &copy) : _elements(new T[copy._size]()), _size(copy._size)
 {
-    for (int i = 0; i < _size; ++i)
+    for (unsigned int i = 0; i < _size; ++i)
         _elements[i] = copy._elements[i];
 }
 
@@ -54,7 +54,7 @@ template <typename T> Array<T> &Array<T>::operator=(const Array<T> &rhs)
         delete[] _elements;
         _elements = new T[rhs._size];
         _size     = rhs._size;
-        for (int i = 0; i < rhs._size; ++i)
+        for (unsigned int i = 0; i < rhs._size; ++i)
             _elements[i] = rhs._elements[i];
     }
     return (*this);
