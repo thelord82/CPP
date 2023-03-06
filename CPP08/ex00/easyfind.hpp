@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:04:47 by malord            #+#    #+#             */
-/*   Updated: 2023/03/06 12:10:39 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/06 15:18:31 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,17 @@
 #include <list>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 template <typename T>
-int easyfind(T first, int second)
+typename T::iterator easyfind(T first, int second)
 {
-    std::list<int>::const_iterator it;
+    typename T::iterator it = std::find(first.begin(), first.end(), second);
 
-    for (it = first.begin(); it != first.end(); ++it)
-    {
-        if (*it == second)
-            return (*it);
-    }
+    if (it != first.end())
+        return (it);
     throw std::exception();
-    return (*it);
+    return (it);
 }
 
 #endif
