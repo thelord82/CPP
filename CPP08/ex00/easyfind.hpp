@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:04:47 by malord            #+#    #+#             */
-/*   Updated: 2023/03/06 12:08:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/06 12:10:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int easyfind(T first, int second)
         if (*it == second)
             return (*it);
     }
-    if (it == first.end())
-        throw std::exception();
+    throw std::exception();
     return (*it);
 }
 
