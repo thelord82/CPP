@@ -6,31 +6,33 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:35:51 by malord            #+#    #+#             */
-/*   Updated: 2023/03/06 10:41:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/06 12:01:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <algorithm>
-#include <list>
+#include "easyfind.hpp"
 
-void printNumber(int i)
+int main(void)
 {
-    std::cout << "valeur en utilisant for_each = " << i << std::endl;
-}
+    std::list<int> lst1;
+    std::vector<int> v1;
+    v1.push_back(120);
+    v1.push_back(18);
+    v1.push_back(22);
+    //lst1.push_back(10);
+    //lst1.push_back(12);
+    //lst1.push_back(14);
+    int result;
 
-int main()
-{
-    std::list<int> lst;
-    lst.push_back(10);
-    lst.push_back(12);
-    lst.push_back(14);
-    lst.push_back(16);
-    lst.push_back(18);
-    lst.push_back(69);
-    std::list<int>::const_iterator it;
-
-    for_each(lst.begin(), lst.end(), printNumber);
-    for (it = lst.begin(); it != lst.end(); ++it)
-        std::cout << "Valeur en utilisant iterator : " << *it << std::endl;
+    try 
+    {
+        result = easyfind(v1, 18);
+    }
+    catch (std::exception &e)
+    {
+        std::cerr << "Error: value wasn't found." << std::endl;
+        return (0);
+    }
+    std::cout << "result = " << result << std::endl;
+    return (0);
 }

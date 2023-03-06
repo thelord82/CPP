@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:04:47 by malord            #+#    #+#             */
-/*   Updated: 2023/03/06 11:28:20 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/06 12:08:54 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,18 @@
 #include <vector>
 #include <map>
 
-// TODO verifier la specialisation partielle du template pour que T soit toujours un container d'int?
 template <typename T>
 int easyfind(T first, int second)
 {
     std::list<int>::const_iterator it;
-    std::list<int>::const_iterator ite = first.end();
 
-    try 
+    for (it = first.begin(); it != first.end(); ++it)
     {
-        for (it = first.begin(); it != second; ++it);
-        if (it == first.end())
-            throw std::exception("Value wasn't found");
+        if (*it == second)
+            return (*it);
     }
+    if (it == first.end())
+        throw std::exception();
     return (*it);
 }
 
