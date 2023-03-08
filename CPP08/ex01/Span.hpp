@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:53 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 12:00:19 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 14:24:07 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Span
 {
   private:
     std::vector<int> _numbers;
+    unsigned int     _size;
     Span(void);
 
   public:
@@ -31,7 +32,8 @@ class Span
     virtual ~Span(void);
 
     void         addNumber(int num);
-    int          getValue(unsigned int index);
+    int          getValue(unsigned int index) const;
+    int          getSize(void) const;
     unsigned int shortestSpan(void);
     unsigned int longestSpan(void);
 };

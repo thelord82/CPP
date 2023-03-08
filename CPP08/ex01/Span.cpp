@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:56 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 12:02:48 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 14:47:07 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 Span::Span(void) // default constructor
 {
+    return;
 }
 
-Span::Span(unsigned int N) : _numbers(N)
+Span::Span(unsigned int N) : _size(N)
 {
     std::cout << "Parameter constructor called" << std::endl;
 }
@@ -24,7 +25,7 @@ Span::Span(unsigned int N) : _numbers(N)
 Span::Span(const Span &copy) // Shallow copy, implement deep copy for logic
 {
     this->_numbers = copy._numbers;
-    *this = copy;
+    *this          = copy;
 }
 
 Span &Span::operator=(const Span &rhs)
@@ -41,21 +42,46 @@ Span::~Span(void)
 
 void Span::addNumber(int num)
 {
-    this->_numbers.at(4) = num;
+    if (this->_numbers.size() < this->_size)
+        _numbers.push_back(num);
+    else
+        throw std::exception();
     return;
 }
 
-int Span::getValue(unsigned int index)
+int Span::getValue(unsigned int index) const
 {
     return (this->_numbers.at(index));
 }
 
+int Span::getSize(void) const
+{
+    return (this->_numbers.size());
+}
+
 unsigned int Span::shortestSpan(void)
 {
-    return (1);
+    unsigned int span = _numbers.at(1) - _numbers.at(0);
+    for (unsigned int i = 0; i < _numbers.size(); ++i)
+    {
+        for (unsigned int j = i + 1; j < _numbers.size(); ++j)
+        {
+            if (_numbers.at(j) - _numbers.at(i) > static_cast<int>(span));
+            else
+                span = abs(_numbers.at(j) - _numbers.at(i));
+        }
+    }
+    return (span);
 }
 
 unsigned int Span::longestSpan(void)
 {
-    return (2);
+    if (_numbers.size() > 1)
+    {
+        int max = *max_element(_numbers.begin(), _numbers.end());
+        int min = *min_element(_numbers.begin(), _numbers.end());
+        return (max - min);
+    }
+    else
+        throw std::exception();
 }
