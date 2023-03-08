@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:56 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 14:47:07 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:27:47 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,15 @@ unsigned int Span::longestSpan(void)
     }
     else
         throw std::exception();
+}
+
+void Span::fillVector(void)
+{
+    srand(time(NULL));
+    for (unsigned int i = 0; i < this->_size; ++i)
+    {
+        //this->_numbers.push_back(rand() % 100);
+        this->addNumber(rand() % 100);
+        std::cout << "value = " << this->_numbers.at(i) << std::endl;
+    }
 }

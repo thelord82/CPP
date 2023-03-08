@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:58 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 14:47:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:08:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,40 @@
 int main()
 {   
     Span spanTest(5);
-    try
-    {
-        spanTest.addNumber(6);
-        spanTest.addNumber(3);
-        spanTest.addNumber(17);
-        spanTest.addNumber(9);
-        spanTest.addNumber(11);
-        for (int i = 0; i < spanTest.getSize(); ++i)
-            std::cout << "valeur = " << spanTest.getValue(i) << std::endl;
-    }
-    catch (const std::exception &e)
-    {
-        std::cerr << "You can't add more elements than the size" << std::endl;
-        return (0);
-    }
-    try
-    {
-        std::cout << "Longest span = " << spanTest.longestSpan() << std::endl;
-        std::cout << "Shortest span = " << spanTest.shortestSpan() << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Span must be at least of size 2 to calculate a span" << std::endl;
-    }
+    spanTest.fillVector();
+    //for (int i = 0; i < spanTest.getSize(); ++i)
+    //    std::cout << "Value = " << spanTest.getValue(i);
+    //std::vector<int> test;
+    //for (int i = 0; i < 10; ++i)
+    //    test.push_back(i);
+    //std::vector<int>::iterator itf = test.begin();
+    //std::vector<int>::iterator ite = test.end();
+    //std::cout << "Distance = " << std::distance(itf, ite) << std::endl;
+    //std::cout << "Size = " << test.size() << std::endl;
+    //try
+    //{
+    //    //spanTest.addNumber(6);
+    //    //spanTest.addNumber(3);
+    //    //spanTest.addNumber(17);
+    //    //spanTest.addNumber(9);
+    //    //spanTest.addNumber(11);
+    //    for (int i = 0; i < spanTest.getSize(); ++i)
+    //        std::cout << "valeur = " << spanTest.getValue(i) << std::endl;
+    //}
+    //catch (const std::exception &e)
+    //{
+    //    std::cerr << "You can't add more elements than the size" << std::endl;
+    //    return (0);
+    //}
+    //try
+    //{
+    //    std::cout << "Longest span = " << spanTest.longestSpan() << std::endl;
+    //    std::cout << "Shortest span = " << spanTest.shortestSpan() << std::endl;
+    //}
+    //catch (std::exception &e)
+    //{
+    //    std::cout << "Span must be at least of size 2 to calculate a span" << std::endl;
+    //}
     
 
     // TEST MAIN FROM THE SUBJECT
