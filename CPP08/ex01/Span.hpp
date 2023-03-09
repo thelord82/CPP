@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:53 by malord            #+#    #+#             */
-/*   Updated: 2023/03/09 11:17:15 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/09 13:28:10 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Exception.hpp"
 
 class Span
 {
