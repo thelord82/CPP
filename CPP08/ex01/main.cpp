@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:58 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 19:43:12 by mal              ###   ########.fr       */
+/*   Updated: 2023/03/09 11:19:23 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,26 @@
 
 int main()
 {   
-    Span spanTest(5);
+    Span spanTest(10);
+    spanTest.addNumber(10);
+    spanTest.addNumber(22);
     spanTest.fillVector();
+    //spanTest.fillVector();
+    //spanTest.initializeVector();
+    //try
+    //{
+    //    spanTest.fillVector();
+    //}
+    //catch (std::exception &e)
+    //{
+    //    std::cout << "ICI" << std::endl;
+    //}
+    //spanTest.addNumber(20);
+    //spanTest.addNumber(20);
+    //spanTest.addNumber(20);
+    //spanTest.addNumber(20);
+    //spanTest.addNumber(20);
+    //spanTest.fillVector();
     //spanTest.addNumber(85);
     //spanTest.addNumber(85);
     //spanTest.addNumber(29);

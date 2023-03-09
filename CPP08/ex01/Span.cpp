@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:56 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 19:43:03 by mal              ###   ########.fr       */
+/*   Updated: 2023/03/09 12:57:06 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,19 @@ int Span::getSize(void) const
 
 unsigned int Span::shortestSpan(void)
 {
-    //std::sort(_numbers.begin(), _numbers.end()); // Sorting the vector or using abs will both work
+    // std::sort(_numbers.begin(), _numbers.end()); // Sorting the vector or using abs will both work
     unsigned int span = abs(_numbers.at(1) - _numbers.at(0));
     for (unsigned int i = 0; i < _numbers.size(); ++i)
     {
         for (unsigned int j = i + 1; j < _numbers.size(); ++j)
         {
-            if (abs(_numbers.at(j) - _numbers.at(i)) > static_cast<int>(span));
+            if (abs(_numbers.at(j) - _numbers.at(i)) > static_cast<int>(span))
+                ;
             else
                 span = abs(_numbers.at(j) - _numbers.at(i));
         }
+
+        // TODO add throw exception
     }
     return (span);
 }
@@ -87,23 +90,24 @@ unsigned int Span::longestSpan(void)
         throw std::exception();
 }
 
+std::vector<int>::iterator Span::initializeVector(void)
+{
+    std::vector<int>::iterator ite;
+    int place = _numbers.size();
+    for (unsigned int i = this->_numbers.size(); i < this->_size; ++i)
+    {
+        this->addNumber(i);
+    }
+    ite = _numbers.begin();
+    for (int i = 0; i < place; ++i)
+        ite++;
+    return (ite);
+}
+
 void Span::fillVector(void)
 {
     srand(time(NULL));
-
-    //DOESN'T WORK
-    //std::vector<int>::const_iterator it;
-    //for (it = _numbers.begin(); it != _numbers.end(); ++it)
-    //    this->addNumber(rand() % 100);
-
-    //WORKS
-    for (unsigned int i = 0; i < this->_size; ++i)
-    {
-        this->addNumber(rand() % 100);
-        //std::cout << "value = " << this->_numbers.at(i) << std::endl;
-    }
-    
-    //DOESN'T WORK
-    //srand(time(NULL));
-    //std::for_each(this->_numbers.begin(), this->_numbers.end(), printTest);
+    std::vector<int>::iterator it;
+    for (it = initializeVector(); it != _numbers.end(); ++it)
+        (*it) = rand() % 100;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:53 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 19:05:24 by mal              ###   ########.fr       */
+/*   Updated: 2023/03/09 11:17:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Span
     std::vector<int> _numbers;
     unsigned int     _size;
     Span(void);
+    std::vector<int>::iterator initializeVector(void);
 
   public:
     Span(unsigned int N);
@@ -31,12 +32,12 @@ class Span
     Span &operator=(const Span &rhs);
     virtual ~Span(void);
 
-    void         addNumber(int num);
-    int          getValue(unsigned int index) const;
-    int          getSize(void) const;
-    unsigned int shortestSpan(void);
-    unsigned int longestSpan(void);
-    void         fillVector(void);
+    void                       addNumber(int num);
+    int                        getValue(unsigned int index) const;
+    int                        getSize(void) const;
+    unsigned int               shortestSpan(void);
+    unsigned int               longestSpan(void);
+    void                       fillVector(void);
 };
 
 #endif
