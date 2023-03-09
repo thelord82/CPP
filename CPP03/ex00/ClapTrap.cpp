@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:49 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 07:59:27 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/09 08:38:26 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPts(10), _energyPts(10),
 
 ClapTrap::ClapTrap(ClapTrap const &other)
 {
-    _name = other._name;
-    _hitPts = other._hitPts;
+    _name      = other._name;
+    _hitPts    = other._hitPts;
     _energyPts = other._energyPts;
     _attackDmg = other._attackDmg;
     std::cout << "Copy constructor called" << std::endl;
@@ -38,14 +38,19 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
-    this->_name      = rhs._name;
-    this->_hitPts    = rhs._hitPts;
-    this->_energyPts = rhs._energyPts;
-    this->_attackDmg = rhs._attackDmg;
+    std::cout << "=operator called" << std::endl;
+    if (this != &rhs)
+    {
+        this->_name      = rhs._name;
+        this->_hitPts    = rhs._hitPts;
+        this->_energyPts = rhs._energyPts;
+        this->_attackDmg = rhs._attackDmg;
+    }
     return (*this);
 }
 
-void ClapTrap::attack(const std::string &target)   // You'll still be able to attack someone with 0 HP because the subject imposes to take a string as a parameter instead of an instance
+void ClapTrap::attack(const std::string &target) // You'll still be able to attack someone with 0 HP because the subject
+                                                 // imposes to take a string as a parameter instead of an instance
 {
     if (this->getEnergyPts() >= 1)
     {

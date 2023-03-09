@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 11:05:40 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 14:24:25 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/09 09:13:42 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ ScavTrap::ScavTrap(ScavTrap const &other)
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &rhs)
 {
-    this->_attackDmg = rhs.getAttackDmg();
-    this->_energyPts = rhs.getEnergyPts();
-    this->_hitPts    = rhs.getHitPts();
-    this->_name      = rhs.getName();
+    if (this != &rhs)
+    {
+        this->_attackDmg = rhs.getAttackDmg();
+        this->_energyPts = rhs.getEnergyPts();
+        this->_hitPts    = rhs.getHitPts();
+        this->_name      = rhs.getName();
+    }
     return (*this);
 }
 

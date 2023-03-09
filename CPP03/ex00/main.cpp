@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 10:53:52 by malord            #+#    #+#             */
-/*   Updated: 2023/02/13 19:45:50 by mal              ###   ########.fr       */
+/*   Updated: 2023/03/09 08:40:21 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,22 @@ int main()
     player1.attack(player2.getName());
     player1.attack(player2.getName());
     player1.attack(player2.getName());
-    return (0);
 
     // TEST FOR THE = OPERATOR OVERLOAD
     
-    // ClapTrap playerToCopy("asshole");
-    // ClapTrap newPlayer("butthole");
+     //ClapTrap playerToCopy("asshole");
+     //ClapTrap newPlayer("butthole");
     //
-    // playerToCopy.setDamage(12);
-    // std::cout << newPlayer.getName() << std::endl;
-    // std::cout << newPlayer.getHitPts() << std::endl;
-    // std::cout << newPlayer.getEnergyPts() << std::endl;
-    // std::cout << newPlayer.getAttackDmg() << std::endl;
-    // newPlayer = playerToCopy;
-    // std::cout << newPlayer.getName() << std::endl;
-    // std::cout << newPlayer.getHitPts() << std::endl;
-    // std::cout << newPlayer.getEnergyPts() << std::endl;
-    // std::cout << newPlayer.getAttackDmg() << std::endl;
-    //
-    // return (0);
+     //playerToCopy.setDamage(12);
+     //std::cout << newPlayer.getName() << std::endl;
+     //std::cout << newPlayer.getHitPts() << std::endl;
+     //std::cout << newPlayer.getEnergyPts() << std::endl;
+     //std::cout << newPlayer.getAttackDmg() << std::endl;
+     //newPlayer = playerToCopy;
+     //std::cout << newPlayer.getName() << std::endl;
+     //std::cout << newPlayer.getHitPts() << std::endl;
+     //std::cout << newPlayer.getEnergyPts() << std::endl;
+     //std::cout << newPlayer.getAttackDmg() << std::endl;
+    
+     return (0);
 }
