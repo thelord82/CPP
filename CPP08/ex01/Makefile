@@ -27,8 +27,9 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	span
-SRCS	=	main.cpp	\
-			span.cpp
+SRCS	=	main.cpp		\
+			span.cpp		\
+			Exception.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 
