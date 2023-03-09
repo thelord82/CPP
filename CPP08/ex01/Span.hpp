@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:53 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 15:55:56 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 19:05:24 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ class Span
     unsigned int shortestSpan(void);
     unsigned int longestSpan(void);
     void         fillVector(void);
-};
-
-class FillVectorFunctor {
-public:
-    FillVectorFunctor(int& value) : _value(value) {}
-    void operator()(int& i) {
-        i = _value++;
-    }
-private:
-    int& _value;
 };
 
 #endif

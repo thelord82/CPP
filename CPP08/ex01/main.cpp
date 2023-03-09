@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:58 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 16:08:57 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 19:43:12 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,15 @@ int main()
 {   
     Span spanTest(5);
     spanTest.fillVector();
-    //for (int i = 0; i < spanTest.getSize(); ++i)
-    //    std::cout << "Value = " << spanTest.getValue(i);
+    //spanTest.addNumber(85);
+    //spanTest.addNumber(85);
+    //spanTest.addNumber(29);
+    //spanTest.addNumber(11);
+    //spanTest.addNumber(19);
+    
+    //std::cout << "Size = " << spanTest.getSize() << std::endl;
+    for (int i = 0; i < spanTest.getSize(); ++i)
+        std::cout << "Value = " << spanTest.getValue(i) << std::endl;
     //std::vector<int> test;
     //for (int i = 0; i < 10; ++i)
     //    test.push_back(i);
@@ -40,15 +47,15 @@ int main()
     //    std::cerr << "You can't add more elements than the size" << std::endl;
     //    return (0);
     //}
-    //try
-    //{
-    //    std::cout << "Longest span = " << spanTest.longestSpan() << std::endl;
-    //    std::cout << "Shortest span = " << spanTest.shortestSpan() << std::endl;
-    //}
-    //catch (std::exception &e)
-    //{
-    //    std::cout << "Span must be at least of size 2 to calculate a span" << std::endl;
-    //}
+    try
+    {
+        std::cout << "Longest span = " << spanTest.longestSpan() << std::endl;
+        std::cout << "Shortest span = " << spanTest.shortestSpan() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Span must be at least of size 2 to calculate a span" << std::endl;
+    }
     
 
     // TEST MAIN FROM THE SUBJECT

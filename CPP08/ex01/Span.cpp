@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:56 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 16:27:47 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/08 19:43:03 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,18 @@ int Span::getValue(unsigned int index) const
 
 int Span::getSize(void) const
 {
-    return (this->_numbers.size());
+    return (this->_size);
 }
 
 unsigned int Span::shortestSpan(void)
 {
-    unsigned int span = _numbers.at(1) - _numbers.at(0);
+    //std::sort(_numbers.begin(), _numbers.end()); // Sorting the vector or using abs will both work
+    unsigned int span = abs(_numbers.at(1) - _numbers.at(0));
     for (unsigned int i = 0; i < _numbers.size(); ++i)
     {
         for (unsigned int j = i + 1; j < _numbers.size(); ++j)
         {
-            if (_numbers.at(j) - _numbers.at(i) > static_cast<int>(span));
+            if (abs(_numbers.at(j) - _numbers.at(i)) > static_cast<int>(span));
             else
                 span = abs(_numbers.at(j) - _numbers.at(i));
         }
@@ -89,10 +90,20 @@ unsigned int Span::longestSpan(void)
 void Span::fillVector(void)
 {
     srand(time(NULL));
+
+    //DOESN'T WORK
+    //std::vector<int>::const_iterator it;
+    //for (it = _numbers.begin(); it != _numbers.end(); ++it)
+    //    this->addNumber(rand() % 100);
+
+    //WORKS
     for (unsigned int i = 0; i < this->_size; ++i)
     {
-        //this->_numbers.push_back(rand() % 100);
         this->addNumber(rand() % 100);
-        std::cout << "value = " << this->_numbers.at(i) << std::endl;
+        //std::cout << "value = " << this->_numbers.at(i) << std::endl;
     }
+    
+    //DOESN'T WORK
+    //srand(time(NULL));
+    //std::for_each(this->_numbers.begin(), this->_numbers.end(), printTest);
 }
