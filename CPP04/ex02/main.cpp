@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 09:56:57 by malord            #+#    #+#             */
-/*   Updated: 2023/02/16 09:52:43 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/09 15:48:04 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
     }
 
     AAnimal *animals[20];
-    //AAnimal *test = new AAnimal();  This won't compile because AAnimal is abstract, cannot be instanciated.
+    //AAnimal *test = new AAnimal();  //This won't compile because AAnimal is abstract, cannot be instanciated.
     for (int i = 0; i < 20; ++i) // Calls copy constructor to fill array of animals with deep copies of each
     {
         if (i < 10)
