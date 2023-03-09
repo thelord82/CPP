@@ -6,85 +6,104 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:58 by malord            #+#    #+#             */
-/*   Updated: 2023/03/09 11:19:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/09 14:31:11 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
 int main()
-{   
-    Span spanTest(10);
-    spanTest.addNumber(10);
-    spanTest.addNumber(22);
-    spanTest.fillVector();
-    //spanTest.fillVector();
-    //spanTest.initializeVector();
-    //try
-    //{
-    //    spanTest.fillVector();
-    //}
-    //catch (std::exception &e)
-    //{
-    //    std::cout << "ICI" << std::endl;
-    //}
-    //spanTest.addNumber(20);
-    //spanTest.addNumber(20);
-    //spanTest.addNumber(20);
-    //spanTest.addNumber(20);
-    //spanTest.addNumber(20);
-    //spanTest.fillVector();
-    //spanTest.addNumber(85);
-    //spanTest.addNumber(85);
-    //spanTest.addNumber(29);
-    //spanTest.addNumber(11);
-    //spanTest.addNumber(19);
-    
-    //std::cout << "Size = " << spanTest.getSize() << std::endl;
-    for (int i = 0; i < spanTest.getSize(); ++i)
-        std::cout << "Value = " << spanTest.getValue(i) << std::endl;
-    //std::vector<int> test;
-    //for (int i = 0; i < 10; ++i)
-    //    test.push_back(i);
-    //std::vector<int>::iterator itf = test.begin();
-    //std::vector<int>::iterator ite = test.end();
-    //std::cout << "Distance = " << std::distance(itf, ite) << std::endl;
-    //std::cout << "Size = " << test.size() << std::endl;
-    //try
-    //{
-    //    //spanTest.addNumber(6);
-    //    //spanTest.addNumber(3);
-    //    //spanTest.addNumber(17);
-    //    //spanTest.addNumber(9);
-    //    //spanTest.addNumber(11);
-    //    for (int i = 0; i < spanTest.getSize(); ++i)
-    //        std::cout << "valeur = " << spanTest.getValue(i) << std::endl;
-    //}
-    //catch (const std::exception &e)
-    //{
-    //    std::cerr << "You can't add more elements than the size" << std::endl;
-    //    return (0);
-    //}
+{
+    // First test, simple Span object with vector filled with addNumber function
+    std::cout << "------------------" << std::endl;
+    std::cout << "EASY TEST" << std::endl;
+    std::cout << "------------------" << std::endl;
+    Span easy(5);
     try
     {
-        std::cout << "Longest span = " << spanTest.longestSpan() << std::endl;
-        std::cout << "Shortest span = " << spanTest.shortestSpan() << std::endl;
+        easy.addNumber(2);
+        easy.addNumber(4);
+        easy.addNumber(6);
+        easy.addNumber(8);
+        easy.addNumber(69);
+        for (int i = 0; i < easy.getSize(); ++i)
+            std::cout << "Value = " << easy.getValue(i) << std::endl;
+        std::cout << "Longest span = " << easy.longestSpan() << std::endl;
+        std::cout << "Shortest span = " << easy.shortestSpan() << std::endl;
     }
     catch (std::exception &e)
     {
-        std::cout << "Span must be at least of size 2 to calculate a span" << std::endl;
+        std::cerr << "Error with insertions" << std::endl;
+    }
+
+    // Test with more calls to addNumber than size of the Span object
+    std::cout << "------------------" << std::endl;
+    std::cout << "EASY FAILING TEST" << std::endl;
+    std::cout << "------------------" << std::endl;
+    try
+    {
+        Span failing(2);
+        failing.addNumber(10);
+        failing.addNumber(20);
+        failing.addNumber(30);
+    }
+    catch(const MyException::GreaterThanSize &gts)
+    {
+        std::cerr << gts.what() << std::endl;
     }
     
+    // Test that fails the longest and shortest span functions
+    std::cout << "------------------" << std::endl;
+    std::cout << "SPAN FAILING TEST" << std::endl;
+    std::cout << "------------------" << std::endl;
+    try
+    {
+        Span tooSmall(1);
+        tooSmall.addNumber(10);
+        int span = tooSmall.longestSpan();
+        std::cout << "Longest span = " << span << std::endl;
+    }
+    catch (MyException::NotEnoughElements &nee)
+    {
+        std::cerr << nee.what() << std::endl;
+    }
+    
+    // Test that fills the vector without multiple calls to addNumber
+    // PLEASE REMOVE THE PRINT OF VALUE IF TESTED WITH 10000+ ELEMENTS FOR GOD'S SAKE!
+    std::cout << "------------------" << std::endl;
+    std::cout << "FILLVECTOR FUNCTION TEST" << std::endl;
+    std::cout << "------------------" << std::endl;
+    try
+    {
+        Span toFill(10);
+        toFill.fillVector();
+        for (int i = 0; i < toFill.getSize(); ++i)
+            std::cout << "Value = " << toFill.getValue(i) << std::endl;
+        std::cout << "Longest span = " << toFill.longestSpan() << std::endl;
+        std::cout << "Shortest span = " << toFill.shortestSpan() << std::endl;
+    }
+    catch(const MyException::NotEnoughElements &nee)
+    {
+        std::cerr << nee.what() << std::endl;
+    }
 
-    // TEST MAIN FROM THE SUBJECT
-
-    // Span sp = Span(5);
-    // sp.addNumber(6);
-    // sp.addNumber(3);
-    // sp.addNumber(17);
-    // sp.addNumber(9);
-    // sp.addNumber(11);
-    // std::cout << sp.shortestSpan() << std::endl;
-    // std::cout << sp.longestSpan() << std::endl;
+    // Test that fail longest and shortest span functions but with fillVector
+    std::cout << "------------------" << std::endl;
+    std::cout << "FAILED SPAN WITH FILLVECTOR" << std::endl;
+    std::cout << "------------------" << std::endl;
+    try
+    {
+        Span toFill(1);
+        toFill.fillVector();
+        for (int i = 0; i < toFill.getSize(); ++i)
+            std::cout << "Value = " << toFill.getValue(i) << std::endl;
+        std::cout << "Longest span = " << toFill.longestSpan() << std::endl;
+        std::cout << "Shortest span = " << toFill.shortestSpan() << std::endl;
+    }
+    catch(const MyException::NotEnoughElements &nee)
+    {
+        std::cerr << nee.what() << std::endl;
+    }
+    
     return 0;
 }
