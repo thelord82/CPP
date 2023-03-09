@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:17:54 by malord            #+#    #+#             */
-/*   Updated: 2023/02/14 11:03:11 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/09 15:31:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int main()
 
     std::cout << "j is a " << j->getType() << " " << std::endl;
     std::cout << "i is a " << i->getType() << " " << std::endl;
+    std::cout << "Cat makes ";
     i->makeSound(); // will output the cat sound!
+    std::cout << "Dog makes ";
     j->makeSound();
     meta->makeSound();
     delete meta;
@@ -40,7 +42,9 @@ int main()
 
     std::cout << "lucien is a " << lucien->getType() << std::endl;
     std::cout << "gontran is a " << gontran->getType() << std::endl;
+    std::cout << "Lucien makes ";
     lucien->makeSound();
+    std::cout << "Gontran makes ";
     gontran->makeSound();
     delete lucien;
     delete gontran;
