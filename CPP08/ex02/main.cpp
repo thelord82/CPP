@@ -6,13 +6,14 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:24:20 by malord            #+#    #+#             */
-/*   Updated: 2023/03/10 15:11:17 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/10 15:12:18 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include <vector>
 
+// TODO iterators : advance, distance, begin, end, prev, next
 int main()
 {
     MutantStack<int> mstack;
@@ -32,7 +33,7 @@ int main()
     //     std::cout << "value = " << mstack.top() << std::endl;
     //     mstack.pop();
     // }
-    
+
     // Another way to print the content of the stack
     // std::vector<int> tempVec;
     // while (!mstack.empty())
@@ -44,7 +45,6 @@ int main()
     // for (std::vector<int>::const_iterator it = tempVec.begin(); it != tempVec.end(); ++it)
     //     std::cout << "Value = " << *it << std::endl;
 
-    
     // MutantStack<int>::iterator it  = mstack.begin();
     // MutantStack<int>::iterator ite = mstack.end();
     //++it;
