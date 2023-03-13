@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:24:20 by malord            #+#    #+#             */
-/*   Updated: 2023/03/10 15:17:08 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/13 11:27:03 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ int main()
     mstack.push(5);
     mstack.push(17);
     std::cout << mstack.top() << std::endl;
-    // mstack.pop();
     std::cout << mstack.size() << std::endl;
     mstack.push(3);
     mstack.push(5);
     mstack.push(737);
-    //[...]
     mstack.push(0);
     // Displays and pop the contents of the stack
     // while (!mstack.empty())
@@ -45,7 +43,8 @@ int main()
     // for (std::vector<int>::const_iterator it = tempVec.begin(); it != tempVec.end(); ++it)
     //     std::cout << "Value = " << *it << std::endl;
 
-    // MutantStack<int>::iterator it  = mstack.begin();
+    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
+        std::cout << "Contenu de stack = " << *it << std::endl;
     // MutantStack<int>::iterator ite = mstack.end();
     //++it;
     //--it;
