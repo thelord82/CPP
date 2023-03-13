@@ -6,14 +6,15 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:24:20 by malord            #+#    #+#             */
-/*   Updated: 2023/03/13 11:27:03 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/13 11:49:40 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include <vector>
 
-// TODO iterators : advance, distance, begin, end, prev, next (I think?)
+// TODO iterators : others than begin and end for deque
+// TODO bonify main test
 int main()
 {
     MutantStack<int> mstack;
