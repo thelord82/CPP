@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:24:18 by malord            #+#    #+#             */
-/*   Updated: 2023/03/13 11:48:07 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/13 16:05:03 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 #include <deque>
 
 template <typename T>
-class MutantStack : public std::stack<T, std::deque<T> >
+class MutantStack : public std::stack<T>
 {
     public:
-        typedef typename std::deque<T>::iterator iterator;
-        typedef typename std::deque<T>::const_iterator const_iterator;
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 
         iterator begin(void);
         iterator end(void);
