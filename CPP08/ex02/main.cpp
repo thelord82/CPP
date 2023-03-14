@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:24:20 by malord            #+#    #+#             */
-/*   Updated: 2023/03/13 16:22:33 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/13 19:48:21 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,38 @@
 // TODO bonify main test
 int main()
 {
+    // MAIN FROM THE SUBJECT
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
+    mstack.push(22);
     std::cout << mstack.top() << std::endl;
-    std::cout << mstack.size() << std::endl;
+    mstack.pop();
+    std::cout << "size = " << mstack.size() << std::endl;
     mstack.push(3);
     mstack.push(5);
     mstack.push(737);
-    mstack.push(0);
+    MutantStack<int>::iterator it  = mstack.begin();
+    //MutantStack<int>::iterator ite = mstack.end();
+    //++it;
+    std::cout << "stack increment = " << *it << std::endl;
+    --it;
+    //while (it != ite)
+    //{
+    //    std::cout << *it << std::endl;
+    //    ++it;
+    //}
+    std::stack<int> s(mstack);
+
+    //MutantStack<int> mstack;
+    //mstack.push(5);
+    //mstack.push(17);
+    //std::cout << mstack.top() << std::endl;
+    //std::cout << mstack.size() << std::endl;
+    //mstack.push(3);
+    //mstack.push(5);
+    //mstack.push(737);
+    //mstack.push(0);
     // Displays and pop the contents of the stack
     // while (!mstack.empty())
     //{
@@ -43,8 +66,8 @@ int main()
     // for (std::vector<int>::const_iterator it = tempVec.begin(); it != tempVec.end(); ++it)
     //     std::cout << "Value = " << *it << std::endl;
 
-    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
-        std::cout << "Contenu de stack = " << *it << std::endl;
+    //for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
+    //    std::cout << "Contenu de stack = " << *it << std::endl;
     // MutantStack<int>::iterator ite = mstack.end();
     //++it;
     //--it;
