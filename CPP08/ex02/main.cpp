@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:24:20 by malord            #+#    #+#             */
-/*   Updated: 2023/03/13 19:48:21 by mal              ###   ########.fr       */
+/*   Updated: 2023/03/13 20:10:25 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <vector>
 
 // TODO bonify main test
+// TODO Ajouter forme canonique
 int main()
 {
     // MAIN FROM THE SUBJECT
