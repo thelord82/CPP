@@ -6,13 +6,13 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:35 by malord            #+#    #+#             */
-/*   Updated: 2023/03/15 10:17:06 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:57:45 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(void) : _gradeToSign(150), _gradeToExecute(150)
+Form::Form(void) : _name("none"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150)
 {
     std::cout << "Form default constructor called." << std::endl;
 }
