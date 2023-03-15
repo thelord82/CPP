@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:29 by malord            #+#    #+#             */
-/*   Updated: 2023/03/15 09:42:00 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:04:31 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Bureaucrat
     int         _grade;
 
   public:
+    Bureaucrat(void);
     Bureaucrat(int grade, std::string name);
     Bureaucrat(Bureaucrat const &copy);
     Bureaucrat &operator=(Bureaucrat const &rhs);

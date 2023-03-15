@@ -6,12 +6,17 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:33 by malord            #+#    #+#             */
-/*   Updated: 2023/03/15 09:47:41 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:04:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Exception.hpp"
+
+Bureaucrat::Bureaucrat(void)
+{
+    std::cout << "Default constructor called" << std::endl;
+}
 
 Bureaucrat::Bureaucrat(int grade, std::string name) : _name(name), _grade(grade)
 {
