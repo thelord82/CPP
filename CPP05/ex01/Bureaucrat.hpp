@@ -6,24 +6,24 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:29 by malord            #+#    #+#             */
-/*   Updated: 2023/02/20 10:57:45 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:06:15 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP_
 #define BUREAUCRAT_HPP_
+#include "Exception.hpp"
+#include "Form.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <string>
-#include "Form.hpp"
 
 class Form;
-
 class Bureaucrat
 {
   private:
-    std::string _name;
-    int         _grade;
+    const std::string _name;
+    int               _grade;
 
   public:
     Bureaucrat(void);
