@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:24:29 by malord            #+#    #+#             */
-/*   Updated: 2023/02/16 14:41:48 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 09:42:00 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include "Exception.hpp"
 
 class Bureaucrat
 {
   private:
-    std::string _name;
+    const std::string _name;
     int         _grade;
 
   public:
