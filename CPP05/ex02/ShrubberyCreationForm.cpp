@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:34 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 14:22:43 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:45:20 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,41 +45,33 @@ std::string ShrubberyCreationForm::getTarget(void) const
 
 bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    try
+    if (executor.getGrade() > this->getGradeToExecute())
     {
-        if (executor.getGrade() > this->getGradeToExecute())
-            throw MyException::GradeTooLowException();
-        else if (this->getSignedStatus() == false)
-            throw MyException::FormNotSignedException();
-        else
-        {
-            std::ofstream ofs(this->getTarget().append("_shrubbery"), std::ios_base::app);
-            ofs << "     *     " << std::endl; 
-            ofs << "    ***    " << std::endl;
-            ofs << "   *****   " << std::endl;
-            ofs << "  *******  " << std::endl;
-            ofs << "   *****   " << std::endl;
-            ofs << "  *******  " << std::endl;
-            ofs << " ********* " << std::endl;
-            ofs << "  *******  " << std::endl;
-            ofs << " ********* " << std::endl;
-            ofs << "***********" << std::endl;
-            ofs << "    |||    " << std::endl;
-            ofs << "    |||    " << std::endl;
-            ofs << "    |||    " << std::endl;
-            ofs.close();
-            return (true);
-        }
-    }
-    catch (MyException::GradeTooLowException &e)
-    {
-        std::cerr << "Error: " << executor.getName() << " couldn't execute " << this->_target << " because " << e.what()
-                  << std::endl;
+        throw MyException::GradeTooLowException();
         return (false);
     }
-    catch (MyException::FormNotSignedException &e)
+    else if (this->getSignedStatus() == false)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        throw MyException::FormNotSignedException();
         return (false);
+    }
+    else
+    {
+        std::ofstream ofs(this->getTarget().append("_shrubbery"), std::ios_base::app);
+        ofs << "     *     " << std::endl;
+        ofs << "    ***    " << std::endl;
+        ofs << "   *****   " << std::endl;
+        ofs << "  *******  " << std::endl;
+        ofs << "   *****   " << std::endl;
+        ofs << "  *******  " << std::endl;
+        ofs << " ********* " << std::endl;
+        ofs << "  *******  " << std::endl;
+        ofs << " ********* " << std::endl;
+        ofs << "***********" << std::endl;
+        ofs << "    |||    " << std::endl;
+        ofs << "    |||    " << std::endl;
+        ofs << "    |||    " << std::endl;
+        ofs.close();
+        return (true);
     }
 }
