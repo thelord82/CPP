@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:28:23 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 13:25:01 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:43:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,19 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 bool PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-    try
+    if (executor.getGrade() > this->getGradeToExecute())
     {
-        if (executor.getGrade() > this->getGradeToExecute())
-            throw MyException::GradeTooLowException();
-        else if (this->getSignedStatus() == false)
-            throw MyException::FormNotSignedException();
-        else
-        {
-            std::cout << this->_target << " has got pardoned by Zaphod Beeblebrox" << std::endl;
-            return (true);
-        }
-    }
-    catch (MyException::GradeTooLowException &e)
-    {
-        std::cerr << "Error: " << executor.getName() << " couldn't execute " << this->_target << " because " << e.what()
-                  << std::endl;
+        throw MyException::GradeTooLowException();
         return (false);
     }
-    catch (MyException::FormNotSignedException &e)
+    else if (this->getSignedStatus() == false)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        throw MyException::FormNotSignedException();
         return (false);
+    }
+    else
+    {
+        std::cout << this->_target << " has got pardoned by Zaphod Beeblebrox" << std::endl;
+        return (true);
     }
 }

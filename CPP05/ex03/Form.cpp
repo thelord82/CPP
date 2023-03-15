@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:18:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 13:21:12 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 10:59:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,11 @@ AForm::AForm(void) : _name("none"), _isSigned(false), _gradeToSign(150), _gradeT
 AForm::AForm(std::string name, int gradeToSign, int gradeToExecute)
     : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-    std::cout << "Form parameter constructor called." << std::endl;
-    try
-    {
-        if (this->_gradeToSign < 1 || this->_gradeToExecute < 1)
-            throw MyException::GradeTooHighException();
-        else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
-            throw MyException::GradeTooLowException();
-    }
-    catch (MyException::GradeTooHighException &e)
-    {
-        std::cerr << "Error: " << e.what() << '\n';
-    }
-    catch (MyException::GradeTooLowException &e)
-    {
-        std::cerr << "Error: " << e.what() << '\n';
-    }
+    std::cout << "Form constructor called." << std::endl;
+    if (this->_gradeToSign < 1 || this->_gradeToExecute < 1)
+        throw MyException::GradeTooHighException();
+    else if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
+        throw MyException::GradeTooLowException();
 }
 
 AForm::AForm(AForm const &copy)
@@ -49,7 +38,10 @@ AForm::AForm(AForm const &copy)
 AForm &AForm::operator=(AForm const &rhs)
 {
     std::cout << "Form = operator overload called." << std::endl;
-    this->_isSigned = rhs.getSignedStatus();
+    if (this != &rhs)
+    {
+        this->_isSigned = rhs._isSigned;
+    }
     return (*this);
 }
 
@@ -80,17 +72,10 @@ int AForm::getGradeToExecute(void) const
 
 void AForm::beSigned(Bureaucrat &powerfulDude)
 {
-    try
-    {
-        if (powerfulDude.getGrade() > this->getGradeToSign())
-            throw MyException::GradeTooLowException();
-        else
-            this->_isSigned = true;
-    }
-    catch (MyException::GradeTooLowException &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    if (powerfulDude.getGrade() > this->getGradeToSign())
+        throw MyException::GradeTooLowException();
+    else
+        this->_isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &o, const AForm &rhs)

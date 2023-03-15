@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 16:01:23 by malord            #+#    #+#             */
-/*   Updated: 2023/02/22 09:27:57 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 11:34:25 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ AForm *Intern::makeForm(std::string formName, std::string target)
             }
         }
     }
-    std::cout << "Error: form doesn't exist" << std::endl;
+    throw MyException::FormNotFoundException();
     return (NULL);
 }

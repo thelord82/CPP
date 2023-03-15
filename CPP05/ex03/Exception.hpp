@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:33:01 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 15:05:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 11:33:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ class MyException : public std::exception
         virtual const char *what() const throw();
     };
     class ExecutionFailedException : public std::exception
+    {
+      public:
+        virtual const char *what() const throw();
+    };
+    class FormNotFoundException : public std::exception
     {
       public:
         virtual const char *what() const throw();

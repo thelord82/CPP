@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:32:59 by malord            #+#    #+#             */
-/*   Updated: 2023/02/21 15:04:38 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/15 11:33:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ const char *MyException::FormNotSignedException::what() const throw()
 const char *MyException::ExecutionFailedException::what() const throw()
 {
     return ("Execution of the form failed.");
+}
+
+const char *MyException::FormNotFoundException::what() const throw()
+{
+    return ("Error: Form doesn't exist.");
 }
