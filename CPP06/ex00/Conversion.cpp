@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 08:15:35 by malord            #+#    #+#             */
-/*   Updated: 2023/02/28 09:55:23 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/16 08:52:33 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 Conversion::Conversion(void)
 {
-    //std::cout << "Default conversion constructor called" << std::endl;
+    // std::cout << "Default conversion constructor called" << std::endl;
 }
 
 Conversion::Conversion(const Conversion &copy)
 {
+    std::cout << "Copy constructor called" << std::endl;
     *this = copy;
 }
 
 Conversion &Conversion::operator=(const Conversion &rhs)
 {
-    if (this != &rhs)
-        *this = rhs;
+    std::cout << "= operator overload called" << std::endl;
+    //if (this != &rhs) {} // This or simply voiding the rhs will work, since there's no attribute in the class
+    (void)rhs;
     return (*this);
 }
 
 Conversion::~Conversion(void)
 {
-    //std::cout << "Conversion destructor called" << std::endl;
+    // std::cout << "Conversion destructor called" << std::endl;
 }
 
 void Conversion::charConversion(std::string arg)
@@ -44,8 +46,8 @@ void Conversion::charConversion(std::string arg)
         else if (arg.length() > 1 && !std::isdigit(arg.front()))
         {
             std::cout << "char: impossible" << std::endl;
-            return ;
-        }    
+            return;
+        }
         else
             tmp = static_cast<int>(std::stoi(arg));
         if (isprint(tmp))
@@ -165,7 +167,7 @@ std::string Conversion::getType(std::string arg)
             return ("int");
         throw std::exception();
     }
-    catch (std::exception &e)
+    catch (std::invalid_argument &ia)
     {
         return ("string");
     }
@@ -173,14 +175,10 @@ std::string Conversion::getType(std::string arg)
 
 void Conversion::convertLitAndAll(std::string arg)
 {
-    int index;
-    std::string types[4] = {"char", "int", "float", "double"};
-    void (Conversion::*conversions[4])(std::string arg) = {
-        &Conversion::charConversion,
-        &Conversion::intConversion,
-        &Conversion::floatConversion,
-        &Conversion::doubleConversion
-    };
+    int         index;
+    std::string types[4]                                = {"char", "int", "float", "double"};
+    void (Conversion::*conversions[4])(std::string arg) = {&Conversion::charConversion, &Conversion::intConversion,
+                                                           &Conversion::floatConversion, &Conversion::doubleConversion};
 
     for (int i = 0; i < 4; ++i)
     {
@@ -193,7 +191,8 @@ void Conversion::convertLitAndAll(std::string arg)
     }
     for (int i = 0; i < 4; ++i)
     {
-        if (i == index);
+        if (i == index)
+            ;
         else
             (this->*conversions[i])(arg);
     }
