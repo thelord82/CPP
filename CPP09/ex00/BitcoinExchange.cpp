@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/17 11:29:24 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/17 11:31:57 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,6 @@ Data::~Data(void)
 bool Data::dateChecker(std::string date)
 {
     // TODO implement the code in main
+    // TODO This function needs to check every date of input.txt, but one by one, no return or break or exit
+    
 }
