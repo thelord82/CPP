@@ -6,16 +6,11 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/17 11:14:07 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/20 14:31:16 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctime>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-#include <vector>
+#include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv)
 {
@@ -35,36 +30,21 @@ int main(int argc, char **argv)
     //
     // std::cout << "Date: " << std::put_time(&date, "%Y-%m-%d") << "\n";
     // TODO Transfer the logic into classes
-    // TODO 2 vectors, string and floats, both private
-    if (argc == 2)
+    try 
     {
-        std::string   inputFile = argv[1];
-        std::ifstream ifs(inputFile);
-        std::ifstream dataBase("data.csv");
-        if (ifs.fail())
+         if (argc == 2)
         {
-            std::cout << "File does not exist" << std::endl;
-            return (1);
+            Data instance;
+            instance.fillDatabase();
+            instance.fillInput(argv[1]);
         }
-        std::string              toSplitOn = ",";
-        std::vector<std::string> test;
-        unsigned int             position = 0;
-        std::string              line;
-        while (std::getline(dataBase, line))
-        {
-            while (line.find(toSplitOn) != std::string::npos)
-            {
-                position = line.find(toSplitOn);
-                std::string date = line.substr(0, position);
-                test.push_back(date);
-                break;
-            }
-        }
-        for (std::vector<std::string>::iterator it = test.begin(); it != test.end(); ++it)
-            std::cout << "Contenu du vecteur = " << *it << std::endl;
+        else
+            std::cout << "Please enter a valid file" << std::endl;   
     }
-    else
-        std::cout << "Must have 2 arguments" << std::endl;
+    catch (std::exception &e)
+    {
+        std::cerr << "File does not exist" << std::endl;
+    }
 
     return (0);
 }
