@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:19 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 10:48:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 11:22:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ class Data
     void fillDatabase();
     void fillInput(std::string inputFile);
     bool validateDate(std::string strDate);
+    std::string validateValue(float value);
+    void printBTC(void);
 };
 #endif

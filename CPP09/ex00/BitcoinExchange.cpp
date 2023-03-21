@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 11:07:44 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 11:24:30 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,6 @@ void Data::fillInput(std::string inputFile)
         this->inputFile.push_back(
             std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
     }
-    // THIS prints the content of the list coming from the input file
-    for (std::list<std::pair<std::string, float> >::iterator it = this->inputFile.begin(); it != this->inputFile.end();
-         ++it)
-    {
-        if (!validateDate(it->first))
-            std::cout << "Error: bad input => " << it->first << std::endl;
-        else if (it->second < 0)
-            std::cout << "Error: Not a positive number" << std::endl;
-        else if (it->second > 1000)
-            std::cout << "Error: too large a number";
-        else
-            std::cout << it->first << " => " << it->second << std::endl;
-    }
 }
 
 bool Data::validateDate(std::string strDate)
@@ -118,4 +105,30 @@ bool Data::validateDate(std::string strDate)
     return (true);
 }
 
-//TODO Prendre les 2 valeurs de inputFile et dataBase et les multiplier ensemble si pas d'erreurs.
+std::string Data::validateValue(float value)
+{
+    if (value < 0)
+        return ("Error: Not a positive number");
+    if (value > 1000)
+        return ("Error: too large a number");
+    return ("");
+}
+
+//TODO I need to match the dates of the 2 lists
+void Data::printBTC(void)
+{
+    // THIS prints the content of the list coming from the input file
+    for (std::list<std::pair<std::string, float> >::iterator it = this->inputFile.begin(); it != this->inputFile.end();
+         ++it)
+    {
+        if (!validateDate(it->first))
+        {
+            std::cerr << "Error: bad input => " << it->first << std::endl;
+            continue;
+        }
+        if (!validateValue(it->second).empty())
+            std::cout << validateValue(it->second) << std::endl;
+        else
+            std::cout << it->first << " => " << it->second  << std::endl;
+    }
+}

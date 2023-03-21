@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 10:22:05 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 11:20:38 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
             Data instance;
             instance.fillDatabase();
             instance.fillInput(argv[1]);
-            //instance.validateDate();
+            instance.printBTC();
         }
         else
             std::cout << "Please enter a valid file" << std::endl;
