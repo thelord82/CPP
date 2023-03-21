@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:19 by malord            #+#    #+#             */
-/*   Updated: 2023/03/20 14:58:22 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 10:23:51 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <map>
+#include <list>
 #include <sstream>
-#include <vector>
-#include <unordered_map>
 
 class Data
 {
   private:
-    std::map<std::string, float> dataBase; // stores values from csv
-    //std::map<std::string, float> inputFile; // stores value from input file
-    std::unordered_map<std::string, float> inputFile;
+    std::list<std::pair<std::string, float> > dataBase;
+    std::list<std::pair<std::string, float> > inputFile;
 
   public:
     Data(void);
@@ -37,5 +34,6 @@ class Data
     bool dateChecker(std::string date); // checks valid date from input file
     void fillDatabase();
     void fillInput(std::string inputFile);
+    bool validateDate(std::string strDate);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/20 15:01:09 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 10:33:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,46 +53,62 @@ void Data::fillDatabase(void)
     float price;
     while (std::getline(dataBase, line))
     {
-        while (line.find(toSplitOn) != std::string::npos)
+        if (line.find(toSplitOn) != std::string::npos)
         {
             position = line.find(toSplitOn);
             date     = line.substr(0, position);
             price    = std::stof(line.substr(position + 1, line.length()));
-            this->dataBase.insert(std::pair<std::string, float>(date, price));
-            break;
+            this->dataBase.push_back(std::make_pair<std::string, float>(date, price));
         }
     }
-    //THIS prints the content of map
-    //int i = 0;
-    //for (std::map<std::string, float>::iterator it = this->dataBase.begin(); it != this->dataBase.end(); ++it)
+    // THIS prints the content of list coming from the csv data base file
+    //int i = 1;
+    //for (std::list<std::pair<std::string, float>>::iterator it = this->dataBase.begin(); it != this->dataBase.end();
+    //     ++it)
     //{
-    //    std::cout << i << " Contenu de map = " << it->first << " et " << it->second << std::endl;
-    //    i++;
+    //    std::cout << i << " LIST = " << it->first << " et " << it->second << std::endl;
+    //    ++i;
     //}
     dataBase.close();
 }
-// ? Why only 4 entries into map instead of 9?
+
 void Data::fillInput(std::string inputFile)
 {
-    std::ifstream  ifs(inputFile);
+    std::ifstream ifs(inputFile);
     if (ifs.fail())
         throw std::exception();
-    std::string  toSplitOn = " | ";
+    std::string  toSplitOn = "|";
     unsigned int position  = 0;
     std::string  line, date;
-    std::getline(ifs, line);
-    int value;
+    float        value;
+    std::getline(ifs, line); // skips first line of file
     while (std::getline(ifs, line))
     {
-        while (line.find(toSplitOn) != std::string::npos)
+        date = line.substr(0, 10);
+        if (line.find(toSplitOn) != std::string::npos)
         {
             position = line.find(toSplitOn);
-            date = line.substr(0, position);
-            value = std::stof(line.substr(position + 3, line.length()));
-            this->inputFile.insert(std::pair<std::string, float>(date, value));
-            break;
+            value    = std::stof(line.substr(position + 1, line.length()));
         }
+        this->inputFile.push_back(std::make_pair<std::string, float>(date, value));
     }
-    for (std::unordered_map<std::string, float>::iterator it = this->inputFile.begin(); it != this->inputFile.end(); ++it)
-        std::cout << "Contenu de mapInput = " << it->first << " et " << it->second << std::endl;
+    // THIS prints the content of the list coming from the input file
+     for (std::list<std::pair<std::string, float> >::iterator it = this->inputFile.begin(); it !=
+     this->inputFile.end(); ++it)
+     {
+        if (!validateDate(it->first))
+            std::cout << "Error: bad input => " << it->first << std::endl;
+        else
+            std::cout << it->first << " => " << it->second << std::endl;
+     }
+}
+
+bool Data::validateDate(std::string strDate)
+{
+        std::tm date = {};
+        std::istringstream ss(strDate);
+        ss >> std::get_time(&date, "%Y-%m-%d");
+        if (ss.fail())
+            return (false);
+        return (true);
 }
