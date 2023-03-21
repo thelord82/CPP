@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 10:39:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 10:44:14 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void Data::fillInput(std::string inputFile)
             position = line.find(toSplitOn);
             value    = std::stof(line.substr(position + 1, line.length()));
         }
-        this->inputFile.push_back(std::make_pair<std::string, float>(std::string(date), float(value)));
+        this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
     }
     // THIS prints the content of the list coming from the input file
      for (std::list<std::pair<std::string, float> >::iterator it = this->inputFile.begin(); it !=
