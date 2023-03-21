@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 11:20:38 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 15:59:06 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,9 @@
 int main(int argc, char **argv)
 {
     (void)argc;
-    // THIS is the date handling function
-    //std::string date_str = "2022-12-13";
-    //std::tm     date     = {};
-//
-    //std::istringstream ss(date_str);
-    //ss >> std::get_time(&date, "%Y-%m-%d");
-//
-    //if (ss.fail())
-    //{
-    //    std::cout << "Error: Invalid date string\n";
-    //    return (1);
-    //}
-//
-    //std::cout << "Date: " << std::put_time(&date, "%Y-%m-%d") << "\n";
-    // TODO Transfer the logic into classes
+    (void)argv;
+
+    //TODO incorporer la validation des dates et valeurs avec le lexico_compare
     try
     {
         if (argc == 2)
@@ -37,6 +25,10 @@ int main(int argc, char **argv)
             Data instance;
             instance.fillDatabase();
             instance.fillInput(argv[1]);
+            //if (!instance.validateDate("1710-02-20"))
+            //    std::cout << "Mauvaise date" << std::endl;
+            //else
+            //    std::cout << "Date acceptee" << std::endl;
             instance.printBTC();
         }
         else

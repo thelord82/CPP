@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:19 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 11:22:24 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 15:35:36 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <iostream>
 #include <list>
 #include <sstream>
+#include <algorithm>
 
 class Data
 {
@@ -31,11 +32,13 @@ class Data
     Data(const Data &copy);
     Data &operator=(const Data &rhs);
     virtual ~Data(void);
-    bool dateChecker(std::string date); // checks valid date from input file
     void fillDatabase();
     void fillInput(std::string inputFile);
     bool validateDate(std::string strDate);
     std::string validateValue(float value);
+    void checkInputF(void);
     void printBTC(void);
+    int daysInMonth(int year, int month);
+    
 };
 #endif
