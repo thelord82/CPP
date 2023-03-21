@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 10:51:12 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/21 11:07:44 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void Data::fillDatabase(void)
             position = line.find(toSplitOn);
             date     = line.substr(0, position);
             price    = std::stof(line.substr(position + 1, line.length()));
-            this->dataBase.push_back(std::make_pair<std::string, float>(date, price));
+            this->dataBase.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(price)));
         }
     }
     // THIS prints the content of list coming from the csv data base file
