@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/22 09:21:13 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/22 13:30:03 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,36 +89,24 @@ void Data::fillInput(std::string inputFile)
     }
 }
 
-// TODO cleanup date parsing functions
 bool Data::validateDate(std::string strDate)
 {
     std::tm            date = {};
     std::istringstream ss(strDate);
     ss >> std::get_time(&date, "%Y-%m-%d");
     if (ss.fail())
+    {
+        std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
-    // Check that the date and month are valid
-    if (date.tm_mday <= 0 || date.tm_mday > 31 || date.tm_mon < 0 || date.tm_mon > 11)
-        return false;
-
-    // Check that the day is not greater than the number of days in the month
-    int monthDays = daysInMonth(date.tm_year + 1900, date.tm_mon + 1);
-    if (date.tm_mday > monthDays)
-        return false;
-    return (true);
-}
-
-// Helper function to get the number of days in a given month
-int Data::daysInMonth(int year, int month)
-{
-    static const int days[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-    int ret = days[month-1];
-
-    if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
-        ret = 29; // Leap year
     }
-
-    return ret;
+    std::mktime(&date);
+    std::ostringstream oos;
+    oos << std::put_time(&date, "%F");
+    if (oos.str() != strDate)
+        std::cout << "Error: bad input => " << strDate << std::endl;
+    else
+        std::cout << "Date is ok! Look : " << oos.str() << std::endl;
+    return (true);
 }
 
 std::string Data::validateValue(float value)

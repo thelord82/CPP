@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 15:59:06 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/22 13:29:17 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ int main(int argc, char **argv)
             Data instance;
             instance.fillDatabase();
             instance.fillInput(argv[1]);
-            //if (!instance.validateDate("1710-02-20"))
+            instance.validateDate("2021-02-29");
+            //if (!instance.validateDate("1710-22-20"))
             //    std::cout << "Mauvaise date" << std::endl;
             //else
             //    std::cout << "Date acceptee" << std::endl;
-            instance.printBTC();
+            //instance.printBTC();
         }
         else
             std::cout << "Please enter a valid file" << std::endl;
