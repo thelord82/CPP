@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 15:57:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/22 09:21:13 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,9 @@ void Data::printBTC(void)
     //     }
     // }
     //  THIS find matching dates
+
+    // TODO Regler si une date est avant la 1re date du CSV
+    // TODO Incorporer les affichages au bon endroit pour le controle d'erreurs (mauvaises dates et valeurs)
     while (inIt != inputFile.end())
     {
         while (dbIt != dataBase.end())
