@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/22 13:30:03 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/22 16:13:32 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void Data::fillDatabase(void)
     dataBase.close();
 }
 
-void Data::fillInput(std::string inputFile)
+void Data::fillInput(std::string inputFile) //TODO check if first char of it->second is a digit
 {
     std::ifstream ifs(inputFile);
     if (ifs.fail())
@@ -82,7 +82,14 @@ void Data::fillInput(std::string inputFile)
         if (line.find(toSplitOn) != std::string::npos)
         {
             position = line.find(toSplitOn);
-            value    = std::stof(line.substr(position + 1, line.length()));
+            try
+            {
+                value    = std::stof(line.substr(position + 1, line.length()));
+            }
+            catch (std::invalid_argument &ia)
+            {
+                //std::cerr << "got it" << std::endl;
+            }
         }
         this->inputFile.push_back(
             std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
@@ -103,99 +110,63 @@ bool Data::validateDate(std::string strDate)
     std::ostringstream oos;
     oos << std::put_time(&date, "%F");
     if (oos.str() != strDate)
+    {
         std::cout << "Error: bad input => " << strDate << std::endl;
-    else
-        std::cout << "Date is ok! Look : " << oos.str() << std::endl;
+        return (false);
+    }
     return (true);
 }
 
-std::string Data::validateValue(float value)
+bool Data::validateValue(float value)
 {
-    if (value < 0)
-        return ("Error: Not a positive number");
-    if (value > 1000)
-        return ("Error: too large a number");
-    return ("");
-}
-
-void Data::checkInputF(void)
-{
-    for (std::list<std::pair<std::string, float> >::iterator it = this->inputFile.begin(); it != this->inputFile.end();
-         ++it)
+    if (std::isnan(value))
     {
-        if (!validateDate(it->first))
-        {
-            std::cerr << "Error: bad input => " << it->first << std::endl;
-            continue;
-        }
-        if (!validateValue(it->second).empty())
-            std::cerr << validateValue(it->second) << std::endl;
-        else
-            std::cout << it->first << " => " << it->second << std::endl;
+        std::cout << "Error: bad input, value is not a number" << std::endl;
+        return (false);
     }
+    if (value < 0)
+    {
+        std::cout << "Error: Not a positive number" << std::endl;
+        return (false);
+    }
+    if (value > 1000)
+    {
+        std::cout << "Error: too large a number" << std::endl;
+        return (false);
+    }
+    return (true);
 }
 
-// TODO I need to match the dates of the 2 lists
 void Data::printBTC(void)
 {
     std::list<std::pair<std::string, float> >::iterator dbIt = dataBase.begin();
     std::list<std::pair<std::string, float> >::iterator inIt = inputFile.begin();
-
-    // THIS returns the matching date and prints the one where there's no match
-    // int flag = 0;
-    //
-    // for (inIt = this->inputFile.begin(); inIt != this->inputFile.end(); ++inIt)
-    //{
-    //    for (dbIt = this->dataBase.begin(); dbIt != this->dataBase.end(); ++dbIt)
-    //    {
-    //        if (inIt->first == dbIt->first)
-    //        {
-    //            std::cout << "MATCH: " << inIt->first << " and " << dbIt->first << std::endl;
-    //            dbIt = this->dataBase.begin();
-    //            flag = 1;
-    //            break;
-    //        }
-    //    }
-    //    if (flag == 0)
-    //        std::cout << "NO MATCH FOR " << inIt->first << std::endl;
-    //    flag = 0;
-    //}
-
-    // for (inIt = inputFile.begin(); inIt != inputFile.end(); ++inIt)
-    //{
-    //     for (dbIt = dataBase.begin(); dbIt != dataBase.end(); ++dbIt)
-    //     {
-    //         while (lexicographical_compare(inIt->first.begin(), inIt->first.end(), dbIt->first.begin(),
-    //         dbIt->first.end())); if (inIt->first != dbIt->first)
-    //         {
-    //             dbIt--;
-    //             std::cout << "Closest date = " << dbIt->first << std::endl;
-    //         }
-    //         else
-    //             std::cout << "MATCH: " << inIt->first << " and " << dbIt->first << std::endl;
-    //     }
-    // }
-    //  THIS find matching dates
-
-    // TODO Regler si une date est avant la 1re date du CSV
-    // TODO Incorporer les affichages au bon endroit pour le controle d'erreurs (mauvaises dates et valeurs)
+    std::cout << "TEST = " << inIt->second << std::endl;
     while (inIt != inputFile.end())
     {
         while (dbIt != dataBase.end())
         {
-            while (!lexicographical_compare(inIt->first.begin(), inIt->first.end(), dbIt->first.begin(),
-                                            dbIt->first.end()))
-                ++dbIt;
+            if (!validateDate(inIt->first) || !validateValue(inIt->second))
+                break;
+            while (inIt->first.compare(dbIt->first) > 0)
+                dbIt++;
             if (inIt->first != dbIt->first)
             {
-                dbIt--;
-                std::cout << "Closest date = " << dbIt->first << std::endl;
+                if (dbIt != dataBase.begin())
+                    dbIt--;
+                else
+                {
+                    std::cout << "Error: date is before the creation of Bitcoin => " << inIt->first << std::endl;
+                }
             }
-            else
-                std::cout << "MATCH: " << inIt->first << " and " << dbIt->first << std::endl;
+            std::cout << inIt->first << " => " << inIt->second << " = " << inIt->second * dbIt->second << std::endl;
             dbIt = dataBase.begin();
             break;
         }
         inIt++;
     }
 }
+
+//TODO check valid date but no value
+//TODO non-number as a value
+//? How to recuperate an exception thrown by a function and not alter the program

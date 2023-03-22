@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:19 by malord            #+#    #+#             */
-/*   Updated: 2023/03/21 15:35:36 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/22 16:01:47 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <list>
 #include <sstream>
 #include <algorithm>
+#include <cmath>
 
 class Data
 {
@@ -35,10 +36,9 @@ class Data
     void fillDatabase();
     void fillInput(std::string inputFile);
     bool validateDate(std::string strDate);
-    std::string validateValue(float value);
+    bool validateValue(float value);
     void checkInputF(void);
     void printBTC(void);
-    int daysInMonth(int year, int month);
     
 };
 #endif
