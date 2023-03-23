@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/22 16:13:32 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:32:29 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,33 +66,42 @@ void Data::fillDatabase(void)
     dataBase.close();
 }
 
-void Data::fillInput(std::string inputFile) //TODO check if first char of it->second is a digit
+void Data::fillInput(std::string inputFile) 
 {
     std::ifstream ifs(inputFile);
+    bool flag;
     if (ifs.fail())
         throw std::exception();
     std::string  toSplitOn = "|";
     unsigned int position  = 0;
     std::string  line, date;
     float        value;
-    std::getline(ifs, line); // skips first line of file
+    std::getline(ifs, line); 
     while (std::getline(ifs, line))
     {
         date = line.substr(0, 10);
         if (line.find(toSplitOn) != std::string::npos)
         {
             position = line.find(toSplitOn);
-            try
+            if (valueOD(line.substr(position + 1, line.length())))
             {
                 value    = std::stof(line.substr(position + 1, line.length()));
+                flag = true;
             }
-            catch (std::invalid_argument &ia)
+            else
             {
-                //std::cerr << "got it" << std::endl;
+                //std::cout << "Error: bad input => " << line.substr(position + 1, line.length()) << std::endl;
+                flag = false;
             }
         }
-        this->inputFile.push_back(
-            std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
+        if (flag == true)
+        {
+            this->inputFile.push_back(
+                std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
+                flag = false;
+        }
+        else if (!date.empty())
+            this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
     }
 }
 
@@ -103,10 +112,9 @@ bool Data::validateDate(std::string strDate)
     ss >> std::get_time(&date, "%Y-%m-%d");
     if (ss.fail())
     {
-        std::cout << "Error: bad input => " << strDate << std::endl;
+        //std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
     }
-    std::mktime(&date);
     std::ostringstream oos;
     oos << std::put_time(&date, "%F");
     if (oos.str() != strDate)
@@ -141,14 +149,23 @@ void Data::printBTC(void)
 {
     std::list<std::pair<std::string, float> >::iterator dbIt = dataBase.begin();
     std::list<std::pair<std::string, float> >::iterator inIt = inputFile.begin();
-    std::cout << "TEST = " << inIt->second << std::endl;
     while (inIt != inputFile.end())
     {
         while (dbIt != dataBase.end())
         {
-            if (!validateDate(inIt->first) || !validateValue(inIt->second))
+            if (validateDate(inIt->first) && inIt->second == 0)
+            {
+                std::cout << "Error: bad input => value is not valid or empty" << std::endl;
                 break;
-            while (inIt->first.compare(dbIt->first) > 0)
+            }
+            if (!validateDate(inIt->first))
+            {
+                std::cout << "Error: bad input => " << inIt->first << std::endl;
+                break;
+            }
+            else if(!validateValue(inIt->second))
+                break;
+            while (inIt->first.compare(dbIt->first) > 0 && dbIt != dataBase.end())
                 dbIt++;
             if (inIt->first != dbIt->first)
             {
@@ -157,9 +174,10 @@ void Data::printBTC(void)
                 else
                 {
                     std::cout << "Error: date is before the creation of Bitcoin => " << inIt->first << std::endl;
+                    break;
                 }
             }
-            std::cout << inIt->first << " => " << inIt->second << " = " << inIt->second * dbIt->second << std::endl;
+            std::cout << std::fixed << std::setprecision(2) << inIt->first << " => " << inIt->second << " = " << inIt->second * dbIt->second << std::endl;
             dbIt = dataBase.begin();
             break;
         }
@@ -167,6 +185,17 @@ void Data::printBTC(void)
     }
 }
 
-//TODO check valid date but no value
-//TODO non-number as a value
-//? How to recuperate an exception thrown by a function and not alter the program
+bool Data::valueOD(std::string value)
+{
+    const std::string allowed = "0123456789 -.\n";
+    for (unsigned long i = 0; i < value.length(); ++i)
+    {
+        if (allowed.find(value.at(i)) == std::string::npos)
+            return (false);
+    }
+    return (true);
+}
+
+
+
+//TODO check a date later than today in inputfile

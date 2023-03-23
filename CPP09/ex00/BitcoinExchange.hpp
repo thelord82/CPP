@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:19 by malord            #+#    #+#             */
-/*   Updated: 2023/03/22 16:01:47 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/23 10:18:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sstream>
 #include <algorithm>
 #include <cmath>
+#include <cfloat>
 
 class Data
 {
@@ -39,6 +40,6 @@ class Data
     bool validateValue(float value);
     void checkInputF(void);
     void printBTC(void);
-    
+    bool valueOD(std::string value);
 };
 #endif
