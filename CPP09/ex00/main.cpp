@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/23 11:41:52 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/23 11:58:34 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,20 @@ int main(int argc, char **argv)
     //std::cout << "local: " << std::put_time(&local, "%c %Z") << '\n';
 
     // Get the current time
-    std::time_t currentTime = std::time(0);
+    // REFACTOR
+    std::time_t now = std::time(0);
 
-  // Convert the current time to a string form
-    std::string dateString = std::ctime(&currentTime);
-    std::istringstream ss(dateString);
+    // Convert the current time to a struct tm
+    std::tm* now_tm = std::localtime(&now);
 
+    // Format the date as YYYY-MM-DD
+    char date_str[11];
+    std::sprintf(date_str, "%04d-%02d-%02d", 
+                 now_tm->tm_year + 1900, 
+                 now_tm->tm_mon + 1, 
+                 now_tm->tm_mday);
 
-  // Output the current time
-    std::cout << "The current date and time is: " << dateString << std::endl;
+    // Output the current date
+    std::cout << "The current date is: " << date_str << std::endl;
     return (0);
 }
