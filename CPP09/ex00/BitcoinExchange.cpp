@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/23 11:32:29 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/23 17:19:00 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,6 @@ void Data::fillDatabase(void)
                 std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(price)));
         }
     }
-    // THIS prints the content of list coming from the csv data base file
-    // int i = 1;
-    // for (std::list<std::pair<std::string, float>>::iterator it = this->dataBase.begin(); it != this->dataBase.end();
-    //     ++it)
-    //{
-    //    std::cout << i << " LIST = " << it->first << " et " << it->second << std::endl;
-    //    ++i;
-    //}
     dataBase.close();
 }
 
@@ -80,28 +72,34 @@ void Data::fillInput(std::string inputFile)
     while (std::getline(ifs, line))
     {
         date = line.substr(0, 10);
-        if (line.find(toSplitOn) != std::string::npos)
+        try
         {
-            position = line.find(toSplitOn);
-            if (valueOD(line.substr(position + 1, line.length())))
+            if (line.find(toSplitOn) != std::string::npos)
             {
-                value    = std::stof(line.substr(position + 1, line.length()));
-                flag = true;
+                position = line.find(toSplitOn);
+                if (valueOD(line.substr(position + 1, line.length())))
+                {
+                    value    = std::stof(line.substr(position + 1, line.length()));
+                    flag = true;
+                }
+                else
+                {
+                    //std::cout << "Error: bad input => " << line.substr(position + 1, line.length()) << std::endl;
+                    flag = false;
+                }
             }
-            else
+            if (flag == true)
             {
-                //std::cout << "Error: bad input => " << line.substr(position + 1, line.length()) << std::endl;
-                flag = false;
+                this->inputFile.push_back(
+                    std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
+                    flag = false;
             }
+            else if (!date.empty())
+                this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
         }
-        if (flag == true)
-        {
-            this->inputFile.push_back(
-                std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
-                flag = false;
+        catch (std::invalid_argument &ia)
+        {  
         }
-        else if (!date.empty())
-            this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
     }
 }
 
@@ -109,15 +107,16 @@ bool Data::validateDate(std::string strDate)
 {
     std::tm            date = {};
     std::istringstream ss(strDate);
+    
     ss >> std::get_time(&date, "%Y-%m-%d");
     if (ss.fail())
     {
         //std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
     }
-    std::ostringstream oos;
-    oos << std::put_time(&date, "%F");
-    if (oos.str() != strDate)
+    std::ostringstream oss2;
+    oss2 << std::put_time(&date, "%F");
+    if (oss2.str() != strDate)
     {
         std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
@@ -149,10 +148,22 @@ void Data::printBTC(void)
 {
     std::list<std::pair<std::string, float> >::iterator dbIt = dataBase.begin();
     std::list<std::pair<std::string, float> >::iterator inIt = inputFile.begin();
+
+    std::time_t now = std::time(0);
+    std::tm *now_tm = std::localtime(&now);
+    std::ostringstream oss;
+    oss << std::put_time(now_tm, "%Y-%m-%d");
+    
+    
     while (inIt != inputFile.end())
     {
         while (dbIt != dataBase.end())
         {
+            if (inIt->first.compare(oss.str()) > 0)
+            {
+                std::cout << "Error: bad input => " << inIt->first << " is in the future" << std::endl;
+                break;
+            }
             if (validateDate(inIt->first) && inIt->second == 0)
             {
                 std::cout << "Error: bad input => value is not valid or empty" << std::endl;
@@ -196,6 +207,4 @@ bool Data::valueOD(std::string value)
     return (true);
 }
 
-
-
-//TODO check a date later than today in inputfile
+//TODO check triple print on 2022-04-4
