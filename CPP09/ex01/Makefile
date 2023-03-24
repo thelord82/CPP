@@ -42,7 +42,7 @@ all: $(NAME)
 # Generates output file
 $(NAME): $(OBJS)
 	$(HIDE)$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "Compiled! Execute with \033[38;2;39;154;186m./$(NAME)\033[0m"
+	@echo "Compiled! Execute with \033[38;2;39;154;186m./$(NAME) your inverted polish notation\033[0m"
 
 # Compiles sources into objects
 .cpp.o: $(SRCS) $(INC)
