@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/24 09:25:24 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/24 10:04:26 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ Data::Data(void)
 
 Data::Data(const Data &copy) : dataBase(copy.dataBase), inputFile(copy.inputFile)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    //std::cout << "Copy constructor called" << std::endl;
     *this = copy;
 }
 
 Data &Data::operator=(const Data &rhs)
 {
-    std::cout << "=operator called" << std::endl;
+    //std::cout << "=operator called" << std::endl;
     if (this != &rhs)
     {
         this->dataBase = rhs.dataBase;
