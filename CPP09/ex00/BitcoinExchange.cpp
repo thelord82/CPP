@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/23 17:19:00 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/24 08:18:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void Data::fillInput(std::string inputFile)
                 this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
         }
         catch (std::invalid_argument &ia)
-        {  
+        {
+            this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
         }
     }
 }
@@ -118,7 +119,8 @@ bool Data::validateDate(std::string strDate)
     oss2 << std::put_time(&date, "%F");
     if (oss2.str() != strDate)
     {
-        std::cout << "Error: bad input => " << strDate << std::endl;
+        //std::cout << "Dans validateDate" << std::endl;
+        //std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
     }
     return (true);
@@ -154,7 +156,6 @@ void Data::printBTC(void)
     std::ostringstream oss;
     oss << std::put_time(now_tm, "%Y-%m-%d");
     
-    
     while (inIt != inputFile.end())
     {
         while (dbIt != dataBase.end())
@@ -171,6 +172,7 @@ void Data::printBTC(void)
             }
             if (!validateDate(inIt->first))
             {
+                //std::cout << "dans printBTC" << std::endl;
                 std::cout << "Error: bad input => " << inIt->first << std::endl;
                 break;
             }
