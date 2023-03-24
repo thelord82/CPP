@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/24 08:18:01 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/24 09:25:24 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@ Data::Data(void)
     // std::cout << "Default constructor called" << std::endl;
 }
 
-Data::Data(const Data &copy)
+Data::Data(const Data &copy) : dataBase(copy.dataBase), inputFile(copy.inputFile)
 {
-    // std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
     *this = copy;
 }
 
-Data &Data::operator=(const Data &rhs) // TODO Double check the copy of a list
+Data &Data::operator=(const Data &rhs)
 {
-    (void)rhs;
+    std::cout << "=operator called" << std::endl;
+    if (this != &rhs)
+    {
+        this->dataBase = rhs.dataBase;
+        this->inputFile = rhs.inputFile;
+    }
     return (*this);
 }
 
@@ -83,10 +88,7 @@ void Data::fillInput(std::string inputFile)
                     flag = true;
                 }
                 else
-                {
-                    //std::cout << "Error: bad input => " << line.substr(position + 1, line.length()) << std::endl;
                     flag = false;
-                }
             }
             if (flag == true)
             {
@@ -111,18 +113,11 @@ bool Data::validateDate(std::string strDate)
     
     ss >> std::get_time(&date, "%Y-%m-%d");
     if (ss.fail())
-    {
-        //std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
-    }
     std::ostringstream oss2;
     oss2 << std::put_time(&date, "%F");
     if (oss2.str() != strDate)
-    {
-        //std::cout << "Dans validateDate" << std::endl;
-        //std::cout << "Error: bad input => " << strDate << std::endl;
         return (false);
-    }
     return (true);
 }
 
@@ -172,7 +167,6 @@ void Data::printBTC(void)
             }
             if (!validateDate(inIt->first))
             {
-                //std::cout << "dans printBTC" << std::endl;
                 std::cout << "Error: bad input => " << inIt->first << std::endl;
                 break;
             }
@@ -208,5 +202,3 @@ bool Data::valueOD(std::string value)
     }
     return (true);
 }
-
-//TODO check triple print on 2022-04-4
