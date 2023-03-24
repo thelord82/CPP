@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/24 10:58:51 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/24 11:38:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void RPN::fillStack(std::string expression)
     }
 
     //THIS prints the content of the stack in the good order
-    //std::cout << "--------------" << std::endl;
-    //std::cout << "printing the stack contents : " << std::endl;
-    //while (!_rpn.empty())
-    //{
-    //    std::cout << "top = " << _rpn.top() << std::endl;
-    //    _rpn.pop();
-    //}
+    std::cout << "--------------" << std::endl;
+    std::cout << "printing the stack contents : " << std::endl;
+    while (!_rpn.empty())
+    {
+        std::cout << "top = " << _rpn.top() << std::endl;
+        _rpn.pop();
+    }
 }
