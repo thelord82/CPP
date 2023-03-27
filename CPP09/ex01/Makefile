@@ -27,8 +27,9 @@ RM		=	rm -rf
 
 # Dir and file names
 NAME	=	RPN
-SRCS	=	main.cpp	\
-			RPN.cpp
+SRCS	=	main.cpp		\
+			RPN.cpp			\
+			Exception.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 INC		=	$(wildcard *.hpp)
 

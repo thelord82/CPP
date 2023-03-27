@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:05 by malord            #+#    #+#             */
-/*   Updated: 2023/03/24 10:37:32 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/27 15:59:56 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,24 @@ int main(int argc, char **argv)
     try
     {
         if (argc != 2)
-            throw std::exception();
+            throw MyException::NoQuotesException();
         test.fillStack(argv[1]);
+        test.printRPN();
 
     }
-    catch (std::exception &e)
+    catch (MyException::NoQuotesException &nqe)
     {
-        std::cerr << "You must input one reverse polish notation between double quotes" << std::endl;
+        std::cerr << nqe.what() << std::endl;
+    }
+    catch (MyException::WrongInputException &wie)
+    {
+        std::cerr << wie.what() << std::endl;
+    }
+    catch (MyException::HigherNumberException &hne)
+    {
+        std::cerr << hne.what() << std::endl;
     }
     return (0);
 }
+
+// TODO coder la logique qui se retrouve dans ta reMarkable.
