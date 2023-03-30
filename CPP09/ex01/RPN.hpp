@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:09 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 09:43:16 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 11:42:35 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class RPN
 private:
     std::stack<char> _rpn;
     std::stack<int> _digits;
-    //std::stack<char> _operators;
 public:
     RPN(void);
     RPN(const RPN &copy);

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 09:44:12 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 11:43:26 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RPN::RPN(void)
     // std::cout << "Default constructor called" << std::endl;
 }
 
-RPN::RPN(const RPN &copy) : _rpn(copy._rpn)
+RPN::RPN(const RPN &copy) : _rpn(copy._rpn), _digits(copy._digits)
 {
     // std::cout << "Copy constructor called" << std::endl;
     *this = copy;
@@ -28,6 +28,7 @@ RPN &RPN::operator=(const RPN &rhs)
     if (this != &rhs)
     {
         this->_rpn = rhs._rpn;
+        this->_digits = rhs._digits;
     }
     return (*this);
 }
@@ -63,7 +64,12 @@ void RPN::fillStack(std::string expression)
         }
         len = 0;
         if (isdigit(expression.at(i)) || isOperator(expression.at(i)))
-            tmpStack.push(expression.at(i));
+        {
+            if (!isOperator(expression.at(i)))
+                tmpStack.push(expression.at(i) - 48);
+            else
+                tmpStack.push(expression.at(i));
+        }
         else
             throw MyException::WrongInputException();
     }
@@ -71,47 +77,37 @@ void RPN::fillStack(std::string expression)
     {
         _rpn.push(tmpStack.top());
         tmpStack.pop();
-    }
-    // THIS prints stack _rpn
-    //std::cout << "--------------" << std::endl;
-    //std::cout << "Printing the stack contents : " << std::endl;
-    //while (!_rpn.empty())
-    //{
-    //    std::cout << "rpn top = " << _rpn.top() << std::endl;
-    //    _rpn.pop();
-    //}   
+    } 
 }
 
 long RPN::doOperation(void)
 {
-    long res = (_digits.top() - 48);
+    long res = (_digits.top());
     _digits.pop();
-
-    while (!_digits.empty())
+    int num = (_digits.top());
+    _digits.pop();
+    switch (_rpn.top())
     {
-        int num = (_digits.top() - 48);
-        _digits.pop();
-        
-        switch (_rpn.top())
-        {
-            case '+' :
-                res += num;
-                break;
-                
-            case '-' :
-                res -= num;
-                break;
-                
-            case '*' :
-                res *= num;
-                break;
-                
-            case '/' :
-                res /= num;
-                break;
-        }
+        case '+' :
+            res += (num);
+            _digits.push(res);
+            return (res);
+            
+        case '-' :
+            res = num - res;
+            _digits.push(res);
+            return (res);
+            
+        case '*' :
+            res *= (num);
+            _digits.push(res);
+            return (res);
+            
+        case '/' :
+            res /= (num);
+            _digits.push(res);
+            return (res);
     }
-    
     return (res);
 }
 
@@ -129,11 +125,24 @@ void RPN::printRPN(void)
         if (_digits.size() < 2)
             std::cerr << "Input error" << std::endl;
         else
-            result += doOperation();
+            result = doOperation();
         _rpn.pop();
     }
-    std::cout << "Result = " << result << std::endl;
+    if (_digits.size() > 1)
+    {
+        std::stack<int> printStack;
+        while (!_digits.empty())
+        {
+            printStack.push(_digits.top());
+            _digits.pop();
+        }
+        while (!printStack.empty())
+        {
+            std::cout << printStack.top() << " ";
+            printStack.pop();
+        }
+        std::cout << std::endl;
+    }
+    else
+        std::cout << result << std::endl;
 }
-
-//TODO Ajuster doOperation pour ne prendre que 2 chiffres quand il reste des operateurs
-//TODO Faire une fonction final operation pour vider la stack de chiffres avec dernier operateur
