@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:05 by malord            #+#    #+#             */
-/*   Updated: 2023/03/27 15:59:56 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 08:09:54 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ int main(int argc, char **argv)
     return (0);
 }
 
-// TODO coder la logique qui se retrouve dans ta reMarkable.

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/27 15:11:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 09:44:12 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ bool RPN::isOperator(char c) const
 void RPN::fillStack(std::string expression)
 {
     unsigned int index, len = 0;
+    std::stack<char> tmpStack;
     for (unsigned long i = 0; i < expression.length(); ++i)
     {
         if (expression.at(i) == ' ')
@@ -62,12 +63,16 @@ void RPN::fillStack(std::string expression)
         }
         len = 0;
         if (isdigit(expression.at(i)) || isOperator(expression.at(i)))
-            _rpn.push(expression.at(i));
+            tmpStack.push(expression.at(i));
         else
             throw MyException::WrongInputException();
     }
-
-    //// THIS prints stack _rpn
+    while (!tmpStack.empty())
+    {
+        _rpn.push(tmpStack.top());
+        tmpStack.pop();
+    }
+    // THIS prints stack _rpn
     //std::cout << "--------------" << std::endl;
     //std::cout << "Printing the stack contents : " << std::endl;
     //while (!_rpn.empty())
@@ -77,20 +82,37 @@ void RPN::fillStack(std::string expression)
     //}   
 }
 
-long RPN::doOperation(char op, char one, char two)
+long RPN::doOperation(void)
 {
-    switch (op)
+    long res = (_digits.top() - 48);
+    _digits.pop();
+
+    while (!_digits.empty())
     {
-        case '+' :
-            return ((one - 48) + (two - 48));
-        case '-' :
-            return ((one - 48) - (two - 48));
-        case '*' :
-            return ((one - 48) * (two - 48));
-        case '/' :
-            return ((one - 48) / (two - 48));
+        int num = (_digits.top() - 48);
+        _digits.pop();
+        
+        switch (_rpn.top())
+        {
+            case '+' :
+                res += num;
+                break;
+                
+            case '-' :
+                res -= num;
+                break;
+                
+            case '*' :
+                res *= num;
+                break;
+                
+            case '/' :
+                res /= num;
+                break;
+        }
     }
-    return (-1);
+    
+    return (res);
 }
 
 void RPN::printRPN(void)
@@ -99,31 +121,19 @@ void RPN::printRPN(void)
     
     while (!_rpn.empty())
     {
-        while (isOperator(_rpn.top()))
-        {
-            _operators.push(_rpn.top());
-            _rpn.pop();
-            if (_rpn.empty())
-                break;
-        }
-
-        while (isdigit(_rpn.top()))
+        while (!isOperator(_rpn.top()))
         {
             _digits.push(_rpn.top());
             _rpn.pop();
-            if (_rpn.empty())
-                break;
         }
-
-        if (_digits.size() < 2 && !_rpn.empty())
-            throw MyException::WrongInputException();
-
-        // THIS is probably garbage
-        //int one = _rpn.top();
-        //_rpn.pop();
-        //int two = _rpn.top();
-        //result += doOperation(_operators.top(), one, two);
-        //_operators.pop();
+        if (_digits.size() < 2)
+            std::cerr << "Input error" << std::endl;
+        else
+            result += doOperation();
+        _rpn.pop();
     }
     std::cout << "Result = " << result << std::endl;
 }
+
+//TODO Ajuster doOperation pour ne prendre que 2 chiffres quand il reste des operateurs
+//TODO Faire une fonction final operation pour vider la stack de chiffres avec dernier operateur
