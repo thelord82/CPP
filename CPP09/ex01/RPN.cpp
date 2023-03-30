@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 11:43:26 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 11:55:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ RPN &RPN::operator=(const RPN &rhs)
 {
     if (this != &rhs)
     {
-        this->_rpn = rhs._rpn;
+        this->_rpn    = rhs._rpn;
         this->_digits = rhs._digits;
     }
     return (*this);
@@ -46,7 +46,7 @@ bool RPN::isOperator(char c) const
 
 void RPN::fillStack(std::string expression)
 {
-    unsigned int index, len = 0;
+    unsigned int     index, len = 0;
     std::stack<char> tmpStack;
     for (unsigned long i = 0; i < expression.length(); ++i)
     {
@@ -77,7 +77,7 @@ void RPN::fillStack(std::string expression)
     {
         _rpn.push(tmpStack.top());
         tmpStack.pop();
-    } 
+    }
 }
 
 long RPN::doOperation(void)
@@ -88,25 +88,25 @@ long RPN::doOperation(void)
     _digits.pop();
     switch (_rpn.top())
     {
-        case '+' :
-            res += (num);
-            _digits.push(res);
-            return (res);
-            
-        case '-' :
-            res = num - res;
-            _digits.push(res);
-            return (res);
-            
-        case '*' :
-            res *= (num);
-            _digits.push(res);
-            return (res);
-            
-        case '/' :
-            res /= (num);
-            _digits.push(res);
-            return (res);
+    case '+':
+        res += (num);
+        _digits.push(res);
+        return (res);
+
+    case '-':
+        res = num - res;
+        _digits.push(res);
+        return (res);
+
+    case '*':
+        res *= (num);
+        _digits.push(res);
+        return (res);
+
+    case '/':
+        res /= (num);
+        _digits.push(res);
+        return (res);
     }
     return (res);
 }
@@ -114,7 +114,7 @@ long RPN::doOperation(void)
 void RPN::printRPN(void)
 {
     long result = 0;
-    
+
     while (!_rpn.empty())
     {
         while (!isOperator(_rpn.top()))
@@ -128,6 +128,7 @@ void RPN::printRPN(void)
             result = doOperation();
         _rpn.pop();
     }
+    // THIS only uses a temp stack to print the result in the "right" order
     if (_digits.size() > 1)
     {
         std::stack<int> printStack;

@@ -6,14 +6,14 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:05 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 08:09:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 11:55:53 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 int main(int argc, char **argv)
 {
-    (void) argc;
+    (void)argc;
     RPN test;
     try
     {
@@ -21,7 +21,6 @@ int main(int argc, char **argv)
             throw MyException::NoQuotesException();
         test.fillStack(argv[1]);
         test.printRPN();
-
     }
     catch (MyException::NoQuotesException &nqe)
     {
@@ -37,4 +36,3 @@ int main(int argc, char **argv)
     }
     return (0);
 }
-
