@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 08:49:08 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 11:56:04 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:05:11 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ const char *MyException::WrongInputException::what() const throw()
 const char *MyException::HigherNumberException::what() const throw()
 {
     return ("Numbers must be positive digits only (0-9)");
+}
+
+const char *MyException::InputErrorException::what() const throw()
+{
+    return ("Input Error");
 }

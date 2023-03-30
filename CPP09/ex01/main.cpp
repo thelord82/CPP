@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:05 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 11:55:53 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:06:03 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int main(int argc, char **argv)
     catch (MyException::HigherNumberException &hne)
     {
         std::cerr << hne.what() << std::endl;
+    }
+    catch (MyException::InputErrorException &iee)
+    {
+        std::cerr << iee.what() << std::endl;
     }
     return (0);
 }

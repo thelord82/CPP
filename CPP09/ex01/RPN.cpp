@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 11:55:59 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/30 12:05:37 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void RPN::printRPN(void)
             _rpn.pop();
         }
         if (_digits.size() < 2)
-            std::cerr << "Input error" << std::endl;
+            throw MyException::InputErrorException();
         else
             result = doOperation();
         _rpn.pop();
