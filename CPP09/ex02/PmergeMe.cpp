@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 15:32:18 by malord           ###   ########.fr       */
+/*   Updated: 2023/03/31 11:48:50 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,45 @@ void PmergeMe::fillVector(char **argv)
         std::cout << "Vector contents : " << *it << std::endl; 
 }
 
-bool checkNumbers(int argc, char **argv)
+bool PmergeMe::checkNumbers(int argc, char **argv)
 {
+    std::string sequence(argv[1]);
+    std::string buffer;
     if (argc <= 1)
         return (false);
-    for (int i = 1; argv[i]; ++i)
+    if (argc == 2)
     {
-        if (std::stod(argv[i]) < 0 || std::stod(argv[i]) > INT_MAX)
-            return (false);
+        for (std::string::iterator it = sequence.begin(); it != sequence.end() || !buffer.empty(); ++it)
+        {
+            if (it != sequence.end() && *it != ' ')
+                buffer.push_back(*it);
+            else if (!buffer.empty())
+            {
+                if (std::stoi(buffer) < 0 || std::stoi(buffer) > INT_MAX)
+                    return (false);
+                else
+                {
+                    _dataV.push_back(std::stod(buffer));
+                    _dataMS.insert(std::stod(buffer));
+                    std::cout << "vector = " << std::stod(buffer) << std::endl;
+                    //std::cout << "multiset = " << std::stod(buffer) << std::endl;
+                    buffer.clear();
+                }
+            }
+            // THIS is a cheap patch necessary to not go over sequence.end()
+            if (it == sequence.end())
+                it--;
+        }    
+    }
+    else
+    {   
+        for (int i = 1; argv[i]; ++i)
+        {
+            if (std::stoi(argv[i]) < 0 || std::stod(argv[i]) > INT_MAX)
+                return (false);
+            else
+                std::cout << "test = " << std::stod(argv[i]) << std::endl;
+        }
     }
     return (true);
 }
