@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/03/31 11:48:50 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/03 11:41:59 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 PmergeMe::PmergeMe(void)
 {
-    //std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
 }
 
-PmergeMe::PmergeMe(const PmergeMe &copy) : _dataV(copy._dataV), _dataMS(copy._dataMS)
+PmergeMe::PmergeMe(const PmergeMe &copy) : _rawData(copy._rawData), _dataMS(copy._dataMS)
 {
     *this = copy;
 }
@@ -26,32 +26,35 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &rhs)
 {
     if (this != &rhs)
     {
-        this->_dataV = rhs._dataV;
-        this->_dataMS = rhs._dataMS;
+        this->_rawData = rhs._rawData;
+        this->_dataMS  = rhs._dataMS;
     }
     return (*this);
 }
 
 PmergeMe::~PmergeMe(void)
 {
-    //std::cout << "Default destructor called" << std::endl;
+    // std::cout << "Default destructor called" << std::endl;
 }
 
-void PmergeMe::fillVector(char **argv)
-{
-    for (int i = 1; argv[i]; ++i)
-        _dataV.push_back(std::stod(argv[i]));
-
-    for (std::vector<int>::iterator it = _dataV.begin(); it != _dataV.end(); ++ it)
-        std::cout << "Vector contents : " << *it << std::endl; 
-}
+// THIS may be useless now
+// void PmergeMe::fillVector(char **argv)
+//{
+//    for (int i = 1; argv[i]; ++i)
+//        _dataV.push_back(std::stod(argv[i]));
+//
+//    for (std::vector<int>::iterator it = _dataV.begin(); it != _dataV.end(); ++ it)
+//        std::cout << "Vector contents : " << *it << std::endl;
+//}
 
 bool PmergeMe::checkNumbers(int argc, char **argv)
 {
-    std::string sequence(argv[1]);
-    std::string buffer;
+    std::vector<int> tmpVec;
     if (argc <= 1)
         return (false);
+    std::string sequence(argv[1]);
+    std::string buffer;
+    int         i = 69;
     if (argc == 2)
     {
         for (std::string::iterator it = sequence.begin(); it != sequence.end() || !buffer.empty(); ++it)
@@ -64,27 +67,45 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
                     return (false);
                 else
                 {
-                    _dataV.push_back(std::stod(buffer));
+                    tmpVec.push_back(std::stod(buffer));
+                    _rawData.push_back(std::stod(buffer));
+                    //_pairVec.push_back(std::make_pair(std::stod(buffer), i));
                     _dataMS.insert(std::stod(buffer));
-                    std::cout << "vector = " << std::stod(buffer) << std::endl;
-                    //std::cout << "multiset = " << std::stod(buffer) << std::endl;
                     buffer.clear();
+                    ++i;
                 }
             }
             // THIS is a cheap patch necessary to not go over sequence.end()
             if (it == sequence.end())
                 it--;
-        }    
+        }
     }
     else
-    {   
+    {
         for (int i = 1; argv[i]; ++i)
         {
             if (std::stoi(argv[i]) < 0 || std::stod(argv[i]) > INT_MAX)
                 return (false);
             else
-                std::cout << "test = " << std::stod(argv[i]) << std::endl;
+                _rawData.push_back(std::stod(argv[i]));
+            // std::cout << "test = " << std::stod(argv[i]) << std::endl;
         }
     }
+    pairData();
+    // THIS is a print test
+    //for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
+    //    std::cout << "Vector contains : " << *it << std::endl;
+    // for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it != _pairVec.end(); ++it)
+    //     std::cout << "Vector contains: " << it->first << " and " << it->second << std::endl;
+    // for (std::multiset<int>::iterator it = _dataMS.begin(); it != _dataMS.end(); ++it)
+    //     std::cout << "Multiset contains: " << *it << std::endl;
     return (true);
+}
+
+void PmergeMe::pairData(void)
+{
+    for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
+        _pairVec.push_back(std::make_pair(*it, *(it + 1)));
+    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it !=  _pairVec.end(); ++it)
+        std::cout << "Test pair = " << it->first << " et " << it->second << std::endl;
 }
