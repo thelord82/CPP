@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/03 14:48:50 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/03 14:54:03 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
     }
     pairData();
     // THIS is a print test
-    //for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
+    // for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
     //    std::cout << "Vector contains : " << *it << std::endl;
     // for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it != _pairVec.end(); ++it)
     //     std::cout << "Vector contains: " << it->first << " and " << it->second << std::endl;
@@ -98,7 +98,7 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
     return (true);
 }
 
-//THIS pairs the data and controls if the number of elements is odd
+// THIS pairs the data and controls if the number of elements is odd
 void PmergeMe::pairData(void)
 {
     for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
@@ -116,15 +116,17 @@ void PmergeMe::pairData(void)
         if (it->first > it->second && it->second >= 0)
             std::swap(it->first, it->second);
     }
-    //THIS is a print test
-    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it !=  _pairVec.end(); ++it)
+    // THIS is a print test
+    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it != _pairVec.end(); ++it)
         std::cout << "BEFORE SWAP = " << it->first << " et " << it->second << std::endl;
+    // THIS sorts the vector according to the second value
     std::sort(_pairVec.begin(), _pairVec.end(), compSecond);
-    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it !=  _pairVec.end(); ++it)
+    // THIS prints the result after the swap
+    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it != _pairVec.end(); ++it)
         std::cout << "AFTER SWAP = " << it->first << " et " << it->second << std::endl;
 }
 
-bool compSecond(std::pair<int, int>& p1, std::pair<int, int>& p2) 
+bool compSecond(std::pair<int, int> &p1, std::pair<int, int> &p2)
 {
     if (p1.second == -1)
         return (false);
