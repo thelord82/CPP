@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/03 11:41:59 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/03 11:49:18 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,19 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
     return (true);
 }
 
+//THIS pairs the data and controls if the number of elements is odd
 void PmergeMe::pairData(void)
 {
     for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
-        _pairVec.push_back(std::make_pair(*it, *(it + 1)));
+    {
+        if ((it + 1) != _rawData.end())
+        {
+            _pairVec.push_back(std::make_pair(*it, *(it + 1)));
+            ++it;
+        }
+        else
+            _pairVec.push_back(std::make_pair(*it, -1));
+    }
     for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it !=  _pairVec.end(); ++it)
         std::cout << "Test pair = " << it->first << " et " << it->second << std::endl;
 }
