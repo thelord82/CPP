@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:15 by malord            #+#    #+#             */
-/*   Updated: 2023/04/03 09:33:43 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/03 12:40:22 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     {
         PmergeMe instance;
         if (!instance.checkNumbers(argc, argv))
-            std::cout << "ERROR BITCH" << std::endl;
+            std::cerr << "ERROR BITCH" << std::endl;
     }
     catch (std::invalid_argument &ia)
     {

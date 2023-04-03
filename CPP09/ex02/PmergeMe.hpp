@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/03 11:38:13 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/03 14:47:27 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ public:
     bool checkNumbers(int argc, char **argv);
     void pairData(void);
 };
+    bool compSecond(std::pair<int, int>& p1, std::pair<int, int>& p2);
 
 #endif

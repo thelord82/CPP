@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/03 11:49:18 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/03 14:48:50 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ PmergeMe::~PmergeMe(void)
 
 bool PmergeMe::checkNumbers(int argc, char **argv)
 {
-    std::vector<int> tmpVec;
     if (argc <= 1)
         return (false);
     std::string sequence(argv[1]);
@@ -67,9 +66,7 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
                     return (false);
                 else
                 {
-                    tmpVec.push_back(std::stod(buffer));
                     _rawData.push_back(std::stod(buffer));
-                    //_pairVec.push_back(std::make_pair(std::stod(buffer), i));
                     _dataMS.insert(std::stod(buffer));
                     buffer.clear();
                     ++i;
@@ -88,7 +85,6 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
                 return (false);
             else
                 _rawData.push_back(std::stod(argv[i]));
-            // std::cout << "test = " << std::stod(argv[i]) << std::endl;
         }
     }
     pairData();
@@ -115,6 +111,22 @@ void PmergeMe::pairData(void)
         else
             _pairVec.push_back(std::make_pair(*it, -1));
     }
+    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it != _pairVec.end(); ++it)
+    {
+        if (it->first > it->second && it->second >= 0)
+            std::swap(it->first, it->second);
+    }
+    //THIS is a print test
     for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it !=  _pairVec.end(); ++it)
-        std::cout << "Test pair = " << it->first << " et " << it->second << std::endl;
+        std::cout << "BEFORE SWAP = " << it->first << " et " << it->second << std::endl;
+    std::sort(_pairVec.begin(), _pairVec.end(), compSecond);
+    for (std::vector<std::pair<int, int> >::iterator it = _pairVec.begin(); it !=  _pairVec.end(); ++it)
+        std::cout << "AFTER SWAP = " << it->first << " et " << it->second << std::endl;
+}
+
+bool compSecond(std::pair<int, int>& p1, std::pair<int, int>& p2) 
+{
+    if (p1.second == -1)
+        return (false);
+    return p1.second < p2.second;
 }
