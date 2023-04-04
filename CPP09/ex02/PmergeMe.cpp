@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/04 12:05:33 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/04 12:11:46 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,9 @@ bool compSecond(std::pair<int, int> &p1, std::pair<int, int> &p2)
         return (false);
     return p1.second < p2.second;
 }
+
+//TODO To template or not to template, that is the question.
+//REFACTOR functions
 
 //TODO use std::transform to separate the pairs of _pairVec vector. 
 //TODO insert the first values at the right place in the second vector, respecting the algorithm
