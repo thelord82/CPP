@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/03 14:47:27 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/04 12:03:50 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <set>
+#include <unordered_map>
+#include <deque>
 class PmergeMe
 {
 private:
     std::vector<int> _rawData;
     std::vector<std::pair<int, int> > _pairVec;   
-    std::multiset<int> _dataMS; // Using multiset will already sort the data, so algorithm should have a runtime of 0! 
+    std::deque<std::pair<int, int> > _pairDeq;
 public:
     PmergeMe(void);
     PmergeMe(const PmergeMe &copy);
