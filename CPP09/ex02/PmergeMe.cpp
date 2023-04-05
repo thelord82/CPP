@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/05 10:51:11 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/05 16:11:21 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,71 @@ bool PmergeMe::checkAndFill(int argc, char **argv)
     }
     _deq.assign(_vec.begin(), _vec.end());
     
-    //THIS will go in the algo function
-    swapData(_vec.begin(), _vec.end());
-    swapData(_deq.begin(), _deq.end());
+    mergeInsert();
 
     // THIS will be removed (print test)
-    printContainer(_vec.begin(), _vec.end());
-    std::cout << "------------" << std::endl;
-    printContainer(_deq.begin(), _deq.end());
+    //printContainer(_vec.begin(), _vec.end());
+    //printContainer(_deq.begin(), _deq.end());
     return (true);
+}
+
+void PmergeMe::mergeInsert(void)
+{
+    swapData(_vec.begin(), _vec.end());
+    printContainer(_vec.begin(), _vec.end());
+    sortVector();
+    std::cout << "------------" << std::endl;
+    swapData(_deq.begin(), _deq.end());
+    std::cout << "DEQUE" << std::endl;
+    printContainer(_deq.begin(), _deq.end());
+    //sortDeque();
+}
+
+void PmergeMe::sortVector(void)
+{
+    int last;
+    bool odd = false;
+    std::vector<int>::iterator it = _vec.begin();
+    int value;
+    size_t size = _vec.end() - _vec.begin();
+    if (size % 2)
+    {
+        --size;
+        last = *(_vec.end() - 1);
+        odd = true;
+    }
+    for (unsigned long i = 1; i <= size / 2; ++i)
+    {
+        ++it;
+        value = _vec[i];
+        _vec.erase(_vec.begin() + i);
+        _vec.push_back(value);
+    }
+    if (odd == true)
+    {
+        _vec.erase(_vec.begin() + (_vec.size() / 2));
+        _vec.push_back(last);
+    }
+    
+    sortHalf(_vec.begin(), _vec.begin() + (_vec.size() / 2));
+    printContainer(_vec.begin(), _vec.end());
+}
+
+void PmergeMe::sortDeque(void)
+{
+
+}
+
+template <typename Iterator>void sortHalf(Iterator begin, Iterator end)
+{
+    for (Iterator it = begin; it != end; ++it)
+    {
+        for (Iterator it2 = (it + 1); it2 != end; ++it2)
+        {
+            if (*it > *it2)
+                std::swap(*it, *it2);
+        }
+    }
 }
 
 template <typename Iterator>void printContainer(Iterator begin, Iterator end)
@@ -97,13 +153,17 @@ template <typename Iterator>void printContainer(Iterator begin, Iterator end)
 
 template <typename Iterator>void swapData(Iterator begin, Iterator end)
 {
-    for (Iterator it = begin; it != end; ++it)
+    Iterator it = begin;
+    size_t size = end - begin;
+    if (size % 2)
+        --size;
+    for (size_t i = 0; i <= size; ++i)
     {
         if (*it > *(it + 1) && (it + 1) != end)
         {
             std::swap(*it, *(it + 1));
-            ++it;
         }
+        it += 2;
     }
 }
 
