@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/04 14:22:49 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/05 10:34:37 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,16 @@
 class PmergeMe
 {
 private:
-    std::vector<int> _rawData;
+    
     std::vector<int> _vec;
     std::deque<int> _deq;
-    //std::vector<std::pair<int, int> > _pairVec;   
-    //std::deque<std::pair<int, int> > _pairDeq;
+    
 public:
     PmergeMe(void);
     PmergeMe(const PmergeMe &copy);
     PmergeMe &operator=(const PmergeMe &rhs);
     virtual ~PmergeMe();
-    void fillVector(char **argv);
-    bool checkNumbers(int argc, char **argv);
-    void pairData(void);
+    bool checkAndFill(int argc, char **argv);
 };
 
 template <typename Iterator>

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/04 15:09:47 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/05 10:51:11 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ PmergeMe::PmergeMe(void)
     // std::cout << "Default constructor called" << std::endl;
 }
 
-PmergeMe::PmergeMe(const PmergeMe &copy) : _rawData(copy._rawData), _deq(copy._deq)
+PmergeMe::PmergeMe(const PmergeMe &copy) : _vec(copy._vec), _deq(copy._deq)
 {
     *this = copy;
 }
@@ -26,7 +26,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &rhs)
 {
     if (this != &rhs)
     {
-        this->_rawData = rhs._rawData;
+        this->_vec = rhs._vec;
         this->_deq  = rhs._deq;
     }
     return (*this);
@@ -37,16 +37,14 @@ PmergeMe::~PmergeMe(void)
     // std::cout << "Default destructor called" << std::endl;
 }
 
-// THIS may need a refactor to be less clunky
-bool PmergeMe::checkNumbers(int argc, char **argv)
+bool PmergeMe::checkAndFill(int argc, char **argv)
 {
     if (argc <= 1)
         return (false);
-    std::string sequence(argv[1]);
-    std::string buffer;
-    int         i = 69;
     if (argc == 2)
     {
+        std::string sequence(argv[1]);
+        std::string buffer;
         for (std::string::iterator it = sequence.begin(); it != sequence.end() || !buffer.empty(); ++it)
         {
             if (it != sequence.end() && *it != ' ')
@@ -57,9 +55,8 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
                     return (false);
                 else
                 {
-                    _rawData.push_back(std::stod(buffer));
+                    _vec.push_back(std::stoi(buffer));
                     buffer.clear();
-                    ++i;
                 }
             }
             // THIS is a cheap patch necessary to not go over sequence.end()
@@ -71,35 +68,31 @@ bool PmergeMe::checkNumbers(int argc, char **argv)
     {
         for (int i = 1; argv[i]; ++i)
         {
-            if (std::stoi(argv[i]) < 0 || std::stod(argv[i]) > INT_MAX)
+            if (std::stoi(argv[i]) < 0 || std::stoi(argv[i]) > INT_MAX)
                 return (false);
             else
-                _rawData.push_back(std::stod(argv[i]));
+                _vec.push_back(std::stoi(argv[i]));
         }
     }
-    pairData();
-    return (true);
-}
-
-// THIS pairs the data and controls if the number of elements is odd
-void PmergeMe::pairData(void)
-{
-    for (std::vector<int>::iterator it = _rawData.begin(); it != _rawData.end(); ++it)
-    {
-            _vec.push_back(*it);
-            _deq.push_back(*it);
-    }
+    _deq.assign(_vec.begin(), _vec.end());
+    
+    //THIS will go in the algo function
     swapData(_vec.begin(), _vec.end());
     swapData(_deq.begin(), _deq.end());
-    printContainer(_vec.begin(), _vec.end()); // Will be removed
-    std::cout << "------------" << std::endl; // Will be removed
-    printContainer(_deq.begin(), _deq.end()); // Will be removed
+
+    // THIS will be removed (print test)
+    printContainer(_vec.begin(), _vec.end());
+    std::cout << "------------" << std::endl;
+    printContainer(_deq.begin(), _deq.end());
+    return (true);
 }
 
 template <typename Iterator>void printContainer(Iterator begin, Iterator end)
 {
+    std::cout << "Content = ";
     for (Iterator it = begin; it != end; ++it)
-        std::cout << "content = " << *it << std::endl;
+        std::cout << *it << " ";
+    std::cout << std::endl;
 }
 
 template <typename Iterator>void swapData(Iterator begin, Iterator end)
