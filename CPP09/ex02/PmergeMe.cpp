@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/05 16:11:21 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/05 16:52:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ bool PmergeMe::checkAndFill(int argc, char **argv)
 void PmergeMe::mergeInsert(void)
 {
     swapData(_vec.begin(), _vec.end());
-    printContainer(_vec.begin(), _vec.end());
+    //printContainer(_vec.begin(), _vec.end());
     sortVector();
-    std::cout << "------------" << std::endl;
-    swapData(_deq.begin(), _deq.end());
-    std::cout << "DEQUE" << std::endl;
-    printContainer(_deq.begin(), _deq.end());
+    //std::cout << "------------" << std::endl;
+    //swapData(_deq.begin(), _deq.end());
+    //std::cout << "DEQUE" << std::endl;
+    //printContainer(_deq.begin(), _deq.end());
     //sortDeque();
 }
 
@@ -123,12 +123,42 @@ void PmergeMe::sortVector(void)
     }
     
     sortHalf(_vec.begin(), _vec.begin() + (_vec.size() / 2));
+    sortRest(_vec.begin() + _vec.size() / 2, _vec.end());
     printContainer(_vec.begin(), _vec.end());
+    //std::cout << "me rend pas" << std::endl;
 }
 
 void PmergeMe::sortDeque(void)
 {
 
+}
+
+template <typename Iterator>void printContainer(Iterator begin, Iterator end)
+{
+    std::cout << "Content = " << std::endl;
+    int rank = 0;
+    for (Iterator it = begin; it != end; ++it)
+    {
+        std::cout << rank << " " << *it << std::endl;
+        rank++;
+    }
+    std::cout << std::endl;
+}
+
+template <typename Iterator>void swapData(Iterator begin, Iterator end)
+{
+    Iterator it = begin;
+    size_t size = end - begin;
+    if (size % 2)
+        --size;
+    for (size_t i = 0; i <= size; ++i)
+    {
+        if ((it + 1) != end && *it > *(it + 1))
+        {
+            std::swap(*it, *(it + 1));
+        }
+        it += 2;
+    }
 }
 
 template <typename Iterator>void sortHalf(Iterator begin, Iterator end)
@@ -143,27 +173,18 @@ template <typename Iterator>void sortHalf(Iterator begin, Iterator end)
     }
 }
 
-template <typename Iterator>void printContainer(Iterator begin, Iterator end)
+template <typename Iterator>void PmergeMe::sortRest(Iterator begin, Iterator end)
 {
-    std::cout << "Content = ";
+    std::vector<int>::iterator itVec = _vec.begin();
+    int value;
     for (Iterator it = begin; it != end; ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-}
-
-template <typename Iterator>void swapData(Iterator begin, Iterator end)
-{
-    Iterator it = begin;
-    size_t size = end - begin;
-    if (size % 2)
-        --size;
-    for (size_t i = 0; i <= size; ++i)
     {
-        if (*it > *(it + 1) && (it + 1) != end)
-        {
-            std::swap(*it, *(it + 1));
-        }
-        it += 2;
+        value = *it;
+        while (*it > *itVec)
+            ++itVec;
+        _vec.erase(it);
+        _vec.insert(itVec, value);
+        itVec = _vec.begin();
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/05 14:02:53 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/05 16:27:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ public:
     virtual ~PmergeMe();
     bool checkAndFill(int argc, char **argv);
     void mergeInsert(void);
+    template <typename Iterator>
+    void sortRest(Iterator begin, Iterator end);
 };
 
 template <typename Iterator>
@@ -43,6 +45,8 @@ void swapData(Iterator begin, Iterator end);
 
 template <typename Iterator>
 void sortHalf(Iterator begin, Iterator end);
+
+
 
 //template <typename Container>
 //class PmergeMe
