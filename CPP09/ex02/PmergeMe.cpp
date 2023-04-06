@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/06 12:05:43 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/06 12:07:12 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,3 +171,4 @@ void PmergeMe<Container>::sortRest(Iterator begin, Iterator end)
 
 //TODO deque segfaults on 512+
 //TODO deque do not sort correctly on odd number of elements
+//TODO lldb the behavior of deque on 5 elements (do not sort ok right now)
