@@ -6,18 +6,20 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:15 by malord            #+#    #+#             */
-/*   Updated: 2023/04/05 16:42:56 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/06 11:15:01 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include "PmergeMe.cpp"
 
 int main(int argc, char **argv)
 {
     try 
     {
-        PmergeMe instance;
-        if (!instance.checkAndFill(argc, argv))
+        PmergeMe<std::deque<int> > deq;
+        PmergeMe<std::vector<int> > vec;
+        if (!deq.checkAndFill(argc, argv) || !vec.checkAndFill(argc, argv))
             std::cerr << "ERROR BITCH" << std::endl;
     }
     catch (std::invalid_argument &ia)

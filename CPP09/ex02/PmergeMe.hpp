@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/05 16:27:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/06 11:15:44 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+
+template <typename Container>
 class PmergeMe
 {
 private:
-    
-    std::vector<int> _vec;
-    std::deque<int> _deq;
+    Container _container;
     void sortVector();
-    void sortDeque();
     
 public:
     PmergeMe(void);
@@ -35,34 +34,23 @@ public:
     void mergeInsert(void);
     template <typename Iterator>
     void sortRest(Iterator begin, Iterator end);
+    template <typename Iterator>
+    void printContainer(Iterator begin, Iterator end);
+
+    template <typename Iterator>
+    void swapData(Iterator begin, Iterator end);
+    
+    template <typename Iterator>
+    void sortHalf(Iterator begin, Iterator end);
 };
 
-template <typename Iterator>
-void printContainer(Iterator begin, Iterator end);
-
-template <typename Iterator>
-void swapData(Iterator begin, Iterator end);
-
-template <typename Iterator>
-void sortHalf(Iterator begin, Iterator end);
-
-
-
-//template <typename Container>
-//class PmergeMe
-//{
-//    private:
-//        std::vector<int> _rawData;
-//        Container _pairs;
-//    public:
-//        PmergeMe(void);
-//        PmergeMe(const PmergeMe &copy);
-//        PmergeMe &operator=(const PmergeMe &rhs);
-//        virtual ~PmergeMe(void);
+//template <typename Iterator>
+//void printContainer(Iterator begin, Iterator end);
 //
-//        bool checkNumbers(int argc, char **argv);
-//        void pairData(void);
-//};
-//bool compSecond(std::pair<int, int>& p1, std::pair<int, int> &p2);
+//template <typename Iterator>
+//void swapData(Iterator begin, Iterator end);
+//
+//template <typename Iterator>
+//void sortHalf(Iterator begin, Iterator end);
 
 #endif
