@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/06 11:17:26 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/06 12:05:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ template <typename Container>PmergeMe<Container>::PmergeMe(void)
     // std::cout << "Default constructor called" << std::endl;
 }
 
-template <typename Container>PmergeMe<Container>::PmergeMe(const PmergeMe<Container> &copy)
+template <typename Container>PmergeMe<Container>::PmergeMe(const PmergeMe<Container> &copy) : _container(copy._container)
 {
     *this = copy;
 }
@@ -26,8 +26,7 @@ template <typename Container>PmergeMe<Container> &PmergeMe<Container>::operator=
 {
     if (this != &rhs)
     {
-        this->_vec = rhs._vec;
-        //this->_deq  = rhs._deq;
+        this->_container = rhs._container;
     }
     return (*this);
 }
@@ -56,7 +55,6 @@ template <typename Container>bool PmergeMe<Container>::checkAndFill(int argc, ch
                     return (false);
                 else
                 {
-                    //_vec.push_back(std::stoi(buffer));
                     _container.push_back(std::stoi(buffer));
                     buffer.clear();
                 }
@@ -74,48 +72,29 @@ template <typename Container>bool PmergeMe<Container>::checkAndFill(int argc, ch
                 return (false);
             else
                 _container.push_back(std::stoi(argv[i]));
-                //_vec.push_back(std::stoi(argv[i]));
         }
     }
-    //_deq.assign(_vec.begin(), _vec.end());
-    
     mergeInsert();
-
-    // THIS will be removed (print test)
-    //printContainer(_vec.begin(), _vec.end());
-    //printContainer(_deq.begin(), _deq.end());
     return (true);
 }
 
 template <typename Container>void PmergeMe<Container>::mergeInsert(void)
 {
-    //swapData(_vec.begin(), _vec.end());
-
     swapData(_container.begin(), _container.end());
-    //printContainer(_vec.begin(), _vec.end());
-    sortVector();
-    //std::cout << "------------" << std::endl;
-    //swapData(_deq.begin(), _deq.end());
-    //std::cout << "DEQUE" << std::endl;
-    //printContainer(_deq.begin(), _deq.end());
-    //sortDeque();
+    sortContainer();
 }
 
-template <typename Container>void PmergeMe<Container>::sortVector(void)
+template <typename Container>void PmergeMe<Container>::sortContainer(void)
 {
     int last;
     bool odd = false;
-    //std::vector<int>::iterator it = _vec.begin();
-    //typename Container<int>::iterator it = _container.begin();
     typename Container::iterator it = _container.begin();
     
     int value;
-    //size_t size = _vec.end() - _vec.begin();
     size_t size = _container.end() - _container.begin();
     if (size % 2)
     {
         --size;
-        //last = *(_vec.end() - 1);
         last = *(_container.end() - 1);
         odd = true;
     }
@@ -125,16 +104,11 @@ template <typename Container>void PmergeMe<Container>::sortVector(void)
         value = _container[i];
         _container.erase(_container.begin() + i);
         _container.push_back(value);
-        //value = _vec[i];
-        //_vec.erase(_vec.begin() + i);
-        //_vec.push_back(value);
     }
     if (odd == true)
     {
         _container.erase(_container.begin() + (_container.size() / 2));
         _container.push_back(last);
-        //_vec.erase(_vec.begin() + (_vec.size() / 2));
-        //_vec.push_back(last);
     }
 
     sortHalf(_container.begin(), _container.begin() + (_container.size() / 2));
@@ -142,37 +116,6 @@ template <typename Container>void PmergeMe<Container>::sortVector(void)
 
     printContainer(_container.begin(), _container.end());
 }
-
-//void PmergeMe::sortDeque(void)
-//{
-//    int last;
-//    bool odd = false;
-//    std::deque<int>::iterator it = _deq.begin();
-//    int value;
-//    size_t size = _deq.end() - _deq.begin();
-//    if (size % 2)
-//    {
-//        --size;
-//        last = *(_deq.end() - 1);
-//        odd = true;
-//    }
-//    for (unsigned long i = 1; i <= size / 2; ++i)
-//    {
-//        ++it;
-//        value = _deq[i];
-//        _deq.erase(_deq.begin() + i);
-//        _deq.push_back(value);
-//    }
-//    if (odd == true)
-//    {
-//        _deq.erase(_deq.begin() + (_deq.size() / 2));
-//        _deq.push_back(last);
-//    }
-//    
-//    sortHalf(_deq.begin(), _deq.begin() + (_deq.size() / 2));
-//    sortRest(_deq.begin() + _deq.size() / 2, _deq.end());
-//    printContainer(_deq.begin(), _deq.end());
-//}
 
 template<typename Container>template <typename Iterator>void PmergeMe<Container>::printContainer(Iterator begin, Iterator end)
 {
@@ -184,7 +127,8 @@ template<typename Container>template <typename Iterator>void PmergeMe<Container>
 
 template <typename Container>template <typename Iterator>void PmergeMe<Container>::swapData(Iterator begin, Iterator end)
 {
-    Iterator it = begin;
+    //Iterator it = begin;
+    typename Container::iterator it = begin;
     size_t size = end - begin;
     if (size % 2)
         --size;
@@ -212,35 +156,18 @@ template <typename Container>
 template <typename Iterator>
 void PmergeMe<Container>::sortRest(Iterator begin, Iterator end)
 {
-    typename Container::iterator itVec = _container.begin(); // Use _container instead of _vec
+    typename Container::iterator itVec = _container.begin();
     int value;
     for (Iterator it = begin; it != end; ++it)
     {
         value = *it;
         while (*it > *itVec)
             ++itVec;
-        _container.erase(it); // Use _container instead of _vec
-        _container.insert(itVec, value); // Use _container instead of _vec
-        itVec = _container.begin(); // Use _container instead of _vec
+        _container.erase(it);
+        _container.insert(itVec, value); 
+        itVec = _container.begin();
     }
 }
 
-//template <typename Container>
-//class PmergeMe
-//{
-//    private:
-//        std::vector<int> _rawData;
-//        Container _pairs;
-//    public:
-//        PmergeMe(void);
-//        PmergeMe(const PmergeMe &copy);
-//        PmergeMe &operator=(const PmergeMe &rhs);
-//        virtual ~PmergeMe(void);
-//
-//        bool checkNumbers(int argc, char **argv);
-//        void pairData(void);
-//};
-//bool compSecond(std::pair<int, int>& p1, std::pair<int, int> &p2);
-
-//TODO Templating in progress...
- 
+//TODO deque segfaults on 512+
+//TODO deque do not sort correctly on odd number of elements

@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/06 11:15:44 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/06 11:52:56 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class PmergeMe
 {
 private:
     Container _container;
-    void sortVector();
+    void sortContainer();
     
 public:
     PmergeMe(void);
@@ -43,14 +43,5 @@ public:
     template <typename Iterator>
     void sortHalf(Iterator begin, Iterator end);
 };
-
-//template <typename Iterator>
-//void printContainer(Iterator begin, Iterator end);
-//
-//template <typename Iterator>
-//void swapData(Iterator begin, Iterator end);
-//
-//template <typename Iterator>
-//void sortHalf(Iterator begin, Iterator end);
 
 #endif
