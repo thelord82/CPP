@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/06 11:52:56 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/10 16:04:01 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class PmergeMe
 private:
     Container _container;
     void sortContainer();
+    bool isSorted(void);
     
 public:
     PmergeMe(void);

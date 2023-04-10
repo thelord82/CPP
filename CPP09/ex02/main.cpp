@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:15 by malord            #+#    #+#             */
-/*   Updated: 2023/04/06 12:04:08 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/10 17:00:42 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int main(int argc, char **argv)
 {
     try 
     {
-        PmergeMe<std::deque<int> > deq;
-        if (!deq.checkAndFill(argc, argv))
-            std::cerr << "ERROR BITCH" << std::endl;
-        //PmergeMe<std::vector<int> > vec;
-        //if (!vec.checkAndFill(argc, argv))
-        //    std::cerr << "ERROR" << std::endl;
+        //std::cout << "DEQUE SORTING" << std::endl;
+        //PmergeMe<std::deque<int> > deq;
+        //if (!deq.checkAndFill(argc, argv))
+        //    std::cerr << "ERROR BITCH" << std::endl;
+        std::cout << "VECTOR SORTING" << std::endl;
+        PmergeMe<std::vector<int> > vec;
+        if (!vec.checkAndFill(argc, argv))
+            std::cerr << "ERROR" << std::endl;
     }
     catch (std::invalid_argument &ia)
     {

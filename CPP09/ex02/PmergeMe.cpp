@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/06 12:07:12 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/10 17:00:30 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ template <typename Container>template <typename Iterator>void PmergeMe<Container
     size_t size = end - begin;
     if (size % 2)
         --size;
-    for (size_t i = 0; i <= size; ++i)
+    for (size_t i = 0; i <= size; i += 2) // ? Is it necessary or I can use iterator ? (With < _container.size())
     {
         if ((it + 1) != end && *it > *(it + 1))
             std::swap(*it, *(it + 1));
@@ -156,19 +156,33 @@ template <typename Container>
 template <typename Iterator>
 void PmergeMe<Container>::sortRest(Iterator begin, Iterator end)
 {
-    typename Container::iterator itVec = _container.begin();
-    int value;
+    typename Container::iterator itCon = _container.begin();
+    int value;  
     for (Iterator it = begin; it != end; ++it)
     {
         value = *it;
-        while (*it > *itVec)
-            ++itVec;
-        _container.erase(it);
-        _container.insert(itVec, value); 
-        itVec = _container.begin();
+        while (*it > *itCon)
+            ++itCon;
+        if (*it != *itCon)
+        {
+            _container.erase(it);
+            _container.insert(itCon, value);
+        }
+        itCon = _container.begin();
     }
 }
 
-//TODO deque segfaults on 512+
-//TODO deque do not sort correctly on odd number of elements
-//TODO lldb the behavior of deque on 5 elements (do not sort ok right now)
+template <typename Container>
+bool PmergeMe<Container>::isSorted(void)
+{
+    typename Container::iterator it;
+    for (it = _container.begin(); it != _container.end(); ++it)
+    {
+        if (*it > *(it + 1) && (it + 1) != _container.end())
+            return (false);
+    }
+    return (true);
+}
+
+//TODO watch what this input does (do not sort correctly right now)
+// 14903 18419 15137 52638 57910 74410 61323 82523 93081
