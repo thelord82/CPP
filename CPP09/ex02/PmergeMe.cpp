@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/10 17:00:30 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/10 22:24:04 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ template <typename Container>void PmergeMe<Container>::sortContainer(void)
     }
 
     sortHalf(_container.begin(), _container.begin() + (_container.size() / 2));
-    sortRest(_container.begin() + _container.size() / 2, _container.end());
+    sortRest(_container.begin() + (_container.size() / 2), _container.end());
 
     printContainer(_container.begin(), _container.end());
 }
@@ -157,20 +157,54 @@ template <typename Iterator>
 void PmergeMe<Container>::sortRest(Iterator begin, Iterator end)
 {
     typename Container::iterator itCon = _container.begin();
-    int value;  
-    for (Iterator it = begin; it != end; ++it)
+    int value;
+    //for (Iterator it = begin; it != end; ++it)
+    //{
+    //    value = *it;
+    //    while (*it > *itCon)
+    //        ++itCon;
+    //    if (*it != *itCon )//&& *it != *std::max_element(_container.begin(), _container.end()))
+    //    {
+    //        _container.erase(it);
+    //        _container.insert(itCon, value);
+    //        it = begin;
+    //    }
+    //    itCon = _container.begin();
+    //}
+    (void)begin;
+    (void)end;
+
+    for (unsigned long i = _container.size() / 2; i < _container.size(); ++i)
     {
-        value = *it;
-        while (*it > *itCon)
-            ++itCon;
-        if (*it != *itCon)
-        {
-            _container.erase(it);
-            _container.insert(itCon, value);
-        }
+        value = _container[i];
+        while (*itCon < value)
+            itCon++;
+        _container.erase(_container.begin() + i);
+        _container.insert(itCon, value);
+        //i = _container.size() / 2;
         itCon = _container.begin();
+        if (isSorted())
+            break;
     }
+    
+    //(void)itCon;
+//
+    //for (unsigned long i = 0; i < _container.size(); ++i)
+    //{
+    //    value = _container[i];
+    //    int j = 0;
+    //    while (value > _container[j])
+    //        ++j;
+    //    if (value != _container[j])
+    //    {
+    //        _container.erase(_container.begin() + i);
+    //        _container.insert(_container.begin() + j, value);
+    //        i = 0;  // Reset index to start from the beginning
+    //    }
+    //}
 }
+
+
 
 template <typename Container>
 bool PmergeMe<Container>::isSorted(void)
@@ -184,5 +218,4 @@ bool PmergeMe<Container>::isSorted(void)
     return (true);
 }
 
-//TODO watch what this input does (do not sort correctly right now)
-// 14903 18419 15137 52638 57910 74410 61323 82523 93081
+//TODO Cleanup ! And timestamp !
