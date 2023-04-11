@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:21:56 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 14:14:32 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 14:16:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ unsigned int Span::longestSpan(void)
 std::vector<int>::iterator Span::initializeVector(void)
 {
     for (unsigned int i = this->_numbers.size(); i < this->_size; ++i)
-        this->addNumber(0);
+        this->addNumber(i);
     return (_numbers.begin());
 }
 
