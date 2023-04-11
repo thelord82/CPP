@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 09:40:33 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:48:29 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,16 @@ private:
     time_t _startTime;
     clock_t _endClock;
     time_t _endTime;
+    double _processTime;
     
     void sortContainer();
     void sortRest(void);
     void mergeInsert(void);
+    double processTime(void);
     
+    template <typename Iterator>
+    void printUnsorted(Iterator begin, Iterator end);
+
     template <typename Iterator>
     void printContainer(Iterator begin, Iterator end);
 
@@ -50,6 +55,8 @@ public:
     virtual ~PmergeMe();
     bool checkAndFill(int argc, char **argv);
     bool isSorted(void);
+    double getProcessTime(void);
+    unsigned int getContainerSize(void);
 };
 
 #endif

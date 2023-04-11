@@ -6,13 +6,13 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 10:06:39 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:56:55 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-template <typename Container> PmergeMe<Container>::PmergeMe(void) : _startClock(clock()), _startTime(time(0))
+template <typename Container> PmergeMe<Container>::PmergeMe(void)
 {
     // std::cout << "Default constructor called" << std::endl;
 }
@@ -39,6 +39,8 @@ template <typename Container> PmergeMe<Container>::~PmergeMe(void)
 
 template <typename Container> bool PmergeMe<Container>::checkAndFill(int argc, char **argv)
 {
+    _startClock = clock();
+    _startTime = time(0);
     if (argc <= 1)
         return (false);
     if (argc == 2)
@@ -74,6 +76,7 @@ template <typename Container> bool PmergeMe<Container>::checkAndFill(int argc, c
                 _container.push_back(std::stoi(argv[i]));
         }
     }
+    printUnsorted(_container.begin(), _container.end());
     if (!isSorted())
         mergeInsert();
     else
@@ -105,22 +108,27 @@ template <typename Container> void PmergeMe<Container>::sortContainer(void)
 
     sortHalf(_container.begin(), _container.begin() + (_container.size() / 2));
     sortRest();
-
     printContainer(_container.begin(), _container.end());
+}
+
+template <typename Container>
+template <typename Iterator>
+void PmergeMe<Container>::printUnsorted(Iterator begin, Iterator end)
+{
+    std::cout << "Before: ";
+    for (Iterator it = begin; it != end; ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
 }
 
 template <typename Container>
 template <typename Iterator>
 void PmergeMe<Container>::printContainer(Iterator begin, Iterator end)
 {
-    std::cout << "Sorted container = ";
+    std::cout << "After = ";
     for (Iterator it = begin; it != end; ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
-    _endClock = clock();
-    _endTime = time(0);
-    double cpuTime = static_cast<double>(_endClock - _startClock) / 1000; // CLOCKS_PER_SEC;
-    std::cout << std::fixed << std::setprecision(5) << "TEST CPU TIME: " << cpuTime << " ms" << std::endl;
 }
 
 template <typename Container>
@@ -169,6 +177,7 @@ template <typename Container> void PmergeMe<Container>::sortRest(void)
         if (isSorted())
             break;
     }
+    _processTime = processTime();
 }
 
 template <typename Container> bool PmergeMe<Container>::isSorted(void)
@@ -180,4 +189,22 @@ template <typename Container> bool PmergeMe<Container>::isSorted(void)
             return (false);
     }
     return (true);
+}
+
+template <typename Container> double PmergeMe<Container>::processTime(void)
+{
+    _endClock = clock();
+    _endTime = time(0);
+    double cpuTime = static_cast<double>(_endClock - _startClock) / 1000;
+    return (cpuTime);
+}
+
+template <typename Container> double PmergeMe<Container>::getProcessTime(void)
+{
+    return this->_processTime;
+}
+
+template <typename Container> unsigned int PmergeMe<Container>::getContainerSize(void)
+{
+    return this->_container.size();
 }
