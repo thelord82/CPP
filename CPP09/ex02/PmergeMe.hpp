@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:19 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 08:36:14 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 09:40:33 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
     PmergeMe &operator=(const PmergeMe &rhs);
     virtual ~PmergeMe();
     bool checkAndFill(int argc, char **argv);
-    bool isSorted(void); // TODO comment ! just to check if the container is indeed sorted
+    bool isSorted(void);
 };
 
 #endif

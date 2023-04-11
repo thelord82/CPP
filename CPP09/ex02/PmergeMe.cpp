@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 09:04:54 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 10:06:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,29 +89,18 @@ template <typename Container> void PmergeMe<Container>::mergeInsert(void)
 
 template <typename Container> void PmergeMe<Container>::sortContainer(void)
 {
-    int                          last;
-    bool                         odd = false;
     typename Container::iterator it  = _container.begin();
 
     int    value;
     size_t size = _container.end() - _container.begin();
     if (size % 2)
-    {
         --size;
-        last = *(_container.end() - 1);
-        odd  = true;
-    }
     for (unsigned long i = 1; i <= size / 2; ++i)
     {
         ++it;
         value = _container[i];
         _container.erase(_container.begin() + i);
         _container.push_back(value);
-    }
-    if (odd == true)
-    {
-        _container.erase(_container.begin() + (_container.size() / 2));
-        _container.push_back(last);
     }
 
     sortHalf(_container.begin(), _container.begin() + (_container.size() / 2));
@@ -174,8 +163,8 @@ template <typename Container> void PmergeMe<Container>::sortRest(void)
         value = _container[i];
         while (*itCon < value)
             itCon++;
-        _container.erase(_container.begin() + i);
         _container.insert(itCon, value);
+        _container.erase(_container.begin() + (i + 1));
         itCon = _container.begin();
         if (isSorted())
             break;
@@ -192,5 +181,3 @@ template <typename Container> bool PmergeMe<Container>::isSorted(void)
     }
     return (true);
 }
-
-// TODO Cleanup ! And timestamp !
