@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/10 22:24:04 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/11 09:04:54 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-template <typename Container>PmergeMe<Container>::PmergeMe(void)
+template <typename Container> PmergeMe<Container>::PmergeMe(void) : _startClock(clock()), _startTime(time(0))
 {
     // std::cout << "Default constructor called" << std::endl;
 }
 
-template <typename Container>PmergeMe<Container>::PmergeMe(const PmergeMe<Container> &copy) : _container(copy._container)
+template <typename Container>
+PmergeMe<Container>::PmergeMe(const PmergeMe<Container> &copy) : _container(copy._container)
 {
     *this = copy;
 }
 
-template <typename Container>PmergeMe<Container> &PmergeMe<Container>::operator=(const PmergeMe &rhs)
+template <typename Container> PmergeMe<Container> &PmergeMe<Container>::operator=(const PmergeMe &rhs)
 {
     if (this != &rhs)
     {
@@ -31,13 +32,12 @@ template <typename Container>PmergeMe<Container> &PmergeMe<Container>::operator=
     return (*this);
 }
 
-template <typename Container>PmergeMe<Container>::~PmergeMe(void)
+template <typename Container> PmergeMe<Container>::~PmergeMe(void)
 {
     // std::cout << "Default destructor called" << std::endl;
 }
 
-
-template <typename Container>bool PmergeMe<Container>::checkAndFill(int argc, char **argv)
+template <typename Container> bool PmergeMe<Container>::checkAndFill(int argc, char **argv)
 {
     if (argc <= 1)
         return (false);
@@ -74,29 +74,32 @@ template <typename Container>bool PmergeMe<Container>::checkAndFill(int argc, ch
                 _container.push_back(std::stoi(argv[i]));
         }
     }
-    mergeInsert();
+    if (!isSorted())
+        mergeInsert();
+    else
+        printContainer(_container.begin(), _container.end());
     return (true);
 }
 
-template <typename Container>void PmergeMe<Container>::mergeInsert(void)
+template <typename Container> void PmergeMe<Container>::mergeInsert(void)
 {
     swapData(_container.begin(), _container.end());
     sortContainer();
 }
 
-template <typename Container>void PmergeMe<Container>::sortContainer(void)
+template <typename Container> void PmergeMe<Container>::sortContainer(void)
 {
-    int last;
-    bool odd = false;
-    typename Container::iterator it = _container.begin();
-    
-    int value;
+    int                          last;
+    bool                         odd = false;
+    typename Container::iterator it  = _container.begin();
+
+    int    value;
     size_t size = _container.end() - _container.begin();
     if (size % 2)
     {
         --size;
         last = *(_container.end() - 1);
-        odd = true;
+        odd  = true;
     }
     for (unsigned long i = 1; i <= size / 2; ++i)
     {
@@ -112,27 +115,34 @@ template <typename Container>void PmergeMe<Container>::sortContainer(void)
     }
 
     sortHalf(_container.begin(), _container.begin() + (_container.size() / 2));
-    sortRest(_container.begin() + (_container.size() / 2), _container.end());
+    sortRest();
 
     printContainer(_container.begin(), _container.end());
 }
 
-template<typename Container>template <typename Iterator>void PmergeMe<Container>::printContainer(Iterator begin, Iterator end)
+template <typename Container>
+template <typename Iterator>
+void PmergeMe<Container>::printContainer(Iterator begin, Iterator end)
 {
     std::cout << "Sorted container = ";
     for (Iterator it = begin; it != end; ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
+    _endClock = clock();
+    _endTime = time(0);
+    double cpuTime = static_cast<double>(_endClock - _startClock) / 1000; // CLOCKS_PER_SEC;
+    std::cout << std::fixed << std::setprecision(5) << "TEST CPU TIME: " << cpuTime << " ms" << std::endl;
 }
 
-template <typename Container>template <typename Iterator>void PmergeMe<Container>::swapData(Iterator begin, Iterator end)
+template <typename Container>
+template <typename Iterator>
+void PmergeMe<Container>::swapData(Iterator begin, Iterator end)
 {
-    //Iterator it = begin;
-    typename Container::iterator it = begin;
-    size_t size = end - begin;
+    typename Container::iterator it   = begin;
+    size_t                       size = end - begin;
     if (size % 2)
         --size;
-    for (size_t i = 0; i <= size; i += 2) // ? Is it necessary or I can use iterator ? (With < _container.size())
+    for (size_t i = 0; i <= size; i += 2)
     {
         if ((it + 1) != end && *it > *(it + 1))
             std::swap(*it, *(it + 1));
@@ -140,7 +150,9 @@ template <typename Container>template <typename Iterator>void PmergeMe<Container
     }
 }
 
-template <typename Container>template <typename Iterator>void PmergeMe<Container>::sortHalf(Iterator begin, Iterator end)
+template <typename Container>
+template <typename Iterator>
+void PmergeMe<Container>::sortHalf(Iterator begin, Iterator end)
 {
     for (Iterator it = begin; it != end; ++it)
     {
@@ -152,27 +164,10 @@ template <typename Container>template <typename Iterator>void PmergeMe<Container
     }
 }
 
-template <typename Container>
-template <typename Iterator>
-void PmergeMe<Container>::sortRest(Iterator begin, Iterator end)
+template <typename Container> void PmergeMe<Container>::sortRest(void)
 {
     typename Container::iterator itCon = _container.begin();
-    int value;
-    //for (Iterator it = begin; it != end; ++it)
-    //{
-    //    value = *it;
-    //    while (*it > *itCon)
-    //        ++itCon;
-    //    if (*it != *itCon )//&& *it != *std::max_element(_container.begin(), _container.end()))
-    //    {
-    //        _container.erase(it);
-    //        _container.insert(itCon, value);
-    //        it = begin;
-    //    }
-    //    itCon = _container.begin();
-    //}
-    (void)begin;
-    (void)end;
+    int                          value;
 
     for (unsigned long i = _container.size() / 2; i < _container.size(); ++i)
     {
@@ -181,33 +176,13 @@ void PmergeMe<Container>::sortRest(Iterator begin, Iterator end)
             itCon++;
         _container.erase(_container.begin() + i);
         _container.insert(itCon, value);
-        //i = _container.size() / 2;
         itCon = _container.begin();
         if (isSorted())
             break;
     }
-    
-    //(void)itCon;
-//
-    //for (unsigned long i = 0; i < _container.size(); ++i)
-    //{
-    //    value = _container[i];
-    //    int j = 0;
-    //    while (value > _container[j])
-    //        ++j;
-    //    if (value != _container[j])
-    //    {
-    //        _container.erase(_container.begin() + i);
-    //        _container.insert(_container.begin() + j, value);
-    //        i = 0;  // Reset index to start from the beginning
-    //    }
-    //}
 }
 
-
-
-template <typename Container>
-bool PmergeMe<Container>::isSorted(void)
+template <typename Container> bool PmergeMe<Container>::isSorted(void)
 {
     typename Container::iterator it;
     for (it = _container.begin(); it != _container.end(); ++it)
@@ -218,4 +193,4 @@ bool PmergeMe<Container>::isSorted(void)
     return (true);
 }
 
-//TODO Cleanup ! And timestamp !
+// TODO Cleanup ! And timestamp !
