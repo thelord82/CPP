@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 10:35:51 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 11:05:41 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 14:02:08 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(void)
     std::cout << "------------------" << std::endl;
     try
     {
-        resultV = easyfind(v1, 1200);
+        resultV = easyfind(v1, 120);
         std::cout << "result = " << *resultV << std::endl;
     }
     catch (std::exception &e)
@@ -65,7 +65,7 @@ int main(void)
     std::cout << "------------------" << std::endl;
     try
     {
-        resultD = easyfind(d1, 120);
+        resultD = easyfind(d1, 1200);
         std::cout << "result = " << *resultD << std::endl;
     }
     catch (std::exception &e)

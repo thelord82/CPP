@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:04:47 by malord            #+#    #+#             */
-/*   Updated: 2023/03/08 11:04:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 14:01:52 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 #include <algorithm>
 #include <iostream>
 #include <list>
-#include <map>
 #include <string>
 #include <vector>
 #include <deque>
-#include <stack>
 
 template <typename T> typename T::const_iterator easyfind(const T &first, int second)
 {
