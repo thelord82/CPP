@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/04/12 12:12:12 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/12 13:27:10 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ long RPN::doOperation(void)
 {
     long res = (_digits.top());
     _digits.pop();
-    int num = (_digits.top());
+    long num = (_digits.top());
     _digits.pop();
     switch (_rpn.top())
     {
@@ -99,12 +99,12 @@ long RPN::doOperation(void)
         return (res);
 
     case '*':
-        res *= (num);
+        res *= num;
         _digits.push(res);
         return (res);
 
     case '/':
-        res /= (num);
+        res = num / res;
         _digits.push(res);
         return (res);
     }
@@ -128,24 +128,7 @@ void RPN::printRPN(void)
             result = doOperation();
         _rpn.pop();
     }
-    // THIS only uses a temp stack to print the result in the "right" order
-    if (_digits.size() > 1)
-    {
-        std::stack<int> printStack;
-        while (!_digits.empty())
-        {
-            printStack.push(_digits.top());
-            _digits.pop();
-        }
-        while (!printStack.empty())
-        {
-            std::cout << printStack.top() << " ";
-            printStack.pop();
-        }
-        std::cout << std::endl;
-    }
-    else
-        std::cout << result << std::endl;
+    std::cout << result << std::endl;
 }
 
 // TODO on 9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 - chie sur la 1re division, retourne 0 au lieu de 72
