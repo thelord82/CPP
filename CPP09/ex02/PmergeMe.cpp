@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:17 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 10:56:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/11 15:38:38 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ template <typename Container> PmergeMe<Container>::~PmergeMe(void)
 template <typename Container> bool PmergeMe<Container>::checkAndFill(int argc, char **argv)
 {
     _startClock = clock();
-    _startTime = time(0);
+    _startTime  = time(0);
     if (argc <= 1)
         return (false);
     if (argc == 2)
@@ -92,7 +92,7 @@ template <typename Container> void PmergeMe<Container>::mergeInsert(void)
 
 template <typename Container> void PmergeMe<Container>::sortContainer(void)
 {
-    typename Container::iterator it  = _container.begin();
+    typename Container::iterator it = _container.begin();
 
     int    value;
     size_t size = _container.end() - _container.begin();
@@ -193,8 +193,8 @@ template <typename Container> bool PmergeMe<Container>::isSorted(void)
 
 template <typename Container> double PmergeMe<Container>::processTime(void)
 {
-    _endClock = clock();
-    _endTime = time(0);
+    _endClock      = clock();
+    _endTime       = time(0);
     double cpuTime = static_cast<double>(_endClock - _startClock) / 1000;
     return (cpuTime);
 }
