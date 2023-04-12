@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:17:21 by malord            #+#    #+#             */
-/*   Updated: 2023/03/24 10:04:26 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/12 10:43:40 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void Data::fillDatabase(void)
     std::string  toSplitOn = ",";
     unsigned int position  = 0;
     std::string  line, date;
-    std::getline(dataBase, line);
+    std::getline(dataBase, line); // skips first line
     float price;
     while (std::getline(dataBase, line))
     {
@@ -73,35 +73,37 @@ void Data::fillInput(std::string inputFile)
     unsigned int position  = 0;
     std::string  line, date;
     float        value;
-    std::getline(ifs, line); 
     while (std::getline(ifs, line))
     {
-        date = line.substr(0, 10);
-        try
-        {
-            if (line.find(toSplitOn) != std::string::npos)
+        if (line.find("date | value") == std::string::npos)
+        {    
+            date = line.substr(0, 10);
+            try
             {
-                position = line.find(toSplitOn);
-                if (valueOD(line.substr(position + 1, line.length())))
+                if (line.find(toSplitOn) != std::string::npos)
                 {
-                    value    = std::stof(line.substr(position + 1, line.length()));
-                    flag = true;
+                    position = line.find(toSplitOn);
+                    if (valueOD(line.substr(position + 1, line.length())))
+                    {
+                        value    = std::stof(line.substr(position + 1, line.length()));
+                        flag = true;
+                    }
+                    else
+                        flag = false;
                 }
-                else
-                    flag = false;
+                if (flag == true)
+                {
+                    this->inputFile.push_back(
+                        std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
+                        flag = false;
+                }
+                else if (!date.empty())
+                    this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
             }
-            if (flag == true)
+            catch (std::invalid_argument &ia)
             {
-                this->inputFile.push_back(
-                    std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(value)));
-                    flag = false;
-            }
-            else if (!date.empty())
                 this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
-        }
-        catch (std::invalid_argument &ia)
-        {
-            this->inputFile.push_back(std::make_pair<std::string, float>(static_cast<std::string>(date), static_cast<float>(0)));
+            }
         }
     }
 }
