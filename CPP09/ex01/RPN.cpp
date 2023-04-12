@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:07 by malord            #+#    #+#             */
-/*   Updated: 2023/03/30 12:05:37 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/12 12:12:12 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,3 +147,5 @@ void RPN::printRPN(void)
     else
         std::cout << result << std::endl;
 }
+
+// TODO on 9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 - chie sur la 1re division, retourne 0 au lieu de 72
