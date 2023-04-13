@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:20:15 by malord            #+#    #+#             */
-/*   Updated: 2023/04/11 11:20:18 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/13 13:40:36 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int main(int argc, char **argv)
         //std::cout << "IS VEC SORTED : " << (vec.isSorted() ? "TRUE" : "FALSE") << std::endl;
     }
     catch (std::invalid_argument &ia)
+    {
+        std::cerr << "ERROR" << std::endl;
+    }
+    catch (std::out_of_range &oor)
     {
         std::cerr << "ERROR" << std::endl;
     }
