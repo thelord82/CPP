@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:23:41 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 23:40:14 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/18 08:59:58 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void Warlock::forgetSpell(std::string const &spellName)
     _spellsBook.forgetSpell(spellName);
 }
 
-void Warlock::launchSpell(std::string const &spellName, const ATarget &target)
+void Warlock::launchSpell(std::string spellName, const ATarget &target)
 {
     ASpell *spell = _spellsBook.createSpell(spellName);
     if (spell)
