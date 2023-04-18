@@ -6,13 +6,13 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:16:10 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 19:49:59 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/17 23:02:16 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ATarget.hpp"
 
-ATarget::ATarget(void){}
+ATarget::ATarget(void) : _type(){}
 
 ATarget::ATarget(const ATarget &copy) : _type(copy._type)
 {
