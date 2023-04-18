@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:23:41 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 15:17:26 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:52:51 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void Warlock::forgetSpell(std::string spellName)
         }
 }
 
-void Warlock::launchSpell(std::string spellName, ATarget &target)
+void Warlock::launchSpell(std::string const spellName, const ATarget &target)
 {
     for (std::vector<ASpell *>::iterator it = _spells.begin(); it != _spells.end(); ++it)
         if (spellName == (*it)->getName())

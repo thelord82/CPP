@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ASpell.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:55:23 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 11:24:29 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:47:02 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ class ASpell
         ASpell(void);
         ASpell(const ASpell &copy);
         ASpell &operator=(const ASpell &rhs);
-        ASpell (std::string name, std::string effects);
+        ASpell (const std::string name, const std::string effects);
         virtual ~ASpell(void);
 
-        std::string getName(void) const;
-        std::string getEffects(void) const;
+        std::string const &getName(void) const;
+        std::string const &getEffects(void) const;
         virtual ASpell *clone(void) = 0;
-        void launch(const ATarget &target);
+        void launch(const ATarget &target) const;
 };
 #endif

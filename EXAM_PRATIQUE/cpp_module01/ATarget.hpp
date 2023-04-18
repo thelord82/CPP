@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ATarget.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:06:32 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 15:08:55 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:48:11 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ATarget
     public:
         ATarget(void);
         ATarget(const ATarget &copy);
-        ATarget(std::string type);
+        ATarget(const std::string &type);
         ATarget &operator=(const ATarget &rhs);
         virtual ~ATarget(void);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:20:02 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 15:08:34 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:22:03 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ class Warlock
         void introduce(void) const;
         void learnSpell(ASpell *newSpell);
         void forgetSpell(std::string spellName);
-        void launchSpell(std::string spellName, ATarget &target);
+        void launchSpell(std::string const spellName, const ATarget &target);
 };
 #endif

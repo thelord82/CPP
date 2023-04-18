@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ATarget.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:16:10 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 11:37:31 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 19:49:59 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ATarget::ATarget(const ATarget &copy) : _type(copy._type)
     *this = copy;
 }
 
-ATarget::ATarget(std::string type) : _type(type)
+ATarget::ATarget(const std::string &type) : _type(type)
 {}
 
 ATarget& ATarget::operator=(const ATarget &rhs)
@@ -40,5 +40,5 @@ const std::string &ATarget::getType(void) const
 
 void ATarget::getHitBySpell(const ASpell &spell) const
 {
-    std::cout << this->getType() << " has been " << spell.getEffects() << std::endl;
+    std::cout << this->_type << " has been " << spell.getEffects() << "!" << std::endl;
 }
