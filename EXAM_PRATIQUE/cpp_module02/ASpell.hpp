@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:55:23 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 22:26:25 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/17 23:35:55 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class ASpell
 
         std::string const &getName(void) const;
         std::string const &getEffects(void) const;
-        void launch(const ATarget &target);
+        void launch(const ATarget &target) const;
         virtual ASpell *clone(void) const = 0;
 };
 

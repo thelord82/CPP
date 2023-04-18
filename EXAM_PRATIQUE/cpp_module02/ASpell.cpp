@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 10:55:21 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 22:23:20 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/17 23:35:39 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ std::string const &ASpell::getEffects(void) const
 {
     return this->_effects;
 }
-void ASpell::launch(const ATarget &target)
+void ASpell::launch(const ATarget &target) const
 {
     target.getHitBySpell(*this);
 }
