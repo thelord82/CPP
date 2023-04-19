@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:07:12 by mal               #+#    #+#             */
-/*   Updated: 2023/04/18 08:59:05 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 21:54:50 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ATarget.hpp"
-#include "ASpell.hpp"
+#include "Warlock.hpp"
 #include "Polymorph.hpp"
 #include "Fireball.hpp"
 #include "TargetGenerator.hpp"
-#include "SpellBook.hpp"
 #include "BrickWall.hpp"
-#include "Dummy.hpp"
-#include "Fwoosh.hpp"
-#include "Warlock.hpp"
-
 
 int main()
 {

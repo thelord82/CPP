@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   SpellBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:23:45 by mal               #+#    #+#             */
-/*   Updated: 2023/04/18 08:29:59 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 22:09:36 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <iomanip>
 #include "ASpell.hpp"
 
-class ASpell;
+//class ASpell;
 
 class SpellBook
 {

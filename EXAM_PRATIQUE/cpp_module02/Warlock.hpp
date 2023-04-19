@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:20:02 by malord            #+#    #+#             */
-/*   Updated: 2023/04/18 09:00:10 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/17 23:40:06 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #include "SpellBook.hpp"
 #include <vector>
 
-class ASpell;
-class ATarget;
-class SpellBook;
+//class ASpell;
+//class ATarget;
+//class SpellBook;
 
 class Warlock
 {
@@ -45,6 +45,6 @@ class Warlock
         void introduce(void) const;
         void learnSpell(ASpell *newSpell);
         void forgetSpell(std::string const &spellName);
-        void launchSpell(std::string spellName, const ATarget &target);
+        void launchSpell(std::string const &spellName, const ATarget &target);
 };
 #endif
