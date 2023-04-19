@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:23:41 by malord            #+#    #+#             */
-/*   Updated: 2023/04/19 10:24:35 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/19 10:57:39 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void Warlock::forgetSpell(std::string spellName)
     }
 }
 
-void Warlock::launchSpell(const std::string spellName, const ATarget &target)
+void Warlock::launchSpell(std::string spellName, ATarget &target)
 {
     for (std::vector<ASpell *>::iterator it = _spells.begin(); it != _spells.end(); ++it)
     {

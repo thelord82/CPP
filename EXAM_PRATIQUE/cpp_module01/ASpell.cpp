@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 08:54:46 by malord            #+#    #+#             */
-/*   Updated: 2023/04/19 10:14:11 by malord           ###   ########.fr       */
+/*   Created: 2023/04/17 10:55:21 by malord            #+#    #+#             */
+/*   Updated: 2023/04/19 10:53:48 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,22 @@ ASpell &ASpell::operator=(const ASpell &rhs)
     return (*this);
 }
 
-ASpell::~ASpell(void) {}
+ASpell::ASpell(std::string name, std::string effects) : _name(name), _effects(effects)
+{}
 
-const std::string &ASpell::getName(void) const
+ASpell::~ASpell(void)
+{}
+
+std::string ASpell::getName(void) const
 {
     return (this->_name);
 }
 
-const std::string &ASpell::getEffects(void) const
+std::string ASpell::getEffects(void) const
 {
     return (this->_effects);
 }
-
-void ASpell::launch(const ATarget &target) const
+void ASpell::launch(const ATarget &target)
 {
     target.getHitBySpell(*this);
 }
