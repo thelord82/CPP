@@ -6,7 +6,7 @@
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:20:02 by malord            #+#    #+#             */
-/*   Updated: 2023/04/19 10:57:53 by malord           ###   ########.fr       */
+/*   Updated: 2023/04/19 10:05:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ class Warlock
         void introduce(void) const;
         void learnSpell(ASpell *spell);
         void forgetSpell(std::string spellName);
-        void launchSpell(std::string spellName, ATarget &target);
+        void launchSpell(const std::string spellName, const ATarget &target);
 };
 #endif

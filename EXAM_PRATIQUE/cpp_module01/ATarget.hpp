@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 11:06:32 by malord            #+#    #+#             */
-/*   Updated: 2023/04/19 10:57:20 by malord           ###   ########.fr       */
+/*   Created: 2023/04/19 09:02:01 by malord            #+#    #+#             */
+/*   Updated: 2023/04/19 10:17:49 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class ATarget
         ATarget(void);
         ATarget(const std::string &type); // const?
         ATarget(const ATarget &copy);
-        ATarget(std::string type);
         ATarget &operator=(const ATarget &rhs);
         virtual ~ATarget(void);
         
