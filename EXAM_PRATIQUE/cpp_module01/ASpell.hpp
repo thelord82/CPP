@@ -3,37 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ASpell.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 10:55:23 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 19:47:02 by mal              ###   ########.fr       */
+/*   Created: 2023/04/19 08:38:55 by malord            #+#    #+#             */
+/*   Updated: 2023/04/19 10:18:07 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASPELL_HPP
 #define ASPELL_HPP
 
-#include "Warlock.hpp"
-#include "ATarget.hpp"
 #include <iostream>
 #include <string>
-#include <iomanip>
+
+class ATarget;
 
 class ASpell
 {
-    private:
+    protected:
         std::string _name;
         std::string _effects;
+
     public:
         ASpell(void);
+        ASpell(const std::string &name, const std::string &effects); // const?
         ASpell(const ASpell &copy);
         ASpell &operator=(const ASpell &rhs);
-        ASpell (const std::string name, const std::string effects);
         virtual ~ASpell(void);
 
-        std::string const &getName(void) const;
-        std::string const &getEffects(void) const;
-        virtual ASpell *clone(void) = 0;
+        const std::string &getName(void) const;
+        const std::string &getEffects(void) const;
         void launch(const ATarget &target) const;
+        virtual ASpell *clone(void) = 0;
 };
+
+#include "ATarget.hpp"
+
 #endif

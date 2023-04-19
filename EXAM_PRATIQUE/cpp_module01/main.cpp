@@ -1,8 +1,20 @@
-#include "Warlock.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/19 09:45:45 by malord            #+#    #+#             */
+/*   Updated: 2023/04/19 09:46:21 by malord           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ASpell.hpp"
 #include "ATarget.hpp"
 #include "Dummy.hpp"
 #include "Fwoosh.hpp"
+#include "Warlock.hpp"
 
 int main()
 {

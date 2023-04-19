@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 09:20:02 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 19:22:03 by mal              ###   ########.fr       */
+/*   Updated: 2023/04/19 10:05:43 by malord           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
+#include <vector>
 #include "ASpell.hpp"
 #include "ATarget.hpp"
-#include <vector>
 
 class ASpell;
 class ATarget;
@@ -40,8 +40,8 @@ class Warlock
         const std::string &getTitle(void) const; 
         void setTitle(const std::string &title);
         void introduce(void) const;
-        void learnSpell(ASpell *newSpell);
+        void learnSpell(ASpell *spell);
         void forgetSpell(std::string spellName);
-        void launchSpell(std::string const spellName, const ATarget &target);
+        void launchSpell(const std::string spellName, const ATarget &target);
 };
 #endif
