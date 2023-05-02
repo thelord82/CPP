@@ -5,17 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/17 20:17:52 by mal               #+#    #+#             */
-/*   Updated: 2023/04/17 21:55:57 by mal              ###   ########.fr       */
+/*   Created: 2023/05/01 20:26:49 by mal               #+#    #+#             */
+/*   Updated: 2023/05/01 20:46:33 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRICKWALL_HPP
-#define BRICKWALL_HPP
+#pragma once
 
-#include <iostream>
-#include <string>
-#include <iomanip>
 #include "ATarget.hpp"
 
 class BrickWall : public ATarget
@@ -25,8 +21,6 @@ class BrickWall : public ATarget
         BrickWall(const BrickWall &copy);
         BrickWall &operator=(const BrickWall &rhs);
         virtual ~BrickWall(void);
-        
-        virtual BrickWall *clone(void);  
-};
 
-#endif
+        virtual BrickWall *clone(void) const;
+};

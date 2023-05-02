@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 21:22:42 by mal               #+#    #+#             */
-/*   Updated: 2023/04/17 22:43:42 by mal              ###   ########.fr       */
+/*   Updated: 2023/05/01 20:42:34 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
+#include <vector>
 #include "ATarget.hpp"
 
 class TargetGenerator

@@ -6,15 +6,20 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:07:12 by mal               #+#    #+#             */
-/*   Updated: 2023/04/17 21:54:50 by mal              ###   ########.fr       */
+/*   Updated: 2023/05/01 20:45:37 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Warlock.hpp"
-#include "Polymorph.hpp"
-#include "Fireball.hpp"
-#include "TargetGenerator.hpp"
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 #include "BrickWall.hpp"
+#include "Dummy.hpp"
+#include "Fireball.hpp"
+#include "Fwoosh.hpp"
+#include "Polymorph.hpp"
+#include "SpellBook.hpp"
+#include "TargetGenerator.hpp"
+#include "Warlock.hpp"
 
 int main()
 {

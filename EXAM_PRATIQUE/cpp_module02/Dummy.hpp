@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dummy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:00:11 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 12:06:42 by malord           ###   ########.fr       */
+/*   Updated: 2023/05/01 20:51:58 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class Dummy : public ATarget
         Dummy &operator=(const Dummy &rhs);
         virtual ~Dummy(void);
 
-        virtual Dummy *clone(void);
+        virtual Dummy *clone(void) const;
 };
 #endif

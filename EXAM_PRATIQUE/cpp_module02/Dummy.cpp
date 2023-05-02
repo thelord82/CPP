@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dummy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malord <malord@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:03:00 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 14:54:37 by malord           ###   ########.fr       */
+/*   Updated: 2023/05/01 20:52:04 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ Dummy &Dummy::operator=(const Dummy &rhs)
 Dummy::~Dummy(void)
 {}
 
-Dummy *Dummy::clone(void)
+Dummy *Dummy::clone(void) const
 {
-    Dummy *ptr = new Dummy;
-    return (ptr);
+    return (new Dummy(*this));
 }

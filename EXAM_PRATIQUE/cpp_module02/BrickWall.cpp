@@ -6,13 +6,13 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:20:12 by mal               #+#    #+#             */
-/*   Updated: 2023/04/17 21:56:45 by mal              ###   ########.fr       */
+/*   Updated: 2023/05/01 20:47:27 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BrickWall.hpp"
 
-BrickWall::BrickWall(void) : ATarget("Inconspicuous Red-brick Wall") {}\
+BrickWall::BrickWall(void) : ATarget("Inconspicuous Red-brick Wall") {}
 
 BrickWall::BrickWall(const BrickWall &copy)
 {
@@ -27,7 +27,7 @@ BrickWall &BrickWall::operator=(const BrickWall &rhs)
 
 BrickWall::~BrickWall(void) {}
 
-BrickWall *BrickWall::clone(void)
+BrickWall *BrickWall::clone(void) const
 {
     return (new BrickWall(*this));
 }

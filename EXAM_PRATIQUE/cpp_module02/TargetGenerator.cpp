@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 21:26:53 by mal               #+#    #+#             */
-/*   Updated: 2023/04/17 23:17:27 by mal              ###   ########.fr       */
+/*   Updated: 2023/05/01 20:54:58 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ ATarget *TargetGenerator::createTarget(std::string const &target)
 			return (*it);
 		}
 	}
-	return (nullptr);
+	return (NULL);
 }

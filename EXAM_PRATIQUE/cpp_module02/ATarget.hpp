@@ -6,7 +6,7 @@
 /*   By: mal <mal@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:06:32 by malord            #+#    #+#             */
-/*   Updated: 2023/04/17 22:13:00 by mal              ###   ########.fr       */
+/*   Updated: 2023/05/01 20:50:39 by mal              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ATarget
 
         const std::string &getType(void) const;
         void getHitBySpell(const ASpell &spell) const;
-        virtual ATarget *clone(void) = 0;
+        virtual ATarget *clone(void) const = 0;
 };
 #include "ASpell.hpp"
 #endif
